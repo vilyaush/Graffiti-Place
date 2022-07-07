@@ -60,7 +60,7 @@ router.route('/signin')
       if (result) {
         req.session.user = {
           userId: user.id,
-          userName: user.username,
+          userName: user.name,
           email: user.email,
         };
         return res.json({ text: 'Success' });
