@@ -14,10 +14,11 @@ router.route('/register')
       if (result.id) {
         req.session.userName = result.name;
         req.session.userId = result.id;
-        res.json(result);
+        return res.json(result);
       }
+      throw Error(result);
     } catch (error) {
-      res.json(error);
+      return res.json(error);
     }
   });
 
