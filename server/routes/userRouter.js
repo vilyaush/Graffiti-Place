@@ -6,18 +6,25 @@ router.route('/register')
   .post(async (req, res) => {
     try {
       const {
-        email, password, name, roles_id,
-      } = req.body;
+        email, password, name,
+      } = req.body.body;
+      const roles_id = req.body.role;
+      console.log('fff', roles_id);
+      console.log(req.body.body);
+      const pass = await Bcrypt.hash(password);
       const result = await Users.create({
-        email, password: await Bcrypt.hash(password), name, roles_id,
+        email, password: pass, name, roles_id,
       });
+      console.log(result, 'nnnnnnnnnnnnnnnn');
+      console.log('-----------------------------');
       if (result.id) {
         req.session.userName = result.name;
         req.session.userId = result.id;
-        res.json(result);
+        return res.json(result);
       }
+      throw Error(result);
     } catch (error) {
-      res.json(error);
+      return res.json(error);
     }
   });
 
