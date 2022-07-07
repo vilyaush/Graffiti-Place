@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {regUserThunk, handleLogout } from '../../redux/action/user'
+import {regUserThunk, logOutUserThunk  } from '../../redux/action/user'
 
 
 const AuthForm = () => {
@@ -25,6 +25,10 @@ console.log('123', user)
       setForm({})
       event.target.reset()
     }   
+  }
+
+  const handleLogout = () => {
+    dispatch(logOutUserThunk())
   }
 
   const handleChange = (event) => {

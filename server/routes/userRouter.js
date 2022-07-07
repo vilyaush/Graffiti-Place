@@ -30,9 +30,10 @@ router.route('/register')
 
 router.route('/logout')
   .get(async (req, res) => {
+    console.log('999999999999999999')
     try {
       req.session.destroy();
-      res.clearCookie('cook');
+      res.clearCookie('sid');
       res.sendStatus(200);
     } catch (error) {
       res.json(error);
