@@ -8,7 +8,7 @@ const AuthForm = () => {
   const [painterToggle, setPainterToggle] = useState(false);
 
 const user = useSelector((state) => state.user)
-console.log('123', user)
+console.log('useSelector', user)
 
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
