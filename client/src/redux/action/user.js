@@ -1,5 +1,5 @@
 const regUser = (data) => ({type:'REGISTER_USER', payload: data})
-
+const logOutUser = () => ({type:'LOGOUT_USER'})
 
  export const regUserThunk = (body, role) => async (dispatch) => {
    console.log(body, role);
@@ -16,7 +16,14 @@ const regUser = (data) => ({type:'REGISTER_USER', payload: data})
   dispatch(regUser(result));
 };
 
-export const handleLogout = () => 
-    fetch (`${process.env.REACT_APP_serverApi}/logout`, {
+export const logOutUserThunk = () => async (dispatch) => {
+ const response = await fetch (`${process.env.REACT_APP_serverApi}/user/logout`, 
+ {
       credentials: 'include'
-    })
+    }
+  )
+  dispatch(logOutUser())
+}
+
+
+    
