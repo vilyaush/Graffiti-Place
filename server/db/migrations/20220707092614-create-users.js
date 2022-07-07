@@ -18,6 +18,12 @@ module.exports = {
       },
       roles_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Roles',
+          },
+          key: 'id',
+        },
       },
       img: {
         type: Sequelize.TEXT,
