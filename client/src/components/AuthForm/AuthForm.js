@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
-import { useDispatch } from 'react-redux'
-import {regUserThunk} from '../../redux/action/user'
+import { useDispatch, useSelector } from 'react-redux'
+import {regUserThunk, handleLogout } from '../../redux/action/user'
+
 
 const AuthForm = () => {
   const [loginToggle, setLoginToggle] = useState(false);
   const [painterToggle, setPainterToggle] = useState(false);
+
+const user = useSelector((state) => state.user)
+console.log('123', user)
 
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
@@ -67,6 +71,7 @@ const AuthForm = () => {
     <input type="checkbox" onChange={handlePainter} />
     <span>Зарегистрироваться как художник</span>
   </label>
+  <button type="submit" onClick={handleLogout}>LOGOUT</button>
   </div>
   )
 }
