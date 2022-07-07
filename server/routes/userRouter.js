@@ -5,16 +5,19 @@ const { Users } = require('../db/models');
 router.route('/register')
   .post(async (req, res) => {
     try {
-      const { email, password, name, roles_id} = req.body;
-      const result = await Users.create({ email, password: await Bcrypt.hash(password), name, roles_id });
+      const {
+        email, password, name, roles_id,
+      } = req.body;
+      const result = await Users.create({
+        email, password: await Bcrypt.hash(password), name, roles_id,
+      });
       if (result.id) {
         req.session.userName = result.name;
         req.session.userId = result.id;
-        return res.json(result);
+        res.json(result);
       }
-      throw Error(result);
     } catch (error) {
-      return res.json(error);
+      res.json(error);
     }
   });
 
@@ -46,7 +49,7 @@ router.route('/signin')
       if (!user) {
         return res.json({ text: 'UserDoesntExistFailure' });
       }
-      const result = await Bcrypt.compare(pass, user.pass); 
+      const result = await Bcrypt.compare(pass, user.pass);
       if (result) {
         req.session.user = {
           userId: user.id,
@@ -59,4 +62,6 @@ router.route('/signin')
     } catch (err) {
       return res.status(500).end();
     }
-  })
+  });
+
+module.exports = router;
