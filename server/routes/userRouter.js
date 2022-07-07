@@ -65,7 +65,7 @@ router.route('/signin')
           userName: user.username,
           email: user.email,
         };
-        return res.json({ text: 'Success' });
+        return res.json(user);
       }
       return res.json({ text: 'PasswordsDoNotMatch' });
     } catch (err) {
