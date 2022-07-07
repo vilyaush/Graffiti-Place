@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -10,6 +11,12 @@ const PORT = process.env.PORT ?? 3003;
 const userRouter = require('./routes/userRouter');
 
 const app = express();
+app.use(cors({
+   credentials: true,
+   origin: 'http://localhost:3000',
+   
+ 
+ }));
 
 app.use(morgan('dev'));
 

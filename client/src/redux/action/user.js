@@ -2,7 +2,7 @@ const regUser = (data) => ({type:'REGISTER_USER', payload: data})
 
 
  export const regUserThunk = (body, role) => async (dispatch) => {
-  const response = await fetch(`${process.env.REACT_APP_serverApi}/register`, 
+  const response = await fetch(`${process.env.REACT_APP_serverApi}/user/register`, 
     {
       method: 'post',
       headers: { 'Content-type': 'application/json'},
@@ -11,6 +11,7 @@ const regUser = (data) => ({type:'REGISTER_USER', payload: data})
     },
   );
   const result = await response.json();
+  console.log(result);
   dispatch(regUser(result));
 };
 
