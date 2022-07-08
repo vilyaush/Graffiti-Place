@@ -40,6 +40,8 @@ router.route('/logout')
     }
   });
 
+
+
 router.route('/signin')
 .post(async (req, res) => {
   console.log('singin999999999999')
@@ -70,7 +72,8 @@ router.route('/signin')
       return res.json({ text: 'PasswordsDoNotMatch' });
     } catch (err) {
       return res.status(500).end();
+
     }
-  });
+});
 
 module.exports = router;
