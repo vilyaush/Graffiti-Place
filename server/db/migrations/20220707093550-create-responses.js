@@ -9,9 +9,21 @@ module.exports = {
       },
       order_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Orders',
+          },
+          key: 'id',
+        },
       },
       user_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
