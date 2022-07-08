@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.hasMany(models.Roles, { foreignKey: 'roles_id' });
       this.hasMany(models.CasdPaintes, { foreignKey: 'user_id' });
-      this.hasOne(models.Responses, { foreignKey: 'user_id' });
-      this.hasOne(models.Orders, { foreignKey: 'painter_id' });
-      this.hasOne(models.Orders, { foreignKey: 'customer_id' });
+      this.hasMany(models.Responses, { foreignKey: 'user_id' });
+      this.hasMany(models.Orders, { foreignKey: 'painter_id' });
+      this.hasMany(models.Orders, { foreignKey: 'customer_id' });
       this.hasMany(models.Stars, { foreignKey: 'user_id' });
     }
   }

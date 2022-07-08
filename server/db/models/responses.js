@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.hasOne(models.Orders, { foreignKey: 'order_id' });
-      this.hasOne(models.Users, { foreignKey: 'user_id' });
+      this.belongsTo(models.Users, { foreignKey: 'user_id' });
     }
   }
   Responses.init({
