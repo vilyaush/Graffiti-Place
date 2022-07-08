@@ -30,7 +30,7 @@ router.route('/register')
 
 router.route('/logout')
   .get(async (req, res) => {
-    console.log('999999999999999999')
+    console.log('999999999999999999');
     try {
       req.session.destroy();
       res.clearCookie('sid');
@@ -40,11 +40,9 @@ router.route('/logout')
     }
   });
 
-
-
 router.route('/signin')
-.post(async (req, res) => {
-  console.log('singin999999999999')
+  .post(async (req, res) => {
+    console.log('singin999999999999');
     const { email, password } = req.body.body;
     if (!email) {
       return res.json({ text: 'EmptyFieldFailure', field: 'email' });
@@ -64,7 +62,7 @@ router.route('/signin')
       if (result) {
         req.session.user = {
           userId: user.id,
-          userName: user.username,
+          userName: user.name,
           email: user.email,
         };
         return res.json(user);
@@ -72,8 +70,7 @@ router.route('/signin')
       return res.json({ text: 'PasswordsDoNotMatch' });
     } catch (err) {
       return res.status(500).end();
-
     }
-});
+  });
 
 module.exports = router;
