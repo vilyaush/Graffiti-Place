@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const upload = require('../middleWare/uploadMiddle');
 const { CardsPaintes } = require('../db/models');
-console.log(CardsPaintes);
+
 router.route('/')
-  .post(upload.single('img'), async (req, res) => {
-    
+  .post(upload.single('file'), async (req, res) => {
+    console.log('4444',req.body,req.file)
     const newCard = await CardsPaintes.create(
       {
         city: req.body.city,
         img: req.file?.filename,
-        discription: req.body.desc,
-        user_id: req.body.userId,
+        discription: req.body.description,
+        user_id: req.body.user_id,
       },
     );
     res.json({ newCard });

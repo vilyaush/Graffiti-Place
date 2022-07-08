@@ -14,8 +14,8 @@ export const createPainterCardThunk = (body) => async (dispatch) => {
     {
     credentials : 'include',
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
+    // headers: { 'Content-Type': 'application/json' },
+    body: (body)
     }
   )
   const result = await response.json()
