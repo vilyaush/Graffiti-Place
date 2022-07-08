@@ -14,13 +14,30 @@ const dispatch = useDispatch()
 
 const handleSubmit = (e) => {
   e.preventDefault()  
- 
-  dispatch(createPainterCardThunk({...form, userId}))
+  const formData = new FormData()
+  formData.append("city", form.city)
+  formData.append("description", form.desc)
+  // formData.append("img", form.img)
+  formData.append("user_id", userId)
+  formData.append('file', form.file);
+
+ console.log(Object.fromEntries(formData))
+  dispatch(createPainterCardThunk(formData))
     setForm({})
     e.target.reset() 
 }
 
-const handleChange = (e) => setForm((prev) => ({...prev, [e.target.name]: e.target.value}))
+const handleChange =(e)=> {
+  if (e.target.type === 'file') {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+      file: e.target.files[0],
+    }));
+  } else {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+}
 
   return (
     <div>
