@@ -9,9 +9,10 @@ const FileStore = require('session-file-store')(session);
 
 const PORT = process.env.PORT ?? 3003;
 const userRouter = require('./routes/userRouter');
-const imgRouter = require('./routes/imgRouter');
+const imgRouter = require('./routes/paintAllRouter');
 const paintRouter = require('./routes/paintRouter');
 const orderRouter = require('./routes/orderRouter');
+const orderAll = require('./routes/orderAllRouter');
 
 const app = express();
 app.use(cors({
@@ -45,6 +46,7 @@ app.use('/user', userRouter);
 app.use('/paintercard', imgRouter);
 app.use('/create', paintRouter);
 app.use('/order', orderRouter);
+app.use('/orderAll', orderAll);
 
 app.use((req, res) => {
   res.status(404).send('ooops');
