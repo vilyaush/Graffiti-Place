@@ -1,0 +1,12 @@
+
+
+.formAuth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check {
+  width: 10px;
+}
+
