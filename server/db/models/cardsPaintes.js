@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   CardsPaintes.init({
     user_id: DataTypes.INTEGER,
+    city: DataTypes.TEXT,
     discription: DataTypes.TEXT,
     img: DataTypes.TEXT,
   }, {
