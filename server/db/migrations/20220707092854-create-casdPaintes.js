@@ -1,14 +1,23 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Photos', {
+    await queryInterface.createTable('CasdPaintes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      albom_id: {
+      city: {
+        type: Sequelize.TEXT,
+      },
+      user_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        },
       },
       discription: {
         type: Sequelize.TEXT,
@@ -27,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Photos');
+    await queryInterface.dropTable('CasdPaintes');
   },
 };

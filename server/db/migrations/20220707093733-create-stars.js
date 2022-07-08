@@ -9,6 +9,12 @@ module.exports = {
       },
       order_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Orders',
+          },
+          key: 'id',
+        },
       },
       stars: {
         type: Sequelize.INTEGER,
@@ -18,6 +24,12 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
