@@ -9,6 +9,7 @@ const FileStore = require('session-file-store')(session);
 
 const PORT = process.env.PORT ?? 3003;
 const userRouter = require('./routes/userRouter');
+const imgRouter = require('./routes/imgRouter')
 
 const app = express();
 app.use(cors({
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/user', userRouter);
+app.use('/paintercard', imgRouter);
 
 app.use((req, res) => {
   res.status(404).send('ooops');
