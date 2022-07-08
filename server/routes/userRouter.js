@@ -41,13 +41,14 @@ router.route('/logout')
   });
 
 router.route('/signin')
-  .post(async (req, res) => {
-    const { email, pass } = req.body;
+.post(async (req, res) => {
+  console.log('singin999999999999')
+    const { email, password } = req.body.body;
     if (!email) {
       return res.json({ text: 'EmptyFieldFailure', field: 'email' });
     }
-    if (!pass) {
-      return res.json({ text: 'EmptyFieldFailure', field: 'pass' });
+    if (!password) {
+      return res.json({ text: 'EmptyFieldFailure', field: 'password' });
     }
     try {
       const user = await Users.findOne({
@@ -57,14 +58,14 @@ router.route('/signin')
       if (!user) {
         return res.json({ text: 'UserDoesntExistFailure' });
       }
-      const result = await Bcrypt.compare(pass, user.pass);
+      const result = await Bcrypt.compare(password, user.password);
       if (result) {
         req.session.user = {
           userId: user.id,
           userName: user.username,
           email: user.email,
         };
-        return res.json({ text: 'Success' });
+        return res.json(user);
       }
       return res.json({ text: 'PasswordsDoNotMatch' });
     } catch (err) {
