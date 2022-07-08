@@ -40,50 +40,40 @@ router.route('/logout')
     }
   });
 
-// router.route('/signin')
-//   .post(async (req, res) => {
-//     const { email, password } = req.body;
-//     if (!email) {
-//       return res.json({ text: 'EmptyFieldFailure', field: 'email' });
-//     }
-//     if (!pass) {
-//       return res.json({ text: 'EmptyFieldFailure', field: 'password' });
-//     }
-//     try {
-//       const user = await Users.findOne({
-//         where: { email },
-//         raw: true,
-//       });
-//       if (!user) {
-//         return res.json({ text: 'UserDoesntExistFailure' });
-//       }
-//       const result = await Bcrypt.compare(password, user.pass);
-//       if (result) {
-//         req.session.user = {
-//           userId: user.id,
-//           userName: user.username,
-//           email: user.email,
-//         };
-//         return res.json({ text: 'Success' });
-//       }
-//       return res.json({ text: 'PasswordsDoNotMatch' });
-//     } catch (err) {
-//       return res.status(500).end();
-//     }
-//   });
-router.route('/login').post( async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const result = await user.findOne({ where: { email } });
-    if (await Bcrypt.compare(password, result.password)) {
-      req.session.userName = result.name;
-      req.session.userId = result.id;
-      return res.json(result);
+
+
+router.route('/signin')
+.post(async (req, res) => {
+  console.log('singin999999999999')
+    const { email, password } = req.body.body;
+    if (!email) {
+      return res.json({ text: 'EmptyFieldFailure', field: 'email' });
     }
-    throw Error(result);
-  } catch (error) {
-    return res.json(error);
-  }
+    if (!password) {
+      return res.json({ text: 'EmptyFieldFailure', field: 'password' });
+    }
+    try {
+      const user = await Users.findOne({
+        where: { email },
+        raw: true,
+      });
+      if (!user) {
+        return res.json({ text: 'UserDoesntExistFailure' });
+      }
+      const result = await Bcrypt.compare(password, user.password);
+      if (result) {
+        req.session.user = {
+          userId: user.id,
+          userName: user.username,
+          email: user.email,
+        };
+        return res.json(user);
+      }
+      return res.json({ text: 'PasswordsDoNotMatch' });
+    } catch (err) {
+      return res.status(500).end();
+
+    }
 });
 
 module.exports = router;
