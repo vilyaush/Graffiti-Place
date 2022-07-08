@@ -9,6 +9,7 @@ router.route('/')
         painter_id: req.body.painter_id,
         title: req.body.title,
         img: req.file?.filename,
+        description: req.body.description,
         status: req.body.status,
         castomer_id: req.session.user.userId,
       },

@@ -22,6 +22,9 @@ module.exports = {
       img: {
         type: Sequelize.TEXT,
       },
+      description: {
+        type: Sequelize.TEXT,
+      },
       painter_id: {
         type: Sequelize.INTEGER,
         references: {
