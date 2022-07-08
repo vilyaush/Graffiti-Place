@@ -10,8 +10,9 @@ router.route('/register')
       } = req.body.body;
       const roles_id = req.body.role;
       console.log('fff', roles_id);
-      console.log(req.body.body);
+      console.log(req.body);
       const pass = await Bcrypt.hash(password);
+      console.log(pass)
       const result = await Users.create({
         email, password: pass, name, roles_id,
       });
@@ -24,6 +25,7 @@ router.route('/register')
       }
       throw Error(result);
     } catch (error) {
+      console.log(error);
       return res.json(error);
     }
   });
