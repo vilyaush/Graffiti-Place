@@ -4,6 +4,7 @@ const { cardPaintes } = require('../db/models');
 
 router.route('/')
   .post(upload.single('img'), async (req, res) => {
+    console.log("ручка добовления painterCard")
     const newCard = await cardPaintes.create(
       {
         city: req.body.city,

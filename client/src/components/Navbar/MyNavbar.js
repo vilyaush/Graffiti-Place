@@ -2,6 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 
 export default function MyNavbar() {
@@ -15,6 +16,9 @@ export default function MyNavbar() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/auth">Auth</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
+
+            <Link to="/1"> Create Order </Link>
+            <Link to="/2"> Create Painter </Link>
           </Nav>
         </Container>
       </Navbar>
