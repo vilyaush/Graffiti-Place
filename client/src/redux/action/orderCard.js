@@ -9,6 +9,7 @@ export const getOrderCardThunk = () => async (dispatch) => {
 }
 
 export const createOrderCardThunk = (body) => async (dispatch) => {
+  console.log('77777777777777788888888899999999999877')
 
   const response = await fetch(`${process.env.REACT_APP_serverApi}/order`,
     {

@@ -4,6 +4,7 @@ const { Orders } = require('../db/models');
 
 router.route('/')
   .post(upload.single('img'), async (req, res) => {
+    console.log('000000000000000000000000000',req.body)
     const newOrder = await Orders.create(
       {
         painter_id: req.body.painter_id,

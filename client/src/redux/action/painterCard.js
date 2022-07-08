@@ -10,7 +10,7 @@ export const getPainterCardThunk = () => async (dispatch) => {
 
 export const createPainterCardThunk = (body) => async (dispatch) => {
 
-  const response = await fetch(`${process.env.REACT_APP_serverApi}/paintercard`,
+  const response = await fetch(`${process.env.REACT_APP_serverApi}/create`,
     {
     credentials : 'include',
     method: 'POST',
