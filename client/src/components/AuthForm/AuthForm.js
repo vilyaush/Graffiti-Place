@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {regUserThunk, logOutUserThunk  } from '../../redux/action/user'
+import {regUserThunk, logOutUserThunk, logInUserThunk} from '../../redux/action/user'
 
 
 const AuthForm = () => {
@@ -8,7 +8,7 @@ const AuthForm = () => {
   const [painterToggle, setPainterToggle] = useState(false);
 
 const user = useSelector((state) => state.user)
-console.log('123', user)
+console.log('useSelector', user)
 
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
@@ -20,7 +20,11 @@ console.log('123', user)
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(form.name && form.email && form.password) {
+    if (loginToggle && form.email && form.password){
+      dispatch(logInUserThunk(form));
+      setForm({})
+      event.target.reset()
+      } else if (form.name && form.email && form.password) {
       dispatch(regUserThunk(form, role));
       setForm({})
       event.target.reset()
