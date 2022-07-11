@@ -35,8 +35,8 @@ router.route('/register')
       if (result.id) {
         req.session.userName = result.name;
         req.session.userId = result.id;
-        // return res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
         mailer(message);
+        // res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
         return res.json(result);
       }
       throw Error(result);
