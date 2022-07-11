@@ -1,8 +1,9 @@
-import React,{useEffect}from 'react'
+import React,{useEffect, useCallback}from 'react'
 import './OrderCardList.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {Card, Button} from 'react-bootstrap'
-import { getOrderCardThunk } from '../../redux/action/orderCard'
+import { getOrderCardThunk, deleteOrderCardThunk } from '../../redux/action/orderCard'
+import { nanoid } from 'nanoid'
 
 
 const OrderCardList = () => {
@@ -15,19 +16,24 @@ const OrderCardList = () => {
   useEffect(() => {
     dispatch(getOrderCardThunk())
   }, [])
+
+  const handleDelete = useCallback((id) => {
+    dispatch(deleteOrderCardThunk(id))
+    .catch(console.log)
+  }, [])
   
   return (
     <div>
       {orderCards.map((el) => 
-        <Card style={{ width: '18rem' }}>
-         <Card.Img variant="top" src="holder.js/100px180" />
+        <Card key={nanoid()} style={{ width: '18rem' }}>
+         <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{el.title}</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            {el.description}
             </Card.Text>
             <Button variant="primary">Go somewhere</Button>
+            <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
          </Card.Body>
         </Card>
       )}
