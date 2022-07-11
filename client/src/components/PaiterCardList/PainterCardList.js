@@ -8,6 +8,8 @@ const PainterCardList = () => {
   const dispatch = useDispatch()
   const painterCards = useSelector((state)=> state.painterCard)
 
+
+  console.log('888888888888',painterCards.img)
   useEffect(() => {
     dispatch(getPainterCardThunk())
   }, [])
@@ -17,12 +19,11 @@ const PainterCardList = () => {
     <div>
       {painterCards.map((el) => 
         <Card style={{ width: '18rem' }}>
-         <Card.Img variant="top" src="holder.js/100px180" />
+         <Card.Img variant="top" src={el.img} />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{el.city}</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              {el.discription}
             </Card.Text>
             <Button variant="primary">Go somewhere</Button>
          </Card.Body>

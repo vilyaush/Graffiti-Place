@@ -10,6 +10,7 @@ const OrderCardList = () => {
 
   const dispatch = useDispatch()
   const orderCards = useSelector((state)=> state.orderCard)
+  console.log(orderCards)
 
   useEffect(() => {
     dispatch(getOrderCardThunk())
