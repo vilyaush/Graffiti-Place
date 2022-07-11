@@ -1,5 +1,3 @@
-
-
 import React, {useEffect}from 'react';
 
 import MyNavbar from './components/Navbar/MyNavbar';
