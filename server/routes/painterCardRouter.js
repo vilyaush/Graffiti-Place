@@ -28,7 +28,7 @@ router.route('/')
   router.route('/:id')
   .delete( checkUser, async (req, res) => {
     await CardsPaintes.destroy({ where: { id: req.params.id } });
-    res.sendStatus('200');
+    res.sendStatus(200);
   });
 
 module.exports = router;

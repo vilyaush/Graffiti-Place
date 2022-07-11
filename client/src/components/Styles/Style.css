@@ -8,7 +8,6 @@ body{
   padding-top: 25px;
   font-family: 'Montserrat', sans-serif;    
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: row;
   justify-content: center;
   background: linear-gradient(to right, yellow, #96207a, #0c8ce9) ;
@@ -16,22 +15,41 @@ body{
 }
 
 .mainLabel{
-  float:left; 
-  margin-top:2px; 
-  margin-right:50px;
-}
+    position:relative;
+    border:1px solid red;
+    width:200px;
+    overflow:hidden;
+    float:left; 
+    margin-top:2px; 
+    margin-right:50px;
+    /* align-self: auto; */
+    background: url('../../../public/logo.png');
+    background-size: 200px 80px
+  }
+
+
 
  .headNav{
-  padding: 0 0 20px 0;
+  padding: 20px;
   position: relative; 
   text-transform: uppercase;    
-  
   font-weight: bold;
   letter-spacing: 0.2px;
-  font-size: 15px;
+  font-size: 20px;
   text-decoration: none; 
  }
 
  .signIn{
 
  }
+
+ .headNav > li {
+  display: inline-flex; 
+  margin-left: 20px; 
+ 
+}
+ .headNav > li > a {
+  text-decoration:none;
+  border-radius: 20px 0px 20px 0px;
+ color: rgb(0, 0, 0);
+}

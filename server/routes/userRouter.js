@@ -21,12 +21,12 @@ router.route('/register')
           <li>Пароль: ${req.body.body.password}</li>
 
         <p>Данное письмо не требует ответа.</p>
-        `
+        `,
       };
       const roles_id = req.body.role;
-     
+
       const pass = await Bcrypt.hash(password);
-      
+
       const result = await Users.create({
         email, password: pass, name, roles_id,
       });
@@ -93,8 +93,8 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
-      console.log('AUTH------------------------------------------------------------------------------')
-      console.log(req.session)
+      console.log('AUTH------------------------------------------------------------------------------');
+      console.log(req.session);
       const result = await Users.findByPk(req.session.user.userId);
       res.json(result);
     } catch (error) {
@@ -102,6 +102,5 @@ router.route('/auth')
       res.json(error);
     }
   });
-
 
 module.exports = router;

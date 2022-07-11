@@ -1,4 +1,4 @@
-import React,{useEffect, useCallback}from 'react'
+import React,{useEffect, useCallback, memo}from 'react'
 import './OrderCardList.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {Card, Button} from 'react-bootstrap'
@@ -41,4 +41,4 @@ const OrderCardList = () => {
   )
 }
 
-export default OrderCardList
+export default memo(OrderCardList)
