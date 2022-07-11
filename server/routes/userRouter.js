@@ -24,10 +24,9 @@ router.route('/register')
         `
       };
       const roles_id = req.body.role;
-      console.log('fff', roles_id);
-      console.log(req.body);
+     
       const pass = await Bcrypt.hash(password);
-      console.log(pass)
+      
       const result = await Users.create({
         email, password: pass, name, roles_id,
       });
@@ -91,5 +90,18 @@ router.route('/signin')
       return res.status(500).end();
     }
   });
+router.route('/auth')
+  .get(async (req, res) => {
+    try {
+      console.log('AUTH------------------------------------------------------------------------------')
+      console.log(req.session)
+      const result = await Users.findByPk(req.session.user.userId);
+      res.json(result);
+    } catch (error) {
+      console.log(error);
+      res.json(error);
+    }
+  });
+
 
 module.exports = router;

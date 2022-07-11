@@ -23,7 +23,11 @@ export const createOrderCardThunk = (body) => async (dispatch) => {
 }  
 
 export const deleteOrderCardThunk = (id) => async (dispatch) => {
-  const response = fetch (`${process.env.REACT_APP_serverApi}/ordercard/${id}`, {method: 'DELETE'}) // заменить ручку
+  const response = fetch (`${process.env.REACT_APP_serverApi}/ordercard/${id}`, 
+  {
+    method: 'DELETE',
+    credentials: 'include'
+  })
   if(response.status === 200) {
     dispatch(deleteOrderCard(id));
   } 

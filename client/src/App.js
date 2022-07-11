@@ -1,5 +1,7 @@
-import './App.css';
-import React from 'react';
+
+
+import React, {useEffect}from 'react';
+
 import MyNavbar from './components/Navbar/MyNavbar';
 import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
@@ -8,10 +10,23 @@ import CreateOrderCardForm from './components/CreateOrderCardForm/CreateOrderCar
 import CreatePainterCardForm from './components/CreatePainterCardForm/CreatePainterCardForm';
 import PainterCardList from './components/PaiterCardList/PainterCardList';
 import OrderCardList from './components/OrderCardList/OrderCardList';
+import { authUserThunk } from './redux/action/user'
+import { useDispatch } from 'react-redux';
 
 
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(authUserThunk())
+  }, [])
+  
+
+
+
+
   return (
     <div className="App">
         <MyNavbar />

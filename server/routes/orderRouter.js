@@ -26,7 +26,7 @@ router
   });
 
   router.route('/:id')
-  .delete( async (req, res) => {
+  .delete( checkUser, async (req, res) => {
     await Orders.destroy({ where: { id: req.params.id } });
     res.sendStatus('200');
   });
