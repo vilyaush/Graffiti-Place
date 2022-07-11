@@ -20,7 +20,7 @@ export default function MyNavbar() {
             <Link to="/1"> Create Order </Link>
             <Link to="/2"> Create Painter </Link>
             <Link to="/ihavepaint"> I have paint </Link>
-            <Link to="/ihevewall"> I have wall </Link>
+            <Link to="/ihavewall"> I have wall </Link>
           </Nav>
         </Container>
       </Navbar>
