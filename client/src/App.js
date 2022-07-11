@@ -1,5 +1,7 @@
+
 import './App.css';
 import React, {useEffect}from 'react';
+
 import MyNavbar from './components/Navbar/MyNavbar';
 import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
