@@ -9,12 +9,10 @@ import { Link } from 'react-router-dom';
 export default function MyNavbar() {
   return (
       <div className='navBar'>
-        <div className='mainLabel'>
+        <div className='mainLabel'>      
+          <Link to="/"></Link>
         </div>
         <div className='headNav'>  
-        <li>        
-          <Link to="/">Главная</Link>
-          </li>  
           <li>
           <Link to="/1">ЗАКАЗЧИК</Link>
           </li> 
@@ -23,17 +21,12 @@ export default function MyNavbar() {
           </li> 
           <li>
           <Link to="/2"> ХУДОЖНИК </Link>
-          </li> <li>
-          <Link to="/ihavepaint"> КРАСКИ </Link>
-          </li> <li>
-          <Link to="/ihavewall"> СТЕНА </Link>
-
           </li> 
-
+          <li>
           <Link to="/personalarea"> Личный кабинет</Link>
-
+          </li>
         </div>
-        <div className='signIn'>jhxsdfghjkjhg</div>
+        <div className='signIn'>jhxsdfgwsderftgyhhjkjhg</div>
       </div>
   );
 }
