@@ -23,12 +23,14 @@ export const createPainterCardThunk = (body) => async (dispatch) => {
 }  
 
 export const deletePainterCardThunk = (id) => async (dispatch) => {
-  const response = fetch (`${process.env.REACT_APP_serverApi}/paintercard/${id}`, 
+  const response = await fetch (`${process.env.REACT_APP_serverApi}/paintercard/${id}`, 
   {
     method: 'DELETE',
     credentials: 'include'
   }) 
+console.log(response)
   if(response.status === 200) {
+    console.log('response111', id)
     dispatch(deletePainterCard(id));  
      
    }

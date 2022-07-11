@@ -17,6 +17,7 @@ export default function MyNavbar() {
           <Link to="/2"> ХУДОЖНИК </Link>
           <Link to="/ihavepaint"> КРАСКИ </Link>
           <Link to="/ihavewall"> СТЕНА </Link>
+          <Link to="/personalarea"> Личный кабинет</Link>
         </div>
         <div className='signIn'>jhxsdfghjkjhg</div>
       </div>
