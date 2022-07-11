@@ -8,12 +8,12 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
 const PORT = process.env.PORT ?? 3003;
+
 const userRouter = require('./routes/userRouter');
-const imgRouter = require('./routes/paintAllRouter');
-const paintRouter = require('./routes/paintRouter');
-const orderRouter = require('./routes/orderRouter');
-const orderAll = require('./routes/orderAllRouter');
-const deleteRouter = require('./routes/deleteRouter');
+const painterCardRouter = require('./routes/painterCardRouter');
+const orderCardRouter = require('./routes/orderRouter');
+
+
 
 const app = express();
 app.use(cors({
@@ -44,12 +44,11 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/user', userRouter);
-app.use('/paintercard', imgRouter);
-app.use('/create', paintRouter);
-app.use('/order', orderRouter);
-app.use('/orderAll', orderAll);
-app.use('/deleteCard', deleteRouter);
-app.use('/deleteOrder', deleteRouter);
+
+app.use('/paintercard', painterCardRouter);
+app.use('/ordercard', orderCardRouter);
+
+
 
 app.use((req, res) => {
   res.status(404).send('ooops');
