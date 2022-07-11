@@ -13,7 +13,7 @@ const imgRouter = require('./routes/paintAllRouter');
 const paintRouter = require('./routes/paintRouter');
 const orderRouter = require('./routes/orderRouter');
 const orderAll = require('./routes/orderAllRouter');
-const deleteRouter = require('./routes/deleteRouter')
+const deleteRouter = require('./routes/deleteRouter');
 
 const app = express();
 app.use(cors({
@@ -48,8 +48,13 @@ app.use('/paintercard', imgRouter);
 app.use('/create', paintRouter);
 app.use('/order', orderRouter);
 app.use('/orderAll', orderAll);
+<<<<<<< HEAD
 app.use('/deleteCard', deleteRouter)
 app.use('/deleteOrder', deleteRouter)
+=======
+app.use('/deleteCard', deleteRouter);
+app.use('/deleteOrder', deleteRouter);
+>>>>>>> beca08d5bebc2e9d45c16e68e62f6ef3c360a902
 
 app.use((req, res) => {
   res.status(404).send('ooops');
