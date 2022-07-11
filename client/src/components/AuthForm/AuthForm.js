@@ -95,7 +95,7 @@ const AuthForm = () => {
             </ListGroup.Item>
 
 
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               <Form.Group className="position-relative mb-2">
                 <Form.Label>Image</Form.Label>
                 <Form.Control
@@ -104,7 +104,7 @@ const AuthForm = () => {
                   name="file"
                 />
               </Form.Group>
-            </ListGroup.Item>
+            </ListGroup.Item> */}
 
             <ListGroup.Item>
               <Form.Group className="mb-3" >
@@ -146,7 +146,7 @@ const AuthForm = () => {
                   Введите discription
                 </Form.Text>
               </Form.Group>
-            </ListGroup.Item>
+            </ListGroup.Item> 
 
             <ListGroup.Item>
               <Form.Group className="mb-2">

@@ -9,6 +9,12 @@ module.exports = {
       },
       customer_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        },
       },
       title: {
         type: Sequelize.TEXT,
@@ -16,8 +22,17 @@ module.exports = {
       img: {
         type: Sequelize.TEXT,
       },
+      description: {
+        type: Sequelize.TEXT,
+      },
       painter_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Users',
+          },
+          key: 'id',
+        },
       },
       status: {
         type: Sequelize.BOOLEAN,

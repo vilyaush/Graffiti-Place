@@ -1,0 +1,22 @@
+const router = require('express').Router();
+const upload = require('../middleWare/uploadMiddle');
+const { Orders } = require('../db/models');
+
+router.route('/')
+  .post(upload.single('file'), async (req, res) => {
+    console.log('4444',req.body)
+    const newOrder = await Orders.create(
+      {
+        painter_id: req.body.painter_id,
+        title: req.body.title,
+        img: req.file?.filename,
+        description: req.body.description,
+        status: req.body.status,
+        customer_id: req.body.customer_id,
+      },
+    );
+    
+    res.json({ newOrder });
+  });
+
+module.exports = router;
