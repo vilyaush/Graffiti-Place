@@ -48,13 +48,8 @@ app.use('/paintercard', imgRouter);
 app.use('/create', paintRouter);
 app.use('/order', orderRouter);
 app.use('/orderAll', orderAll);
-<<<<<<< HEAD
-app.use('/deleteCard', deleteRouter)
-app.use('/deleteOrder', deleteRouter)
-=======
 app.use('/deleteCard', deleteRouter);
 app.use('/deleteOrder', deleteRouter);
->>>>>>> beca08d5bebc2e9d45c16e68e62f6ef3c360a902
 
 app.use((req, res) => {
   res.status(404).send('ooops');
