@@ -6,7 +6,8 @@ const orderCardReducer = (state = [], action) => {
       return payload;
     case 'CREATE_ORDER_CARD':
       return state;
-
+    case 'DELETE_ORDER_CARD':
+      return state.filter((orderCard) => orderCard.id !== payload)
     
 
     default:
