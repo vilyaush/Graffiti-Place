@@ -10,6 +10,8 @@ const userReducer = (state = null, action) => {
       return payload;
     case 'LOGOUT_USER':
       return state = null;
+    case 'AUTH_USER':
+      return payload;  
 
 
 

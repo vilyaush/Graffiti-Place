@@ -3,6 +3,7 @@ import './OrderCardList.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {Card, Button} from 'react-bootstrap'
 import { getOrderCardThunk, deleteOrderCardThunk } from '../../redux/action/orderCard'
+import { nanoid } from 'nanoid'
 
 
 const OrderCardList = () => {
@@ -24,7 +25,7 @@ const OrderCardList = () => {
   return (
     <div>
       {orderCards.map((el) => 
-        <Card style={{ width: '18rem' }}>
+        <Card key={nanoid()} style={{ width: '18rem' }}>
          <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>

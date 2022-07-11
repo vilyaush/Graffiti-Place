@@ -15,7 +15,6 @@ export const createPainterCardThunk = (body) => async (dispatch) => {
     {
     credentials : 'include',
     method: 'POST',
-    // headers: { 'Content-Type': 'application/json' },
     body: (body)
     }
   )
@@ -24,7 +23,11 @@ export const createPainterCardThunk = (body) => async (dispatch) => {
 }  
 
 export const deletePainterCardThunk = (id) => async (dispatch) => {
-  const response = fetch (`${process.env.REACT_APP_serverApi}/paintercard/${id}`, {method: 'DELETE'}) // заменить ручку
+  const response = fetch (`${process.env.REACT_APP_serverApi}/paintercard/${id}`, 
+  {
+    method: 'DELETE',
+    credentials: 'include'
+  }) 
   if(response.status === 200) {
     dispatch(deletePainterCard(id));  
      
