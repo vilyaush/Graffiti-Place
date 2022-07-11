@@ -9,14 +9,25 @@ import { Link } from 'react-router-dom';
 export default function MyNavbar() {
   return (
       <div className='navBar'>
-        <div className='mainLabel' src='../../../public/index.html'>jhnbgyytvyvy</div>
-        <div className='headNav'>           
+        <div className='mainLabel'>
+        </div>
+        <div className='headNav'>  
+        <li>        
           <Link to="/">Главная</Link>
-          <Link to="/auth">Авторизация</Link>
+          </li>  
+          <li>
           <Link to="/1">ЗАКАЗЧИК</Link>
+          </li> 
+          <li>
+          <Link to="/auth">Авторизация</Link>
+          </li> 
+          <li>
           <Link to="/2"> ХУДОЖНИК </Link>
+          </li> <li>
           <Link to="/ihavepaint"> КРАСКИ </Link>
+          </li> <li>
           <Link to="/ihavewall"> СТЕНА </Link>
+          </li> 
         </div>
         <div className='signIn'>jhxsdfghjkjhg</div>
       </div>
