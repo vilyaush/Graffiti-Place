@@ -1,4 +1,4 @@
-import React,{useEffect, useCallback} from 'react'
+import React,{useEffect, useCallback, memo} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPainterCardThunk, deletePainterCardThunk} from '../../redux/action/painterCard'
 import './PainterCardList.css'
@@ -15,12 +15,11 @@ const PainterCardList = () => {
     dispatch(getPainterCardThunk())
   }, [])
 
-  const handleDelete = useCallback((id) => {
+  const handleDelete = (id) => {
     dispatch(deletePainterCardThunk(id))
-    .catch(console.log)
-  }, [])
+  }
 
-
+console.log('887777',painterCards)
   return (
     <div >
       {painterCards.map((el) => 
@@ -40,4 +39,4 @@ const PainterCardList = () => {
   )
 }
 
-export default PainterCardList
+export default memo(PainterCardList)
