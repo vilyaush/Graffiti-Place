@@ -6,6 +6,8 @@ const painterCardReducer = (state = [], action) => {
       return payload;
     case 'CREATE_PAINTER_CARD':
       return state;
+    case 'DELETE_PAINTER_CARD':
+      return  state.filter((painterCard) => painterCard.id !== payload)
 
     
 
