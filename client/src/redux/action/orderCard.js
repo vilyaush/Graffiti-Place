@@ -1,5 +1,6 @@
 const getOrderCard = (data) => ({type:'GET_ORDER_CARD', payload: data})
 const createOrderCard = (data) => ({type:'CREATE_ORDER_CARD',payload:data})
+const deleteOrderCard = (id) => ({type:'DELETE_ORDER_CARD', payload:id})
 
 export const getOrderCardThunk = () => async (dispatch) => {
 
@@ -9,8 +10,6 @@ export const getOrderCardThunk = () => async (dispatch) => {
 }
 
 export const createOrderCardThunk = (body) => async (dispatch) => {
-  console.log('77777777777777788888888899999999999877')
-
   const response = await fetch(`${process.env.REACT_APP_serverApi}/order`,
     {
     credentials : 'include',
@@ -21,4 +20,11 @@ export const createOrderCardThunk = (body) => async (dispatch) => {
   )
   const result = await response.json()
   dispatch(createOrderCard(result))
+}  
+
+export const deleteOrderCardThunk = (id) => async (dispatch) => {
+  const response = fetch (`${process.env.REACT_APP_serverApi}/ordercard/${id}`, {method: 'DELETE'}) // заменить ручку
+  if(response.status === 200) {
+    dispatch(deleteOrderCard(id));
+  } 
 }  
