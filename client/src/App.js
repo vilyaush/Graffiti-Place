@@ -7,7 +7,7 @@ import AuthForm from './components/AuthForm/AuthForm';
 import PainterCardList from './components/PaiterCardList/PainterCardList';
 import OrderCardList from './components/OrderCardList/OrderCardList';
 import { authUserThunk } from './redux/action/user'
-import { useDispatch } from 'react-redux';
+
 import  PersonalArea  from './components/PersonalArea/PersonalArea';
 import OneUser from './components/OneUser/OneUser';
 
