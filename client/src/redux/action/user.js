@@ -14,7 +14,7 @@ export const regUserThunk = (body) => async (dispatch) => {
     },
   );
   const result = await response.json();
-  console.log(result);
+  // console.log(result,'PAILOAD при регистрации');
   dispatch(regUser(result));
 };
 
