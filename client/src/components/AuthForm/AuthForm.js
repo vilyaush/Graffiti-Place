@@ -11,7 +11,7 @@ function AuthForm() {
 
   const navigate = useNavigate();
 
-  const user = useSelector((state) => state.user);
+
 
   const dispatch = useDispatch();
 
