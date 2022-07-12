@@ -27,6 +27,7 @@ const PORT = process.env.PORT ?? 3003;
 const userRouter = require('./routes/userRouter');
 const painterCardRouter = require('./routes/painterCardRouter');
 const orderCardRouter = require('./routes/orderRouter');
+const personalareaRouter = require('./routes/personalareaRouter');
 
 const app = express();
 app.use(cors({
@@ -51,6 +52,7 @@ app.use('/user', userRouter);
 
 app.use('/paintercard', painterCardRouter);
 app.use('/ordercard', orderCardRouter);
+app.use('/roles', personalareaRouter )
 
 app.use((req, res) => {
   res.status(404).send('ooops');
