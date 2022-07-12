@@ -2,33 +2,38 @@ const router = require('express').Router();
 const Bcrypt = require('../utils/bcrypt');
 const { Users } = require('../db/models');
 const mailer = require('../utils/mail');
+const upload = require('../middleWare/uploadMiddle');
 
 router.route('/register')
-  .post(async (req, res) => {
+  .post(upload.single('file'), async (req, res) => {
+    console.log('registerpen',req.body);
     try {
       const {
-        email, password, name,
-      } = req.body.body;
+        email, password, name, discription, title, roles_id,
+      } = req.body;
+      console.log(email, title, name, discription, roles_id)
+
+
       const message = {
-        to: req.body.body.email, // это адрес, который клиент указал в инпуте email
+        to: req.body.email, // это адрес, который клиент указал в инпуте email
         subject: 'Вы зарегистрировались!', // тема письма
         html: `
         <h2>Поздравляем, Вы успешно зарегистрировались на нашем сайте!</h2>
         <i>Данные Вашей учетной записи:</i>
         <ul>
-          <li>Имя: ${req.body.body.name}</li>
-          <li>Почта: ${req.body.body.email}</li>
-          <li>Пароль: ${req.body.body.password}</li>
+          <li>Имя: ${req.body.name}</li>
+          <li>Почта: ${req.body.email}</li>
+          <li>Пароль: ${req.body.password}</li>
 
         <p>Данное письмо не требует ответа.</p>
         `
       };
-      const roles_id = req.body.role;
+      
      
       const pass = await Bcrypt.hash(password);
       
       const result = await Users.create({
-        email, password: pass, name, roles_id,
+        email, password: pass, name, roles_id, title, discription, img: req.file?.filename,
       });
       console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
