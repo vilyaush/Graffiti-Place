@@ -1,20 +1,15 @@
-
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { regUserThunk, logOutUserThunk, logInUserThunk } from '../../redux/action/user'
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { regUserThunk, logOutUserThunk, logInUserThunk } from '../../redux/action/user';
 
 function AuthForm() {
   const [loginToggle, setLoginToggle] = useState(false);
   const [painterToggle, setPainterToggle] = useState(false);
 
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({});
 
-  const navigate = useNavigate()
-
-  const user = useSelector((state) => state.user)
-
+  const navigate = useNavigate();
 
 
 
@@ -30,12 +25,11 @@ function AuthForm() {
     if (loginToggle && form.email && form.password) {
       dispatch(logInUserThunk(form));
 
-      setForm({})
-      event.target.reset()
+      setForm({});
+      event.target.reset();
       if (painterToggle) {
-        navigate('/ihavewall')
-      } else {navigate('/ihavepaint')}
-
+        navigate('/ihavewall');
+      } else { navigate('/ihavepaint'); }
     } else if (form.name && form.email && form.password) {
       const formData = new FormData();
       formData.append('title', form.title);
@@ -49,12 +43,11 @@ function AuthForm() {
       // console.log(Object.fromEntries(formData))
       dispatch(regUserThunk(formData));
 
-      setForm({})
-      event.target.reset()
+      setForm({});
+      event.target.reset();
       if (painterToggle) {
-        navigate('/ihavewall')
-      } else {navigate('/ihavepaint')}
-
+        navigate('/ihavewall');
+      } else { navigate('/ihavepaint'); }
     }
   };
 
@@ -141,15 +134,15 @@ function AuthForm() {
             placeholder="Описание"
           />
 
-          <span className="container">
+          <label className="container">
             Уже зарегестрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
-          </span>
+          </label>
 
-          <span className="container">
+          <label className="container">
             Зарегистрироваться как художник
             <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />
-          </span>
+          </label>
 
           <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
           <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>

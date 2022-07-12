@@ -1,49 +1,48 @@
-import React,{useEffect, memo} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { nanoid } from 'nanoid'
-import { getOneUserThunk } from '../../redux/action/oneUser'
-import { useParams, Link} from 'react-router-dom'
-import {Card, Button} from 'react-bootstrap'
-import './OneUser.css'
+import React, { useEffect, memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { getOneUserThunk } from '../../redux/action/oneUser';
+import { useParams, Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
+import './OneUser.css';
 
-const OneUser = () => {
-  const person = useSelector((state) => state.oneUser)
-  const params = useParams()
+function OneUser() {
+  const person = useSelector((state) => state.oneUser);
+  const params = useParams();
   // console.log(params.id,'PARAMSSSSSSSSSSSSSS')
-  const dispatch = useDispatch()
-
- 
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(person.Orders)
-    dispatch(getOneUserThunk(params.id))}, [])
-
+    console.log(person.Orders);
+    dispatch(getOneUserThunk(params.id));
+  }, []);
 
   // console.log(person, 'oneUserCOMPONENTS')
 
+  console.log(person, 'oneUserCOMPONENTS');
 
   return (
     <div>
-     <h2>{person?.name}</h2>
-    <p>{person?.title}</p>
-    <p>{person?.discription}</p>
-      {person.Orders && person.Orders.map((el)=>
-      <Card className='card' key={nanoid()} style={{ width: '18rem' }}>
-         <img className='card-img' src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+      <h2>{person?.name}</h2>
+      <p>{person?.title}</p>
+      <p>{person?.discription}</p>
+      {person.Orders && person.Orders.map((el) => (
+        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
+          <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>
             <Card.Text>
-            {el.description}
+              {el.description}
             </Card.Text>
-            
-         </Card.Body>
-        </Card>)} 
- 
- <Link to='/ihavewall'>Назад</Link>
 
+          </Card.Body>
+        </Card>
+      ))}
+
+      <Link to="/ihavewall">Назад</Link>
 
     </div>
-  )
+  );
 }
 
-export default memo(OneUser)
+export default memo(OneUser);
