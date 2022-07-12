@@ -19,16 +19,14 @@ module.exports = {
     'react',
   ],
   rules: {
+    'associated-control': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/label-has-for': 'off',
     'react/jsx-filename-extension': 'off',
     'react/button-has-type': 'off',
     'no-unused-vars': 'off',
-    'jsx-a11y/label-has-associated-control': [2, {
-      labelComponents: ['CustomLabel'],
-      labelAttributes: ['inputLabel'],
-      controlComponents: ['CustomInput'],
-      assert: 'both',
-      depth: 3,
-    }],
     'no-use-before-define': 'off',
+    'import/no-named-as-default': 'off',
+    'import/order': 'off',
   },
 };
