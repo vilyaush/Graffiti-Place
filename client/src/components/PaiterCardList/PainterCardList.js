@@ -4,12 +4,13 @@ import { getPainterCardThunk, deletePainterCardThunk} from '../../redux/action/p
 import './PainterCardList.css'
 import {Card, Button} from 'react-bootstrap'
 import { nanoid } from 'nanoid'
+import CreatePainterCardForm from  '../CreatePainterCardForm/CreatePainterCardForm'
 
 const PainterCardList = () => {
   const dispatch = useDispatch()
   const painterCards = useSelector((state)=> state.painterCard)
 
-
+  const user = useSelector((state)=> state.user)
  
   useEffect(() => {
     dispatch(getPainterCardThunk())
@@ -22,6 +23,8 @@ const PainterCardList = () => {
 console.log('887777',painterCards)
   return (
     <div >
+
+{user.roles_id === 1 && <CreatePainterCardForm /> }
       {painterCards.map((el) => 
         <Card key={nanoid()} style={{ width: '18rem' }}>
          <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />

@@ -4,14 +4,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import {Card, Button} from 'react-bootstrap'
 import { getOrderCardThunk, deleteOrderCardThunk } from '../../redux/action/orderCard'
 import { nanoid } from 'nanoid'
+import CreateOrderCardForm from '../CreateOrderCardForm/CreateOrderCardForm'
 
 
 const OrderCardList = () => {
 
+  const user = useSelector((state) => state.user)
+
+  console.log('ORDERCARDLIST',user)
+
 
   const dispatch = useDispatch()
   const orderCards = useSelector((state)=> state.orderCard)
-  console.log(orderCards)
+  // console.log(orderCards)
 
   useEffect(() => {
     dispatch(getOrderCardThunk())
@@ -24,6 +29,8 @@ const OrderCardList = () => {
   
   return (
     <div>
+      {user.roles_id === 2 && <CreateOrderCardForm /> }
+
       {orderCards.map((el) => 
         <Card key={nanoid()} style={{ width: '18rem' }}>
          <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />

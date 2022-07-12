@@ -32,8 +32,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/auth" element={<AuthForm />} />
-        <Route path="/1" element={<CreateOrderCardForm />} />
-        <Route path="/2" element={<CreatePainterCardForm />} />
+        {/* <Route path="/1" element={<CreateOrderCardForm />} /> */}
+        {/* <Route path="/2" element={<CreatePainterCardForm />} /> */}
         <Route path="/ihavepaint" element={<PainterCardList />} />
         <Route path="/ihavewall" element={<OrderCardList />} />
         <Route path="/personalarea" element={<PersonalArea />} />
