@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './PersonalArea.css'
 import { getRolesThunk } from '../../redux/action/roles'
+import { authUserThunk } from '../../redux/action/user'
 
 const PersonalArea = () => {
 
-  const user = useSelector((s) => s.user); // при повторном обновлении страницы личного кабинета, получаем null и страница крашится, надо пофиксить
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(authUserThunk())
+  // }, [])
+
 
   const dispatch = useDispatch();
   const roles = useSelector((s) => s.roles);
@@ -15,6 +21,10 @@ const PersonalArea = () => {
 
   const rolesCheck = roles.filter(el => el.id === user.roles_id)
   console.log(rolesCheck);
+
+
+  const user = useSelector((s) => s.user); // при повторном обновлении страницы личного кабинета, получаем null и страница крашится, надо пофиксить
+  console.log(user, 'PERSONAL_AREA')
 
   return (
     <div className='area'>
