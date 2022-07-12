@@ -10,6 +10,7 @@ import OrderCardList from './components/OrderCardList/OrderCardList';
 import { authUserThunk } from './redux/action/user'
 import { useDispatch } from 'react-redux';
 import  PersonalArea  from './components/PersonalArea/PersonalArea';
+import OneUser from './components/OneUser/OneUser';
 
 
 
@@ -32,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/auth" element={<AuthForm />} />
-        {/* <Route path="/1" element={<CreateOrderCardForm />} /> */}
+        <Route path="/user/:id" element={<OneUser/>} /> 
         {/* <Route path="/2" element={<CreatePainterCardForm />} /> */}
         <Route path="/ihavepaint" element={<PainterCardList />} />
         <Route path="/ihavewall" element={<OrderCardList />} />

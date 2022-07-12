@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,6 +13,8 @@ const AuthForm = () => {
   const [loginToggle, setLoginToggle] = useState(false);
   const [painterToggle, setPainterToggle] = useState(false);
   const [form, setForm] = useState({})
+
+  const navigate = useNavigate()
 
   const user = useSelector((state) => state.user)
 
@@ -31,6 +34,10 @@ const AuthForm = () => {
       dispatch(logInUserThunk(form));
       setForm({})
       event.target.reset()
+      if (painterToggle) {
+        navigate('/ihavewall')
+      } else {navigate('/ihavepaint')}
+
     } else if (form.name && form.email && form.password) {
 
       const formData = new FormData()
@@ -46,6 +53,9 @@ const AuthForm = () => {
       dispatch(regUserThunk(formData));
       setForm({})
       event.target.reset()
+      if (painterToggle) {
+        navigate('/ihavewall')
+      } else {navigate('/ihavepaint')}
     }
   }
 
