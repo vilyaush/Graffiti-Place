@@ -1,6 +1,7 @@
-import React,{useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import './PersonalArea.css'
+import { getRolesThunk } from '../../redux/action/roles'
 import { authUserThunk } from '../../redux/action/user'
 
 const PersonalArea = () => {
@@ -11,8 +12,20 @@ const PersonalArea = () => {
   //   dispatch(authUserThunk())
   // }, [])
 
+
+  const dispatch = useDispatch();
   const user = useSelector((s) => s.user); // при повторном обновлении страницы личного кабинета, получаем null и страница крашится, надо пофиксить
-  console.log(user, 'PERSONAL_AREA')
+  const roles = useSelector((s) => s.roles);
+  
+  useEffect(() => {
+    dispatch(getRolesThunk())
+  }, [])
+
+  const rolesCheck = roles.filter(el => el.id === user.roles_id)
+  console.log(rolesCheck);
+
+  
+
   return (
     <div className='area'>
       <ul>
@@ -21,9 +34,12 @@ const PersonalArea = () => {
         <li>Мое айди: {user?.id}</li>
         <li>Имя: {user?.name}</li>
         <li>Почта: {user?.email}</li>
-        <li>Моя роль: {user?.roles_id}</li>
+        <li>Моя роль: {rolesCheck[0].roles}</li>
         <li><img className='card-img' style={{ width: '200px' }} src={`${process.env.REACT_APP_serverApi}/img/${user.img}`} /></li>
         <li>Аккаунт создан: {user?.createdAt.slice(0,10)}</li>
+
+        
+        
         <h3>Мои заказы</h3>
         <li>типа заказы</li>
 
