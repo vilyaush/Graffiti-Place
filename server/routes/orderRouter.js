@@ -11,7 +11,7 @@ router
   })
 
   .post(upload.single('file'), async (req, res) => {
-    console.log('4444',req.body)
+    console.log('4444', req.body);
     const newOrder = await Orders.create(
       {
         painter_id: req.body.painter_id,
@@ -25,8 +25,8 @@ router
     res.json({ newOrder });
   });
 
-  router.route('/:id')
-  .delete( checkUser, async (req, res) => {
+router.route('/:id')
+  .delete(checkUser, async (req, res) => {
     await Orders.destroy({ where: { id: req.params.id } });
     res.sendStatus('200');
   });
