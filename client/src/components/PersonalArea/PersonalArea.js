@@ -34,6 +34,8 @@ const PersonalArea = () => {
         <li>Имя: {user?.name}</li>
         <li>Почта: {user?.email}</li>
         <li>Моя роль: {rolesCheck[0]?.roles}</li>
+        <li>Город: {user?.title}</li>
+        <li>О себе: {user?.discription}</li>
         <li>Аккаунт создан: {user?.createdAt.slice(0, 10)}</li>
         <h3>Мои заказы</h3>
         <li>типа заказы</li>
