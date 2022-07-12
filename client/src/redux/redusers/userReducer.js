@@ -2,7 +2,7 @@
 
 const userReducer = (state = null, action) => {
   const { type, payload } = action;
-  //  console.log(payload)
+  console.log(payload)
   switch (type) {
     case 'LOGIN_USER':
       return payload;

@@ -11,6 +11,8 @@ const PainterCardList = () => {
   const painterCards = useSelector((state)=> state.painterCard)
 
   const user = useSelector((state)=> state.user)
+
+  console.log(user, '000000000000000000000000000000000000000000000000')
  
   useEffect(() => {
     dispatch(getPainterCardThunk())
@@ -20,7 +22,7 @@ const PainterCardList = () => {
     dispatch(deletePainterCardThunk(id))
   }
 
-console.log('887777',painterCards)
+console.log('887777',user)
   return (
     <div >
 
