@@ -1,59 +1,49 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import '../AuthForm/auth.css';
-import { regUserThunk, logOutUserThunk, logInUserThunk } from '../../redux/action/user'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { regUserThunk, logOutUserThunk, logInUserThunk } from '../../redux/action/user';
 
-
-const AuthForm = () => {
+function AuthForm() {
   const [loginToggle, setLoginToggle] = useState(false);
   const [painterToggle, setPainterToggle] = useState(false);
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({});
 
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.user);
 
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleForm = () => {
     setLoginToggle(!loginToggle);
   };
 
-
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    if (loginToggle && form.email && form.password) {    
-
+    if (loginToggle && form.email && form.password) {
       dispatch(logInUserThunk(form));
-      setForm({})
-      event.target.reset()
+      setForm({});
+      event.target.reset();
     } else if (form.name && form.email && form.password) {
-
-      const formData = new FormData()
-      formData.append('title', form.title)
-      formData.append('name', form.name)
-      formData.append('email', form.email)
-      formData.append('password', form.password)
-      formData.append('file', form.file)
-      formData.append('discription', form.discription)
-      formData.append('roles_id', role)
+      const formData = new FormData();
+      formData.append('title', form.title);
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('password', form.password);
+      formData.append('file', form.file);
+      formData.append('discription', form.discription);
+      formData.append('roles_id', role);
 
       // console.log(Object.fromEntries(formData))
       dispatch(regUserThunk(formData));
-      setForm({})
-      event.target.reset()
+      setForm({});
+      event.target.reset();
     }
-  }
+  };
 
   const handleLogout = () => {
-    dispatch(logOutUserThunk())
-  }
+    dispatch(logOutUserThunk());
+  };
 
-  const handleChange =(e)=> {
+  const handleChange = (e) => {
     if (e.target.type === 'file') {
       setForm((prev) => ({
         ...prev,
@@ -63,134 +53,90 @@ const AuthForm = () => {
     } else {
       setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
-  }
+  };
 
   const handlePainter = () => {
     setPainterToggle(!painterToggle);
-  }
+  };
 
-  const role = painterToggle ? 1 : 2
+  const role = painterToggle ? 1 : 2;
 
   return (
-    <Card style={{ width: '100%' }}>
-      <Card.Header>Регистрация</Card.Header>
-      <ListGroup variant="flush">
-        <div className='formAuth'>
-          <Form onSubmit={handleSubmit}>
+    <div className="fon">
+      <div className="formAuth">
+        <h1>Регистрация</h1>
+        <form className="formAuth" onSubmit={handleSubmit}>
+          <input
+            className="input"
+            hidden={loginToggle}
+            value={form.name || ''}
+            name="name"
+            onChange={handleChange}
+            placeholder="Имя и Фамилия"
+          />
 
-            <ListGroup.Item hidden={loginToggle}>
-              <Form.Group className="mb-2" controlId="formBasicName">
-                <Form.Label>Ваше Имя и Фамилия</Form.Label>
-                <Form.Control type="text" value={form.name || ""} name="name"
-                  onChange={handleChange}
-                  placeholder="Имя и Фамилия" />
-                <Form.Text className="text-muted">
-                 
-                </Form.Text>
-              </Form.Group>
-            </ListGroup.Item>
+          <input
+            className="input"
+            type="text"
+            value={form.email || ''}
+            name="email"
+            onChange={handleChange}
+            placeholder="Ваш email"
+          />
 
-            <ListGroup.Item>
-              <Form.Group className="mb-2" controlId="formBasicEmail">
-                <Form.Label>Ваш email</Form.Label>
-                <Form.Control type="text" value={form.email || ""}
-                  name="email"
-                  onChange={handleChange} placeholder="Ваш email" />
-                <Form.Text className="text-muted">
-                  
-                </Form.Text>
-              </Form.Group>
-            </ListGroup.Item>
+          <input
+            className="input"
+            type="password"
+            value={form.password || ''}
+            name="password"
+            onChange={handleChange}
+            placeholder="Ваш пароль"
+          />
 
-            <ListGroup.Item>
-              <Form.Group className="mb-2" controlId="formBasicPassword">
-                <Form.Label>Введите пароль</Form.Label>
-                <Form.Control type="password" value={form.password || ""}
-                  name="password"
-                  onChange={handleChange} placeholder="Ваш пароль" />
-                <Form.Text className="text-muted">
-                 
-                </Form.Text>
-              </Form.Group>
-            </ListGroup.Item>
+          <input
+            className="input"
+            hidden={loginToggle}
+            type="file"
+            value={form.img || ''}
+            name="img"
+            onChange={handleChange}
+          />
 
+          <input
+            className="input"
+            hidden={loginToggle}
+            type="text"
+            value={form.title || ''}
+            name="title"
+            onChange={handleChange}
+            placeholder="Введите город"
+          />
 
-            <ListGroup.Item hidden={loginToggle}>
-              <Form.Group className="position-relative mb-2">
-                <Form.Label>Добавьте Ваше фото</Form.Label>
-                <Form.Control type='file' value={form.img || ''}
-                 name="img"
-                 onChange={handleChange}
-                  
-                />
-              </Form.Group>
-            </ListGroup.Item>
+          <input
+            className="input"
+            hidden={loginToggle}
+            type="text"
+            value={form.discription || ''}
+            name="discription"
+            onChange={handleChange}
+            placeholder="Описание"
+          />
 
+          <span className="container">
+            Уже зарегестрированы?
+            <input className="check" type="checkbox" onChange={handleForm} />
+          </span>
 
-            <ListGroup.Item hidden={loginToggle}>
-              <Form.Group className="mb-2" controlId="formBasicName">
-                  
-                <Form.Label>Введите город</Form.Label>
-                <Form.Control type="text" value={form.title || ""}
-                  name="title"
-                  onChange={handleChange}
-                  placeholder="Введите город" />
-                <Form.Text className="text-muted">
-                </Form.Text>
-              </Form.Group>
-            </ListGroup.Item>
+          <span className="container">
+            Зарегистрироваться как художник
+            <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />
+          </span>
 
-            <ListGroup.Item hidden={loginToggle}>
-              <Form.Group className="mb-2" controlId="formBasicName">
-                <Form.Label>Немного о себе...</Form.Label>
-                <Form.Control type="text" value={form.discription || ""}
-                  name="discription"
-                  onChange={handleChange}
-                  placeholder="Расскажи о себе" />
-                <Form.Text className="text-muted">
-                  
-                </Form.Text>
-              </Form.Group>
-            </ListGroup.Item> 
-
-            <ListGroup.Item>
-              <Form.Group className="mb-2">
-                <Form.Label>
-                  <Form.Text className="text-muted">
-                    Войти?
-                  </Form.Text>
-                  <Form.Check aria-label="option 1" onChange={handleForm} />
-                </Form.Label>
-              </Form.Group>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Form.Group className="mb-2">
-                  <Form.Label hidden={loginToggle}>
-                    <Form.Text className="text-muted">
-                      Зарегистрироваться как художник
-                    </Form.Text>
-                    <Form.Check aria-label="option 1" onChange={handlePainter} />
-                  </Form.Label>
-                </Form.Group>
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                <Form.Group className="mb-2">
-                  <Button variant="primary" type="submit">
-                    {loginToggle ? "Войти" : "Зарегистрироваться"}
-                  </Button>
-                </Form.Group>
-                <Form.Group className="mb-2">
-                  <Button type="submit" onClick={handleLogout}>
-                    Выйти
-                  </Button>
-                </Form.Group>
-              </ListGroup.Item>
-          </Form>
-        </div>
-      </ListGroup>
-    </Card >
+          <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
+          <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
