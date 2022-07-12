@@ -15,10 +15,16 @@ const PersonalArea = () => {
         <li>Имя: {user.name}</li>
         <li>Почта: {user.email}</li>
         <li>Моя роль: {user.roles_id}</li>
-        <li>Аккаунт создан: {user.createdAt.slice(0,10)}</li>
+        {/* <li>Аккаунт создан: {user.createdAt.slice(0,10)}</li> */}
         <h3>Мои заказы</h3>
         <li>типа заказы</li>
       </ul>
+
+      <div>
+      <input placeholder='text'></input>
+      <button type="submit">отправить</button>
+      <input type="hidden" value={user.id}></input>
+      </div>
     </div>
   )
 }

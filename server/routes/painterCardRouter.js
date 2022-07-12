@@ -3,8 +3,6 @@ const upload = require('../middleWare/uploadMiddle');
 const { CardsPaintes } = require('../db/models');
 const { checkUser } = require('../middleWare/userMiddle');
 
-
-
 router.route('/')
 
   .get(async (req, res) => {
@@ -25,8 +23,8 @@ router.route('/')
     res.json({ newCard });
   });
 
-  router.route('/:id')
-  .delete( checkUser, async (req, res) => {
+router.route('/:id')
+  .delete(checkUser, async (req, res) => {
     await CardsPaintes.destroy({ where: { id: req.params.id } });
     res.sendStatus(200);
   });

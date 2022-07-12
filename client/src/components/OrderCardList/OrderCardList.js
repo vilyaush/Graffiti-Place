@@ -33,7 +33,7 @@ const OrderCardList = () => {
 
       {orderCards.map((el) => 
         <Card key={nanoid()} style={{ width: '18rem' }}>
-         <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+         <Card.Img style={{ width: '500px' }} variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>
             <Card.Text>

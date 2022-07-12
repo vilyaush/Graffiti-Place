@@ -14,13 +14,7 @@ export default function MyNavbar() {
         </div>
         <div className='headNav'>  
           <li>
-          <Link to="/1">ЗАКАЗЧИК</Link>
-          </li> 
-          <li>
           <Link to="/auth">Авторизация</Link>
-          </li> 
-          <li>
-          <Link to="/2"> ХУДОЖНИК </Link>
           </li> 
           <li>
           <Link to="/personalarea"> Личный кабинет</Link>
@@ -30,4 +24,3 @@ export default function MyNavbar() {
       </div>
   );
 }
-
