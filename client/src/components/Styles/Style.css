@@ -1,68 +1,72 @@
-.App{
+.App {
   width: 100%;
   height: 1024px;
-  background-color: rgba(127, 0, 255, 1);
 }
-body{
+
+body {
   margin: 0;
 }
 
-.navBar{
+.fonNavBar{
+  background-color: #7F00FF;
+}
+
+.navBar {
   width: 100%;
   height: 80px;
   padding-top: inherit;
-  font-family: 'Montserrat', sans-serif;    
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background: linear-gradient(to right, rgba(255, 184, 0, 1), rgba(208, 116, 94, 1),rgba(191, 92, 128, 1), rgba(127, 0, 255, 1)) ;
+
+  justify-content: center;
+  background: linear-gradient(to right, rgba(255, 184, 0, 1), rgba(208, 116, 94, 1), rgba(191, 92, 128, 1), rgba(127, 0, 255, 1));
   border-radius: 0px 0px 20px 20px;
 }
 
-.mainLabel{
-    position:relative;
-    height:40px;
-    width:217px;
-    overflow:hidden;
-    float:left; 
-    margin-top:2px; 
-    margin-left:100px;
-    z-index: 100;
-    background: url('../../../public/Union.png');
-    background-size: 217px 40px
-  }
+.mainLabel {
+  position: relative;
+  height: 40px;
+  width: 217px;
+  overflow: hidden;
+  float: left;
+  margin-top: 2px;
+  margin-right: 50px;
+  z-index: 100;
+  background: url('../../../public/Union.png');
+  background-size: 217px 40px
+}
 
- .headNav{
+.headNav {
   font-family: Montserrat;
   padding: 20px;
-  position: relative; 
-  text-transform: uppercase;    
+  position: relative;
+  text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.2px;
   font-size: 20px;
-  text-decoration: none; 
- }
-
- .signIn{
-
- }
-
- .headNav > li {
-  display: inline-flex; 
-  margin-left: 20px; 
- 
+  text-decoration: none;
 }
- .headNav > li > a {
+
+.signIn {}
+
+.headNav>li {
+  display: inline-flex;
+  margin-left: 20px;
+
+}
+
+.headNav>li>a {
   text-transform: capitalize;
   font-style: normal;
-font-weight: 600;
-font-size: 28px;
+  font-weight: 600;
+  font-size: 28px;
 
-  text-decoration:none;
- color: rgb(0, 0, 0);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 
-.mainPage{
+.mainPage {
   width: 100%;
   height: 1024px;
   justify-content: center;
@@ -71,8 +75,8 @@ font-size: 28px;
   background-color: rgba(127, 0, 255, 1)
 }
 
-.yellowBall{
-  font-family: 'Montserrat', sans-serif;  
+.yellowBall {
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   width: 1732.65px;
   height: 1025px;
@@ -80,45 +84,145 @@ font-size: 28px;
   display: flex;
   flex-direction: row;
   /* left: -421.74px; */
-  background:no-repeat url('../../../public/PIC\ yellow.png') ;
+  background: no-repeat url('../../../public/PIC\ yellow.png');
 }
 
-.iSearch{
+.iSearch {
   box-sizing: border-box;
 
-position: absolute;
-width: 788px;
-height: 297.11px;
-left: 154px;
-top: 103.66px;
+  position: absolute;
+  width: 788px;
+  height: 297.11px;
+  left: 154px;
+  top: 103.66px;
   background: no-repeat url('../../../public/PIC\ ищу.png');
 }
 
-.ballon{
+.ballon {
   position: absolute;
-width: 735px;
-height: 658px;
-margin-left: 950px; 
-margin-top: 280px;
-/* right: -1071px; */
-/* bottom: -197.07px; */
+  width: 735px;
+  height: 658px;
+  margin-left: 950px;
+  margin-top: 280px;
+  /* right: -1071px; */
+  /* bottom: -197.07px; */
   background: no-repeat url('../../../public/PIC\ hand.png');
 }
-.box{
+
+.box {
   margin-right: 750px;
 }
 
-.button{
+.button {
   margin-top: 450px;
-  margin-left:  20px;
+  margin-left: 20px;
   border-radius: 4px;
   font-weight: bold;
   height: 100px;
   width: 328px;
-background-color: black;
+  background-color: black;
 }
 
-.button > a{
-  text-decoration:none;
+.button>a {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 28px;
+  text-decoration: none;
   color: white;
+}
+
+.footer {
+  width: 100%;
+  height: 80px;
+  padding-bottom: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: start;
+  background-color: rgba(255, 184, 0, 1);
+}
+
+.logofooter {
+  width: 171px;
+  height: 27px;
+  margin-top: 35px;
+  position: relative;
+  background: no-repeat url('../../../public/txt.png');
+}
+
+.fon {
+  width: 100%;
+  height: 1000px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  background: no-repeat rgba(34, 34, 34, 1);
+}
+
+.formAuth {
+  width: 443px;
+  height: 808px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  background: rgba(34, 34, 34, 1);
+  ;
+}
+
+.formAuth>h1 {
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 40px;
+  color: rgba(179, 179, 179, 1);
+
+}
+
+.input {
+  width: 442px;
+  height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 30px;
+  margin-top: 30px;
+  color: rgba(179, 179, 179, 1);
+  background: black;
+}
+
+.container {
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 25px;
+  margin-top: 5px;
+  color: white;
+}
+
+.regButton {
+  margin-left: 50px;
+  margin-top: 20px;
+  border-radius: 20px;
+  width: 328px;
+  height: 60px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Montserrat';
+  
+  font-size: 20px;
+  color: white;
+  font-style: normal;
+  background: #7F00FF;
+}
+
+.check {
+  display: flex;
+  margin-left: 15px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: black;
+  background-color: black;
 }

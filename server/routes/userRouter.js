@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Bcrypt = require('../utils/bcrypt');
-const { Users } = require('../db/models');
+const { Users, CardsPaintes, Orders} = require('../db/models');
 const mailer = require('../utils/mail');
 const upload = require('../middleWare/uploadMiddle');
 
@@ -42,6 +42,8 @@ router.route('/register')
       if (result.id) {
         req.session.userName = result.name;
         req.session.userId = result.id;
+        req.session.roles_id = result.roles_id;
+        req.session.email = result.email;
         mailer(message);
         // res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
         return res.json(result);
@@ -102,12 +104,27 @@ router.route('/auth')
     try {
       console.log('AUTH------------------------------------------------------------------------------');
       console.log(req.session);
-      const result = await Users.findByPk(req.session.user.userId);
+      const result = await Users.findByPk(req.session.userId);
       res.json(result);
     } catch (error) {
       console.log(error);
       res.json(error);
     }
   });
+
+router.route('/:id')
+.get(async(req, res) => {
+  const id = req.params.id
+  // console.log(id,'req yf gjkextybz gthcjys')
+  try{
+    const result = await Users.findOne({ where: {id}, 
+      // include: CardsPaintes,
+      include: Orders})
+       console.log(JSON.parse(JSON.stringify(result)))
+       res.json(result)
+  }catch(e){
+    console.log(e)}
+
+})
 
 module.exports = router;
