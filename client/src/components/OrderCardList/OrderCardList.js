@@ -29,20 +29,20 @@ const OrderCardList = () => {
   
   return (
     <div>
-      {user.roles_id === 2 && <CreateOrderCardForm /> }
+      {user?.roles_id === 2 && <CreateOrderCardForm /> }
 
       {orderCards.map((el) => 
-        <Card key={nanoid()} style={{ width: '18rem' }}>
-         <Card.Img style={{ width: '500px' }} variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+        <card className='card' key={nanoid()} style={{ width: '18rem' }}>
+         <img className='card-img' src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>
             <Card.Text>
             {el.description}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-            <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
+            <button className='btn btn-primary'>Go somewhere</button>
+            <button type="button" onClick={() => handleDelete(el.id)}>DEL</button>
          </Card.Body>
-        </Card>
+        </card>
       )}
     </div>
   )

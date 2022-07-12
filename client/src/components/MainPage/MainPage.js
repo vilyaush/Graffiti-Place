@@ -13,7 +13,6 @@ export default function MainPage() {
       <button className='button'><Link to="/ihavepaint"> ХУДОЖНИКА </Link></button>
       </div>
       <div className= 'ballon'>
-
       </div>
       </div>
       </div>
