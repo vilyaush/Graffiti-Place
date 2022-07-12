@@ -42,7 +42,7 @@ const handleChange =(e)=> {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className='create-form' onSubmit={handleSubmit}>
         <input type='text' value={form.city || ''} name='city' onChange={handleChange} placeholder="В каком городе хотели бы нарисовать" />
         <textarea value={form.description || ''} name="description" onChange={handleChange} placeholder="Описапие проекта" />
         <input type='file' value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото пустой стены" />

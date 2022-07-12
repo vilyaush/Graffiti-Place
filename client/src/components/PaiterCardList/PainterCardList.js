@@ -24,7 +24,7 @@ console.log('887777',painterCards)
   return (
     <div >
 
-{user.roles_id === 1 && <CreatePainterCardForm /> }
+{user?.roles_id === 1 && <CreatePainterCardForm /> }
       {painterCards.map((el) => 
         <Card key={nanoid()} style={{ width: '18rem' }}>
          <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
