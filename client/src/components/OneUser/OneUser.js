@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import getOneUserThunk from '../../redux/action/oneUser';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
-import './OneUser.css';
 
 function OneUser() {
   const person = useSelector((state) => state.oneUser);
@@ -19,16 +17,16 @@ function OneUser() {
   const renderOrders = (orders) => (
     <>
       {orders.map((el) => (
-        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
+        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
           <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
-          <Card.Body>
-            <Card.Title>{el.title}</Card.Title>
-            <Card.Text>
+          <div>
+            <div>{el.title}</div>
+            <div>
               {el.description}
-            </Card.Text>
+            </div>
 
-          </Card.Body>
-        </Card>
+          </div>
+        </div>
       ))}
 
       <Link to="/ihavewall">Назад</Link>
@@ -40,15 +38,15 @@ function OneUser() {
     <>
 
       {painters.map((el) => (
-        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
+        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
           <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
-          <Card.Body>
-            <Card.Title>{el.city}</Card.Title>
-            <Card.Text>
+          <div>
+            <div>{el.city}</div>
+            <div>
               {el.description}
-            </Card.Text>
-          </Card.Body>
-        </Card>
+            </div>
+          </div>
+        </div>
       ))}
       <Link to="/ihavepaint">Назад</Link>
 

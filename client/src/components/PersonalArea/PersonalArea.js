@@ -40,26 +40,26 @@ function PersonalArea() {
             />
           </div>
           <div className="areaDiv">
-            <h2>Мои данные:</h2>
+            <h2>Мои данные :</h2>
             <ul>
               <li>
-                Моя роль:
+                Моя роль :
                 {rolesCheck[0]?.roles}
               </li>
               <li>
-                Имя:
+                Имя :
                 {user?.name}
               </li>
               <li>
-                Мое айди:
+                Мое ID :
                 {user?.id}
               </li>
               <li>
-                Почта:
+                Почта :
                 {user?.email}
               </li>
               <li>
-                Аккаунт создан:
+                Аккаунт создан :
                 {user?.createdAt.slice(0, 10)}
               </li>
             </ul>
