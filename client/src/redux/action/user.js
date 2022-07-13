@@ -45,7 +45,7 @@ export const logInUserThunk = (body) => async (dispatch) => {
 
 export const authUserThunk = (body) => async (dispatch) => {
   try {
-    console.log('THUNK__________________________________________________________');
+    console.log('THUNK_AUTH_________________________________________________________');
     const response = await fetch(
       `${process.env.REACT_APP_serverApi}/user/auth`,
       {
@@ -53,7 +53,7 @@ export const authUserThunk = (body) => async (dispatch) => {
       },
     );
     const result = await response.json();
-    console.log('999999999999999999999999999999999', result);
+    console.log('RESPONSE FROM AUTH', result);
     dispatch(authUser(result));
   } catch (error) {
     console.log(error);

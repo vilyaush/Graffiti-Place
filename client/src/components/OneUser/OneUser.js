@@ -2,7 +2,7 @@ import React, { useEffect, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import getOneUserThunk from '../../redux/action/oneUser';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import './OneUser.css';
 

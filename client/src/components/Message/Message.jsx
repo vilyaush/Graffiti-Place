@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { usechatContext } from '../Context/Context';
 
 // import { useCallback } from 'react'
 
-const socket = new WebSocket('ws://localhost:3003');
+
 
 function Message() {
   const [val, setVal] = useState('');
   const [mess, setMess] = useState([]);
   const { user } = useSelector((state) => state);
-  
 
-  useEffect(() => {
-    socket.onopen = (e) => {
-      console.log('connection');
-    };
-
-    socket.onmessage = (event) => {
-      console.log(event.data, '====');
-      const comment = JSON.parse(event.data);
-      console.log(comment);
-      setMess((prev) => [...prev, [comment]]);
-    };
-
-    socket.onclose = function (event) {
-      console.log('closed');
-    };
-  // return () => {} close connection
-  }, []);
+  const {socket} = useContext(usechatContext)
+//   useEffect(() => {
+ 
+//   // return () => {} close connection
+//   }, []);
 
   console.log(socket);
 
