@@ -28,7 +28,9 @@ function AuthForm() {
       event.target.reset();
       if (painterToggle) {
         navigate('/ihavewall');
-      } else { navigate('/ihavepaint'); }
+      } else {
+        navigate('/ihavepaint');
+      }
     } else if (form.name && form.email && form.password) {
       const formData = new FormData();
       formData.append('title', form.title);
@@ -46,7 +48,9 @@ function AuthForm() {
       event.target.reset();
       if (painterToggle) {
         navigate('/ihavewall');
-      } else { navigate('/ihavepaint'); }
+      } else {
+        navigate('/ihavepaint');
+      }
     }
   };
 
@@ -137,7 +141,7 @@ function AuthForm() {
             Уже зарегестрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
           </span>
-
+          <div>ewfefewfef</div>
           <span className="container">
             Зарегистрироваться как художник
             <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />

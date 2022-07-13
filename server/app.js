@@ -1,14 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const logger = require('morgan');
+const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const http = require('http');
-const { v4: uuidv4 } = require('uuid');
-const cookieParser = require('cookie-parser');
-const passport = require('passport');
-
-const GitHubStrategy = require('passport-github').Strategy;
+const uuid = require('uuid');
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -36,12 +32,12 @@ const personalareaRouter = require('./routes/personalareaRouter');
 const app = express();
 app.use(cors({
   credentials: true,
-  origin: '*',
+  origin: 'http://localhost:3000',
 
 }));
 
-app.use(logger('dev'));
-app.use(cookieParser());
+app.use(morgan('dev'));
+
 app.use(express.static(path.join(process.env.PWD, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -56,7 +52,7 @@ app.use('/user', userRouter);
 
 app.use('/paintercard', painterCardRouter);
 app.use('/ordercard', orderCardRouter);
-app.use('/roles', personalareaRouter )
+app.use('/roles', personalareaRouter);
 
 app.use((req, res) => {
   res.status(404).send('ooops');
@@ -69,11 +65,11 @@ server.on('upgrade', (request, socket, head) => {
   console.log('Parsing session from request...');
 
   sessionParser(request, {}, () => {
-    // if (!request.session.userId) {
-    //   socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
-    //   socket.destroy();
-    //   return;
-    // }
+    if (!request.session.userId) {
+      socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+      socket.destroy();
+      return;
+    }
 
     console.log('Session is parsed!');
 
@@ -84,24 +80,12 @@ server.on('upgrade', (request, socket, head) => {
 });
 
 wss.on('connection', (ws, request) => {
-  const { userId } = request.session.userId || uuidv4();
+  const { userId } = request.session.userId;
 
   map.set(userId, ws);
 
   ws.on('message', (message) => {
-    console.log(map.size);
-    const dataFromClient = JSON.parse(message);
-    console.log('message --->>', dataFromClient, userId);
-    switch (dataFromClient.type) {
-      case 'formData':
-        for (const [userId, clientWs] of map) {
-          clientWs.send(JSON.stringify(dataFromClient.payload));
-        }
-        break;
-
-      default:
-        break;
-    }
+    console.log(`Received message ${message} from user ${userId}`);
   });
 
   ws.on('close', () => {

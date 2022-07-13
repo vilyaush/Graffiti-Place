@@ -1,18 +1,17 @@
 const router = require('express').Router();
 const Bcrypt = require('../utils/bcrypt');
-const { Users, CardsPaintes, Orders} = require('../db/models');
+const { Users, CardsPaintes, Orders } = require('../db/models');
 const mailer = require('../utils/mail');
 const upload = require('../middleWare/uploadMiddle');
 
 router.route('/register')
   .post(upload.single('file'), async (req, res) => {
-    console.log('registerpen',req.body);
+    console.log('registerpen', req.body);
     try {
       const {
         email, password, name, discription, title, roles_id,
       } = req.body;
-      console.log(email, title, name, discription, roles_id)
-
+      console.log(email, title, name, discription, roles_id);
 
       const message = {
         to: req.body.email, // это адрес, который клиент указал в инпуте email
@@ -29,8 +28,7 @@ router.route('/register')
         `,
       };
 
-      //const roles_id = req.body.role;
-
+      // const roles_id = req.body.role;
 
       const pass = await Bcrypt.hash(password);
 
@@ -105,6 +103,7 @@ router.route('/auth')
       console.log('AUTH------------------------------------------------------------------------------');
       console.log(req.session);
       const result = await Users.findByPk(req.session.userId);
+      console.log({ result });
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -113,18 +112,20 @@ router.route('/auth')
   });
 
 router.route('/:id')
-.get(async(req, res) => {
-  const id = req.params.id
-  // console.log(id,'req yf gjkextybz gthcjys')
-  try{
-    const result = await Users.findOne({ where: {id}, 
-      // include: CardsPaintes,
-      include: Orders})
-       console.log(JSON.parse(JSON.stringify(result)))
-       res.json(result)
-  }catch(e){
-    console.log(e)}
-
-})
+  .get(async (req, res) => {
+    const { id } = req.params;
+    // console.log(id,'req yf gjkextybz gthcjys')
+    try {
+      const result = await Users.findOne({
+        where: { id },
+        // include: CardsPaintes,
+        include: Orders,
+      });
+      console.log(JSON.parse(JSON.stringify(result)));
+      res.json(result);
+    } catch (e) {
+      console.log(e);
+    }
+  });
 
 module.exports = router;
