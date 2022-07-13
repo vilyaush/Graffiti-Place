@@ -28,5 +28,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/no-named-as-default': 'off',
     'import/order': 'off',
+    'react/function-component-definition': 'off',
   },
 };
