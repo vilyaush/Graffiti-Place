@@ -5,7 +5,7 @@ router
   .route('/')
   .get(async (req, res) => {
     const roles = await Roles.findAll();
-    console.log(roles);
+    // console.log(roles);
     res.json(roles);
   })
 

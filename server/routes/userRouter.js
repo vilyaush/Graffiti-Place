@@ -11,7 +11,7 @@ router.route('/register')
       const {
         email, password, name, discription, title, roles_id,
       } = req.body;
-      console.log(email, title, name, discription, roles_id);
+      // console.log(email, title, name, discription, roles_id);
 
       const message = {
         to: req.body.email, // это адрес, который клиент указал в инпуте email
@@ -35,7 +35,7 @@ router.route('/register')
       const result = await Users.create({
         email, password: pass, name, roles_id, title, discription, img: req.file?.filename,
       });
-      console.log(result, 'nnnnnnnnnnnnnnnn');
+      // console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
       if (result.id) {
         req.session.userId = result.id;
@@ -101,9 +101,9 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
-      console.log('REQEST AUTH-----------------------------------------------------------',req.session);
+      // console.log('REQEST AUTH-----------------------------------------------------------',req.session);
       const result = await Users.findByPk(req.session.userId);
-      console.log(result, 'RESPONSE AUTH');
+      // console.log(result, 'RESPONSE AUTH');
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -126,7 +126,7 @@ router.route('/:id')
     include: CardsPaintes})
     res.json(result)
   
-    console.log(JSON.parse(JSON.stringify(result)))
+    // console.log(JSON.parse(JSON.stringify(result)))
   }
   }catch(e){
     console.log(e)}
