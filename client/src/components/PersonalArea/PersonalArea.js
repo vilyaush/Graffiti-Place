@@ -14,12 +14,14 @@ function PersonalArea() {
   const user = useSelector((s) => s.user);
   const roles = useSelector((s) => s.roles);
 
+  console.log('PersonalAreaUSER', user);
+
   useEffect(() => {
     dispatch(getRolesThunk());
   }, []);
 
   const rolesCheck = roles.filter((el) => el.id === user?.roles_id);
-  console.log(rolesCheck);
+  // console.log(rolesCheck);
 
   return (
 
