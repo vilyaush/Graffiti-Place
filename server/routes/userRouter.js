@@ -101,17 +101,10 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
-<<<<<<< HEAD
-      console.log('AUTH------------------------------------------------------------------------------');
-      console.log(req.session);
-      const result = await Users.findByPk(req.session.userId);
-      console.log({ result });
-=======
       // console.log('AUTH------------------------------------------------------------------------------');
       // console.log(req.session);
       const result = await Users.findByPk(req.session.user.userId);
       // console.log(result, 'RESPONSE AUTH');
->>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -120,23 +113,6 @@ router.route('/auth')
   });
 
 router.route('/:id')
-<<<<<<< HEAD
-  .get(async (req, res) => {
-    const { id } = req.params;
-    // console.log(id,'req yf gjkextybz gthcjys')
-    try {
-      const result = await Users.findOne({
-        where: { id },
-        // include: CardsPaintes,
-        include: Orders,
-      });
-      console.log(JSON.parse(JSON.stringify(result)));
-      res.json(result);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-=======
 .get(async(req, res) => {
   const id = req.params.id
   try{
@@ -157,6 +133,5 @@ router.route('/:id')
     console.log(e)}
 
 })
->>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 
 module.exports = router;

@@ -29,17 +29,11 @@ function OrderCardList() {
     <div>
       {user?.roles_id === 2 && <CreateOrderCardForm /> }
 
-<<<<<<< HEAD
-      {orderCards.map((el) => (
-        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
-          <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
-=======
 
       {orderCards.map((el) => (
         <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
           <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
->>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>
             <Card.Text>
