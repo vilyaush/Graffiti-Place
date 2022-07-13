@@ -10,10 +10,9 @@ function AuthForm() {
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
-
-  const dispatch = useDispatch();
 
   const handleForm = () => {
     setLoginToggle(!loginToggle);
@@ -29,7 +28,9 @@ function AuthForm() {
       event.target.reset();
       if (painterToggle) {
         navigate('/ihavewall');
-      } else { navigate('/ihavepaint'); }
+      } else {
+        navigate('/ihavepaint');
+      }
     } else if (form.name && form.email && form.password) {
       const formData = new FormData();
       formData.append('title', form.title);
@@ -47,7 +48,9 @@ function AuthForm() {
       event.target.reset();
       if (painterToggle) {
         navigate('/ihavewall');
-      } else { navigate('/ihavepaint'); }
+      } else {
+        navigate('/ihavepaint');
+      }
     }
   };
 
@@ -134,15 +137,14 @@ function AuthForm() {
             placeholder="Описание"
           />
 
-          <label className="container">
-            Уже зарегестрированы?
+          <span className="container">
+            Уже зарегистрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
-          </label>
-
-          <label className="container">
+          </span>
+          <span className="container">
             Зарегистрироваться как художник
             <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />
-          </label>
+          </span>
 
           <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
           <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>
