@@ -19,9 +19,8 @@ export default function MyNavbar() {
   const renderLoginIn = () => <Link to="/auth">Войти</Link>;
   return (
     <div className="navBar">
-      <div className="mainLabel">
-        <Link to="/" />
-      </div>
+      <a href="/" />
+
       <div className="headNav">
         <li>
           <Link to="/">Главная</Link>
