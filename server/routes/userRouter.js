@@ -86,12 +86,11 @@ router.route('/signin')
       const result = await Bcrypt.compare(password, user.password);
 
       if (result) {
-        req.session = {
-          userId: user.id,
-          userName: user.name,
-          roles_id: user.roles_id,
-          email: user.email
-        };
+        req.session.userId = user.id;
+        req.session.userName = user.name;
+        req.session.roles_id = user.roles_id;
+        req.session.email = user.email;
+        
         return res.json(user);
       }
       return res.json({ text: 'PasswordsDoNotMatch' });
@@ -103,7 +102,7 @@ router.route('/auth')
   .get(async (req, res) => {
     try {
       console.log('REQEST AUTH-----------------------------------------------------------',req.session);
-      const result = await Users.findByPk(req.session.user.userId);
+      const result = await Users.findByPk(req.session.userId);
       console.log(result, 'RESPONSE AUTH');
       res.json(result);
     } catch (error) {
