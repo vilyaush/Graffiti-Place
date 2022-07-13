@@ -52,7 +52,7 @@ app.use('/user', userRouter);
 
 app.use('/paintercard', painterCardRouter);
 app.use('/ordercard', orderCardRouter);
-app.use('/roles', personalareaRouter )
+app.use('/roles', personalareaRouter);
 
 app.use((req, res) => {
   res.status(404).send('ooops');

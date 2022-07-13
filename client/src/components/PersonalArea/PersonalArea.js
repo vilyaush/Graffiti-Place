@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
+<<<<<<< HEAD
 import { authUserThunk } from '../../redux/action/user';
 
 const PersonalArea = () => {
@@ -10,10 +11,19 @@ const PersonalArea = () => {
   const roles = useSelector((s) => s.roles);
 
   const dispatch = useDispatch();
+=======
+// import { authUserThunk } from '../../redux/action/user';
+import Message from '../Message/Message';
+>>>>>>> a3383167f18cedb64331ae651a5c5771909648ce
 
+function PersonalArea() {
   // useEffect(() => {
   //   dispatch(authUserThunk())
   // }, [])
+
+  const dispatch = useDispatch();
+  const user = useSelector((s) => s.user);
+  const roles = useSelector((s) => s.roles);
 
   useEffect(() => {
     dispatch(getRolesThunk());
@@ -57,12 +67,17 @@ const PersonalArea = () => {
               <h3>Мои заказы</h3>
               <li>типа заказы</li>
             </ul>
+            <Message />
           </div>
         </div>
       </div>
 
     </div>
   );
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> a3383167f18cedb64331ae651a5c5771909648ce
 
 export default PersonalArea;

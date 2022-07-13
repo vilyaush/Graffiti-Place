@@ -19,7 +19,7 @@ module.exports = {
       city: {
         type: Sequelize.TEXT,
       },
-      discription: {
+      description: {
         type: Sequelize.TEXT,
       },
       img: {

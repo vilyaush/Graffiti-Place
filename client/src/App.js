@@ -17,7 +17,7 @@ function App() {
     dispatch(authUserThunk());
   }, []);
   const location = useLocation();
-  console.log('44444444444444444444444444444', location);
+  // console.log('44444444444444444444444444444', location);
 
   const color = location.pathname === '/' ? '#7F00FF' : '#222222';
 
