@@ -13,7 +13,7 @@ export default function ChatContextProvider({ children }) {
   socket.onmessage = (event) => {
     console.log(event.data, '====');
     const comment = JSON.parse(event.data);
-    console.log(comment);
+    // console.log(comment);
     setMess((prev) => [...prev, [comment]]);
   };
 
@@ -22,10 +22,10 @@ export default function ChatContextProvider({ children }) {
   };
   return (
 
-    <ChatContext.Provider value={{socket}}>
+    <ChatContext.Provider value={ socket }>
       {children}
     </ChatContext.Provider>
   );
 }
 
-export const usechatContext = () => useContext(ChatContext);
+export const useChatContext = () => useContext(ChatContext);

@@ -1,32 +1,30 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
-import { usechatContext } from '../Context/Context';
+import { useChatContext } from '../Context/Context';
 
 // import { useCallback } from 'react'
-
-
 
 function Message() {
   const [val, setVal] = useState('');
   const [mess, setMess] = useState([]);
   const { user } = useSelector((state) => state);
 
-  const {socket} = useContext(usechatContext)
-//   useEffect(() => {
- 
-//   // return () => {} close connection
-//   }, []);
+  const socket = useContext(useChatContext);
+  //   useEffect(() => {
+
+  //   // return () => {} close connection
+  //   }, []);
 
   console.log(socket);
 
-  console.log(mess);
+//   console.log(mess);
 
   return (
     <div className="chat">
       <form onSubmit={(e) => {
         e.preventDefault();
         socket.send(JSON.stringify({ type: 'formData', payload: [val, user.name] }));
-        console.log(socket.send);
+        // console.log(socket.send);
         setVal('');
       }}
       >
