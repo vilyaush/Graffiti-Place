@@ -38,10 +38,10 @@ router.route('/register')
       console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
       if (result.id) {
-        req.session.user.userName = result.name;
-        req.session.user.userId = result.id;
-        req.session.user.roles_id = result.roles_id;
-        req.session.user.email = result.email;
+        req.session.userId = result.id;
+        req.session.userName = result.name;
+        req.session.roles_id = result.roles_id;
+        req.session.email = result.email;
         mailer(message);
         // res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
         return res.json(result);
@@ -86,11 +86,11 @@ router.route('/signin')
       const result = await Bcrypt.compare(password, user.password);
 
       if (result) {
-        req.session.user = {
+        req.session = {
           userId: user.id,
           userName: user.name,
-          email: user.email,
-          roles_id: user.roles_id
+          roles_id: user.roles_id,
+          email: user.email
         };
         return res.json(user);
       }
