@@ -15,7 +15,6 @@ function PainterCardList() {
 
   // console.log(user, '000000000');
 
-
   useEffect(() => {
     dispatch(getPainterCardThunk());
   }, []);

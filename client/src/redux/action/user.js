@@ -44,14 +44,18 @@ export const logInUserThunk = (body) => async (dispatch) => {
 };
 
 export const authUserThunk = (body) => async (dispatch) => {
-  // console.log('THUNK__________________________________________________________');
-  const response = await fetch(
-    `${process.env.REACT_APP_serverApi}/user/auth`,
-    {
-      credentials: 'include',
-    },
-  );
-  const result = await response.json();
-  console.log('999999999999999999999999999999999', result);
-  dispatch(authUser(result));
+  try {
+    console.log('THUNK_AUTH_________________________________________________________');
+    const response = await fetch(
+      `${process.env.REACT_APP_serverApi}/user/auth`,
+      {
+        credentials: 'include',
+      },
+    );
+    const result = await response.json();
+    console.log('RESPONSE FROM AUTH', result);
+    dispatch(authUser(result));
+  } catch (error) {
+    console.log(error);
+  }
 };

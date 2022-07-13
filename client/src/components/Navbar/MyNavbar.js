@@ -7,16 +7,12 @@ import { Link } from 'react-router-dom';
 import { logOutUserThunk } from '../../redux/action/user';
 
 export default function MyNavbar() {
-  const [loginToggle, setLoginToggle] = useState(false);
   const user = useSelector((state) => state.user);
-  // console.log(user);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logOutUserThunk());
   };
-
-  const renderLogout = () => <Link to="/" onClick={handleLogout}>Выйти</Link>;
-  const renderLoginIn = () => <Link to="/auth">Войти</Link>;
+  console.log(user, 'NAVBAR_USER');
   return (
     <div className="navBar">
       <div className="mainLabel">
@@ -26,9 +22,9 @@ export default function MyNavbar() {
         <li>
           <Link to="/">Главная</Link>
         </li>
-        <li>{loginToggle ? renderLogout() : renderLoginIn()}</li>
+        <li>{user && user.id ? <Link to="/" onClick={handleLogout}>Выйти</Link> : <Link to="/auth">Войти</Link>}</li>
         <li>
-          <Link to="/personalarea"> Личный кабинет</Link>
+          {user && user.id ? <Link to="/personalarea"> Личный кабинет</Link> : null}
         </li>
       </div>
       {/* <div className="signIn">jhxsdfgwsderftgyhhjkjhg</div> */}
