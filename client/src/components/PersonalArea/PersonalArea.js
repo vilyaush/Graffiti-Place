@@ -2,19 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
-<<<<<<< HEAD
-import { authUserThunk } from '../../redux/action/user';
-
-const PersonalArea = () => {
-  const user = useSelector((s) => s.user); // при повторном обновлении страницы личного кабинета
-  // console.log(user, 'PERSONAL_AREA')
-  const roles = useSelector((s) => s.roles);
-
-  const dispatch = useDispatch();
-=======
 // import { authUserThunk } from '../../redux/action/user';
 import Message from '../Message/Message';
->>>>>>> a3383167f18cedb64331ae651a5c5771909648ce
 
 function PersonalArea() {
   // useEffect(() => {
@@ -74,10 +63,6 @@ function PersonalArea() {
 
     </div>
   );
-<<<<<<< HEAD
-};
-=======
 }
->>>>>>> a3383167f18cedb64331ae651a5c5771909648ce
 
 export default PersonalArea;

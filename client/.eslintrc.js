@@ -28,10 +28,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/no-named-as-default': 'off',
     'import/order': 'off',
-<<<<<<< HEAD
-    'react/function-component-definition': 'off',
-=======
-    'import/prefer-default-export': 0,
->>>>>>> a3383167f18cedb64331ae651a5c5771909648ce
+    'import/prefer-default-export': 'off',
   },
 };
