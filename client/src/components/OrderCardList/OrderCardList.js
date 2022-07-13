@@ -19,8 +19,17 @@ function OrderCardList() {
   }, []);
 
   const handleDelete = useCallback((id) => {
-    dispatch(deleteOrderCardThunk(id))
-      .catch(console.log);
+    dispatch(deleteOrderCardThunk(id));
+  }, []);
+
+  const handleResponse = useCallback((orderId, userId) => {
+    console.log(orderId, userId);
+    fetch(`${process.env.REACT_APP_serverApi}/response`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ orderId, userId }),
+    });
   }, []);
 
   return (
@@ -38,8 +47,11 @@ function OrderCardList() {
             </div>
             <Link to={`/user/${el.customer_id}`}>Подробнее о заказчике</Link>
             <button type="button" onClick={() => handleDelete(el.id)}>DEL</button>
+            <button type="button" onClick={() => handleResponse(el.id, user.id)}>response</button>
+
           </div>
         </div>
+
       ))}
     </div>
   );
