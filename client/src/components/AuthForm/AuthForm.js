@@ -10,10 +10,9 @@ function AuthForm() {
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
-
-  const dispatch = useDispatch();
 
   const handleForm = () => {
     setLoginToggle(!loginToggle);

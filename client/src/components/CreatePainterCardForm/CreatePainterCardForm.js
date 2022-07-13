@@ -19,7 +19,7 @@ function CreatePainterCardForm() {
     formData.append('user_id', userId);
     formData.append('file', form.file);
 
-    console.log(Object.fromEntries(formData));
+    //  console.log(Object.fromEntries(formData))
     dispatch(createPainterCardThunk(formData));
     setForm({});
     e.target.reset();

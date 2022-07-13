@@ -1,28 +1,25 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import './PersonalArea.css'
-import { getRolesThunk } from '../../redux/action/roles'
-import { authUserThunk } from '../../redux/action/user'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './PersonalArea.css';
+import { getRolesThunk } from '../../redux/action/roles';
+// import { authUserThunk } from '../../redux/action/user';
+import Message from '../Message/Message';
 
-const PersonalArea = () => {
-  const user = useSelector((s) => s.user); // при повторном обновлении страницы личного кабинета, получаем null и страница крашится, надо пофиксить
-  // console.log(user, 'PERSONAL_AREA')
-  const roles = useSelector((s) => s.roles);
-
-  const dispatch = useDispatch()
-
+function PersonalArea() {
   // useEffect(() => {
   //   dispatch(authUserThunk())
   // }, [])
 
+  const dispatch = useDispatch();
+  const user = useSelector((s) => s.user);
+  const roles = useSelector((s) => s.roles);
+
   useEffect(() => {
-    dispatch(getRolesThunk())
-  }, [])
+    dispatch(getRolesThunk());
+  }, []);
 
-  const rolesCheck = roles.filter((el) => el.id === user?.roles_id)
+  const rolesCheck = roles.filter((el) => el.id === user?.roles_id);
   console.log(rolesCheck);
-
-
 
   return (
 
@@ -60,12 +57,13 @@ const PersonalArea = () => {
               <h3>Мои заказы</h3>
               <li>типа заказы</li>
             </ul>
+            <Message />
           </div>
         </div>
       </div>
 
     </div>
-  )
+  );
 }
 
-export default PersonalArea
+export default PersonalArea;

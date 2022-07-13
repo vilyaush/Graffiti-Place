@@ -31,7 +31,7 @@ export default function MyNavbar() {
           <Link to="/personalarea"> Личный кабинет</Link>
         </li>
       </div>
-      <div className="signIn">jhxsdfgwsderftgyhhjkjhg</div>
+      {/* <div className="signIn">jhxsdfgwsderftgyhhjkjhg</div> */}
     </div>
   );
 }

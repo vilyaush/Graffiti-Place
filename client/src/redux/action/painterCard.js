@@ -18,7 +18,10 @@ export const createPainterCardThunk = (body) => async (dispatch) => {
     },
   );
   const result = await response.json();
+<<<<<<< HEAD
+=======
   // console.log(result, 'RESULT_CREATE_PAINTES_CARD');
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
   dispatch(createPainterCard(result));
 };
 
@@ -30,9 +33,15 @@ export const deletePainterCardThunk = (id) => async (dispatch) => {
       credentials: 'include',
     },
   );
+<<<<<<< HEAD
+  console.log(response);
+  if (response.status === 200) {
+    console.log('response111', id);
+=======
   // console.log(response);
   if (response.status === 200) {
     // console.log('response111', id);
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
     dispatch(deletePainterCard(id));
   }
 };
