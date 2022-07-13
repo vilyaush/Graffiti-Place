@@ -4,6 +4,12 @@ import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
 // import { authUserThunk } from '../../redux/action/user';
 import Message from '../Message/Message';
+import getPainterResponseThunk from '../../redux/action/painterResponse';
+import getUserCardsThunk from '../../redux/action/userCards';
+import { Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
+import { nanoid } from 'nanoid';
+import { deletePainterCardThunk } from '../../redux/action/painterCard';
 
 function PersonalArea() {
   // useEffect(() => {
@@ -13,15 +19,58 @@ function PersonalArea() {
   const dispatch = useDispatch();
   const user = useSelector((s) => s.user);
   const roles = useSelector((s) => s.roles);
+  const userResponse = useSelector((state) => state.painterResponse);
+  const userCard = useSelector((state) => state.userCards);
 
-  console.log('PersonalAreaUSER', user);
+  console.log(userCard, '===========================================');
+  // console.log('PersonalAreaRESPONSES', userResponse);
 
   useEffect(() => {
     dispatch(getRolesThunk());
+    dispatch(getPainterResponseThunk(user.id));
+    dispatch(getUserCardsThunk(user.id));
   }, []);
+  const handleDelete = (id) => {
+    dispatch(deletePainterCardThunk(id));
+  };
 
   const rolesCheck = roles.filter((el) => el.id === user?.roles_id);
-  // console.log(rolesCheck);
+  // console.log(userResponse, 'PERSONAL_AREA_USERRESPONSE');
+
+  const renderPainterUser = (response, uCard) => (
+    <>
+      <h2>Заказы на которые я откликнулся</h2>
+      {response.map((el) => (
+        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
+          <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.Order.img}`} />
+          <Card.Body>
+            <Card.Title>{el.Order.title}</Card.Title>
+            <Card.Text>
+              {el.Order.description}
+            </Card.Text>
+            <Link to={`/user/${el.Order.customer_id}`}>Подробнее о заказчике</Link>
+
+          </Card.Body>
+        </Card>
+      ))}
+      <h2>Мои работы</h2>
+      {uCard.map((el) => (
+        <Card key={nanoid()} style={{ width: '18rem' }}>
+
+          <img alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+
+          <Card.Body>
+            <Card.Title>{el.city}</Card.Title>
+            <Card.Text>
+              {el.description}
+            </Card.Text>
+            <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
+          </Card.Body>
+        </Card>
+      ))}
+
+    </>
+  );
 
   return (
 
@@ -31,7 +80,6 @@ function PersonalArea() {
         <div className="obj">
           <div className="areaPhoto">
             <img className="card-img" style={{ width: '200px', height: '300px' }} src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`} alt="avatar" />
-
           </div>
           <div className="areaDiv">
             <ul>
@@ -62,6 +110,9 @@ function PersonalArea() {
             <Message />
           </div>
         </div>
+
+        {renderPainterUser(userResponse, userCard)}
+
       </div>
 
     </div>
