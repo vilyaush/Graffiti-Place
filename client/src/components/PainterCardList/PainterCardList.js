@@ -1,4 +1,6 @@
-import React, { useEffect, useCallback, memo, useState } from 'react';
+import React, {
+  useEffect, useCallback, memo, useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
 import { Card, Button } from 'react-bootstrap';
