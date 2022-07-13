@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
-import { authUserThunk } from '../../redux/action/user';
+// import { authUserThunk } from '../../redux/action/user';
+import Message from '../Message/Message';
 
 function PersonalArea() {
   // useEffect(() => {
@@ -49,6 +50,8 @@ function PersonalArea() {
         <li>типа заказы</li>
 
       </ul>
+
+      <Message/>
     </div>
   );
 }
