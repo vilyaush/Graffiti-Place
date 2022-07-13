@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: row;
 
+  align-items: center;
   justify-content: space-between;
   background: linear-gradient(to right, rgba(255, 184, 0, 1), rgba(208, 116, 94, 1), rgba(191, 92, 128, 1), rgba(127, 0, 255, 1));
   border-radius: 0px 0px 20px 20px;
@@ -33,8 +34,19 @@ body {
   margin-top: 2px;
   margin-right: 50px;
   z-index: 100;
-  background: url('../../../public/Union.png');
+
   background-size: 217px 40px
+}
+
+.navBar>a {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-top: 2px;
+  margin-right: 50px;
+  height: 40px;
+  width: 217px;
+  background: url('../../../public/Union.png');
 }
 
 .headNav {
@@ -76,12 +88,11 @@ body {
 .yellowBall {
   font-family: 'Montserrat', sans-serif;
   position: absolute;
-  width: 1732.65px;
+  width: 100%;
   height: 1025px;
   justify-content: center;
   display: flex;
   flex-direction: row;
-  /* left: -421.74px; */
   background: no-repeat url('../../../public/PIC\ yellow.png');
 }
 
@@ -234,16 +245,17 @@ body {
   flex-direction: row;
 }
 
-.areaDiv1{
+.areaDiv1 {
   width: 100%;
   height: 1024px;
   display: flex;
   flex-direction: column;
 }
+
 .areaDiv1>h1 {
-  width: 1267px;
+  width: 100%;
   height: 60px;
-  
+
   display: flex;
   justify-content: center;
   text-align: start;
@@ -251,22 +263,64 @@ body {
   color: rgba(179, 179, 179, 1);
 }
 
-.obj{
+.obj {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .areaDiv {
   height: 300px;
-  width: 300px;;
+  width: 300px;
+  align-content: stretch;
   font-family: 'Montserrat';
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-left: -600px;
 }
 
-.areaPhoto{
+.areaDiv >h2{
+  margin: 0px;
+  width: 100%;
+  height: 30px;
+  font-family: 'Montserrat';
+  font-size: 30px;
+  color: rgba(179, 179, 179, 1);
+}
+
+.areaDiv >ul{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  list-style-type: none;
+  color: rgba(179, 179, 179, 1);
+
+}
+
+.areaDiv>ul>li{
+  padding: 10px;
+  font-size: 25px;
+}
+
+.areaPhoto {
   height: 300px;
-  width: 300px;;
+  width: 300px;
+  ;
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.card-img::after {
+  width: 100%;
+  height: 300px;
+  
+
 }
 

@@ -28,6 +28,10 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/no-named-as-default': 'off',
     'import/order': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
     'import/prefer-default-export': 'off',
+
   },
 };

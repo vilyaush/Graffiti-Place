@@ -15,9 +15,8 @@ export default function MyNavbar() {
   console.log(user, 'NAVBAR_USER');
   return (
     <div className="navBar">
-      <div className="mainLabel">
-        <Link to="/" />
-      </div>
+      <a href="/" />
+
       <div className="headNav">
         <li>
           <Link to="/">Главная</Link>
