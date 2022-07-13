@@ -1,17 +1,18 @@
-import React, { useEffect, useCallback, memo } from 'react';
+import React, { useEffect, useCallback, memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
 import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import CreatePainterCardForm from '../CreatePainterCardForm/CreatePainterCardForm';
 import { Link } from 'react-router-dom';
+// import '../../../public/star.png'
 
 function PainterCardList() {
   const dispatch = useDispatch();
   const painterCards = useSelector((state) => state.painterCard);
 
   const user = useSelector((state) => state.user);
-
+  const [count, setCount] = useState(0);
   // console.log(user, '000000000');
 
   useEffect(() => {

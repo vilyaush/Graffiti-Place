@@ -36,7 +36,6 @@ function OneUser() {
 
   const renderPainterCard = (painters) => (
     <>
-
       {painters.map((el) => (
         <div className="card" key={nanoid()} style={{ width: '18rem' }}>
           <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
@@ -49,7 +48,6 @@ function OneUser() {
         </div>
       ))}
       <Link to="/ihavepaint">Назад</Link>
-
     </>
   );
 
@@ -69,7 +67,6 @@ function OneUser() {
       {person.CardsPaintes && renderPainterCard(person.CardsPaintes)}
 
     </div>
-
   );
 }
 
