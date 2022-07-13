@@ -24,7 +24,6 @@ function PersonalArea() {
   // console.log(rolesCheck);
 
   return (
-
     <div className="area">
       <div className="areaDiv1">
         <h1>Личный кабинет</h1>

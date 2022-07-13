@@ -28,6 +28,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/no-named-as-default': 'off',
     'import/order': 'off',
-    'import/prefer-default-export': 0,
+    'import/prefer-default-export': 'off',
   },
 };

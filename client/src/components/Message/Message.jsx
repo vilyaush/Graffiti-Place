@@ -6,24 +6,23 @@ import { useChatContext } from '../Context/Context';
 
 function Message() {
   const [val, setVal] = useState('');
-  const [mess, setMess] = useState([]);
   const { user } = useSelector((state) => state);
 
-  const socket = useContext(useChatContext);
-  //   useEffect(() => {
+  const { socket, mess } = useChatContext();
+    useEffect(() => {
 
-  //   // return () => {} close connection
-  //   }, []);
+    // return () => {} close connection
+    }, [mess]);
 
-  console.log(socket);
+  console.log(mess);
 
-//   console.log(mess);
+  //   console.log(mess);
 
   return (
     <div className="chat">
       <form onSubmit={(e) => {
         e.preventDefault();
-        socket.send(JSON.stringify({ type: 'formData', payload: [val, user.name] }));
+        socket.send(JSON.stringify({ type: 'getOne', payload: { text: val, user: user.name } }));
         // console.log(socket.send);
         setVal('');
       }}
@@ -31,7 +30,14 @@ function Message() {
         <input type="text" value={val} onChange={((e) => setVal(e.target.value))} />
         <button type="submit">send</button>
       </form>
-      <div>{mess.map((el) => <p>{el}</p>)}</div>
+      <div style={{ background: 'white' }}>
+        {mess && mess.map((el) => (
+          <p key={el.id}>
+            {el.text}
+          </p>
+        ))}
+      </div>
+
     </div>
   );
 }
