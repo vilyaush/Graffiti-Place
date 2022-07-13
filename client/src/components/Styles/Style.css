@@ -7,7 +7,7 @@ body {
   margin: 0;
 }
 
-.fonNavBar {
+.fonNavBar{
   background-color: #7F00FF;
 }
 
@@ -47,8 +47,6 @@ body {
   font-size: 20px;
   text-decoration: none;
 }
-
-.signIn {}
 
 .headNav>li {
   display: inline-flex;
@@ -209,7 +207,7 @@ body {
   font-weight: bold;
   text-align: center;
   font-family: 'Montserrat';
-
+  
   font-size: 20px;
   color: white;
   font-style: normal;
@@ -217,6 +215,7 @@ body {
 }
 
 .check {
+  display: flex;
   margin-left: 15px;
   justify-content: center;
   width: 40px;
@@ -224,6 +223,7 @@ body {
   background: black;
   background-color: black;
 }
+
 
 .area {
   width: 100%;
@@ -268,3 +268,4 @@ body {
   height: 300px;
   width: 300px;;
 }
+

@@ -1,4 +1,4 @@
-const oneUserReducer = (state = {}, action) => {
+const oneUserReducer = (state = [], action) => {
   const {type, payload} = action;
 
 
