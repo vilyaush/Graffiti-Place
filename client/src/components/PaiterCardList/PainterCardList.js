@@ -1,3 +1,4 @@
+
 import React, { useEffect, useCallback, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
@@ -15,22 +16,25 @@ function PainterCardList() {
 
   // console.log(user, '000000000');
 
+
   useEffect(() => {
-    dispatch(getPainterCardThunk());
-  }, []);
+    dispatch(getPainterCardThunk())
+  }, [])
 
   const handleDelete = (id) => {
-    dispatch(deletePainterCardThunk(id));
-  };
+    dispatch(deletePainterCardThunk(id))
+  }
 
-  console.log('887777', user);
+console.log('887777',user)
   return (
-    <div>
+    <div >
 
-      {user?.roles_id === 1 && <CreatePainterCardForm /> }
-      {painterCards.map((el) => (
+{user?.roles_id === 1 && <CreatePainterCardForm /> }
+      {painterCards.map((el) => 
         <Card key={nanoid()} style={{ width: '18rem' }}>
+
           <img alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+
           <Card.Body>
             <Card.Title>{el.city}</Card.Title>
             <Card.Text>
@@ -38,11 +42,11 @@ function PainterCardList() {
             </Card.Text>
             <Link to={`/user/${el.user_id}`}>Подробнее о художнике</Link>
             <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
-          </Card.Body>
+         </Card.Body>
         </Card>
-      ))}
+      )}
     </div>
-  );
+  )
 }
 
-export default memo(PainterCardList);
+export default memo(PainterCardList)

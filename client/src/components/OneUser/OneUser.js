@@ -1,3 +1,4 @@
+
 import React, { useEffect, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
@@ -24,13 +25,20 @@ function OneUser() {
           <Card.Body>
             <Card.Title>{el.title}</Card.Title>
             <Card.Text>
-              {el.description}
+            {el.description}
             </Card.Text>
+            
+         </Card.Body>
+        </Card>)} 
+ 
+ <Link to='/ihavewall'>Назад</Link>
+
 
           </Card.Body>
         </Card>
       ))}
       <Link to="/ihavewall">Назад</Link>
+
 
     </>
   );
@@ -71,7 +79,9 @@ function OneUser() {
 
     </div>
 
+
   );
+
 }
 
-export default memo(OneUser);
+export default memo(OneUser)
