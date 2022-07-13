@@ -38,10 +38,10 @@ router.route('/register')
       console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
       if (result.id) {
-        req.session.userName = result.name;
-        req.session.userId = result.id;
-        req.session.roles_id = result.roles_id;
-        req.session.email = result.email;
+        req.session.user.userName = result.name;
+        req.session.user.userId = result.id;
+        req.session.user.roles_id = result.roles_id;
+        req.session.user.email = result.email;
         mailer(message);
         // res.send(`<p> Регистрация прошла успешно! Данные учетной записи отправлены на email: <b>${req.body.email}</b></p><button><a href="/">Main page</a></button>`);
         return res.json(result);
@@ -84,6 +84,7 @@ router.route('/signin')
         return res.json({ text: 'UserDoesntExistFailure' });
       }
       const result = await Bcrypt.compare(password, user.password);
+
       if (result) {
         req.session.user = {
           userId: user.id,
@@ -101,17 +102,9 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
-<<<<<<< HEAD
-      console.log('AUTH------------------------------------------------------------------------------');
-      console.log(req.session);
-      const result = await Users.findByPk(req.session.userId);
-      console.log({ result });
-=======
-      // console.log('AUTH------------------------------------------------------------------------------');
-      // console.log(req.session);
+      console.log('REQEST AUTH-----------------------------------------------------------',req.session);
       const result = await Users.findByPk(req.session.user.userId);
-      // console.log(result, 'RESPONSE AUTH');
->>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
+      console.log(result, 'RESPONSE AUTH');
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -120,23 +113,6 @@ router.route('/auth')
   });
 
 router.route('/:id')
-<<<<<<< HEAD
-  .get(async (req, res) => {
-    const { id } = req.params;
-    // console.log(id,'req yf gjkextybz gthcjys')
-    try {
-      const result = await Users.findOne({
-        where: { id },
-        // include: CardsPaintes,
-        include: Orders,
-      });
-      console.log(JSON.parse(JSON.stringify(result)));
-      res.json(result);
-    } catch (e) {
-      console.log(e);
-    }
-  });
-=======
 .get(async(req, res) => {
   const id = req.params.id
   try{
@@ -157,6 +133,5 @@ router.route('/:id')
     console.log(e)}
 
 })
->>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 
 module.exports = router;
