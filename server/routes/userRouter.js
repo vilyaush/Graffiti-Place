@@ -6,7 +6,7 @@ const upload = require('../middleWare/uploadMiddle');
 
 router.route('/register')
   .post(upload.single('file'), async (req, res) => {
-    console.log('registerpen', req.body);
+    // console.log('registerpen', req.body);
     try {
       const {
         email, password, name, discription, title, roles_id,

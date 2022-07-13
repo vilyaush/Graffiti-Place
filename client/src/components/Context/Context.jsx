@@ -22,7 +22,7 @@ export default function ChatContextProvider({ children }) {
   };
   return (
 
-    <ChatContext.Provider value={ socket }>
+    <ChatContext.Provider value={socket}>
       {children}
     </ChatContext.Provider>
   );

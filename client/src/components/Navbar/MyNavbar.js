@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { logOutUserThunk } from '../../redux/action/user';
 
@@ -12,7 +9,7 @@ export default function MyNavbar() {
   const handleLogout = () => {
     dispatch(logOutUserThunk());
   };
-  console.log(user, 'NAVBAR_USER');
+  // console.log(user, 'NAVBAR_USER');
   return (
     <div className="navBar">
       <a href="/" />
@@ -26,7 +23,6 @@ export default function MyNavbar() {
           {user && user.id ? <Link to="/personalarea"> Личный кабинет</Link> : null}
         </li>
       </div>
-      {/* <div className="signIn">jhxsdfgwsderftgyhhjkjhg</div> */}
     </div>
   );
 }

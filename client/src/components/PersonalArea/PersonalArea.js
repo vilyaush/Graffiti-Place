@@ -84,31 +84,31 @@ function PersonalArea() {
 
             <img
               className="card-img"
-              src={`${process.env.REACT_APP_serverApi}/img/${user?.img} || onError="../../../public/icon__user_account.png" `}
+              src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`}
               alt=""
             />
           </div>
           <div className="areaDiv">
-            <h2>Мои данные:</h2>
+            <h2>Мои данные :</h2>
             <ul>
               <li>
-                Моя роль:
+                Моя роль :
                 {rolesCheck[0]?.roles}
               </li>
               <li>
-                Имя:
+                Имя :
                 {user?.name}
               </li>
               <li>
-                Мое айди:
+                Мое ID :
                 {user?.id}
               </li>
               <li>
-                Почта:
+                Почта :
                 {user?.email}
               </li>
               <li>
-                Аккаунт создан:
+                Аккаунт создан :
                 {user?.createdAt.slice(0, 10)}
               </li>
             </ul>
@@ -119,8 +119,10 @@ function PersonalArea() {
         {renderPainterUser(userResponse, userCard)}
 
       </div>
+
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
+
     </div>
   );
 }

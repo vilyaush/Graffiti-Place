@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
-import './PainterCardList.css';
 import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import CreatePainterCardForm from '../CreatePainterCardForm/CreatePainterCardForm';
@@ -26,33 +25,28 @@ function PainterCardList() {
 
   console.log('887777', user);
   return (
-    <div>
+    <div className="card">
+      <div className="trics">
+        {user?.roles_id === 1 && <CreatePainterCardForm /> }
+      </div>
+      <div className="trics2">
+        {painterCards.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
+              <p>{el.city}</p>
+              <p>{el.discription}</p>
 
-      {user?.roles_id === 1 && <CreatePainterCardForm />}
-      {painterCards.map((el) => (
-        <Card key={nanoid()} style={{ width: '18rem' }}>
+              <img className="card-img" alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
-          <img alt="Здесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
-
-          <Card.Body>
-            <Card.Title>{el.city}</Card.Title>
-            <Card.Text>
-              {el.discription}
-            </Card.Text>
-            <Link to={`/user/${el.user_id}`}>Подробнее о художнике</Link>
-            <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
-          </Card.Body>
-          <div>
-            <button className='btn'>1</button>
-            <button className='btn'>2</button>
-            <button className='btn'>3</button>
-            <button className='btn'>4</button>
-            <button className='btn'>5</button>
+              <Link to={`/user/${el.user_id}`}>Подробнее о художнике</Link>
+              <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
+            </div>
           </div>
-        </Card>
-      ))
-      }
-    </div >
+
+        ))}
+      </div>
+    </div>
+
   );
 }
 

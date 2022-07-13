@@ -137,14 +137,14 @@ function AuthForm() {
             placeholder="Описание"
           />
 
-          <span className="container">
-            Уже зарегистрированы?
+          <label className="container">
+            Уже зарегестрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
-          </span>
-          <span className="container">
+          </label>
+          <label className="container">
             Зарегистрироваться как художник
             <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />
-          </span>
+          </label>
 
           <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
           <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>
