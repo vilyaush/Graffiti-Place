@@ -138,10 +138,9 @@ function AuthForm() {
           />
 
           <span className="container">
-            Уже зарегестрированы?
+            Уже зарегистрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
           </span>
-          <div>ewfefewfef</div>
           <span className="container">
             Зарегистрироваться как художник
             <input className="check" type="checkbox" hidden={loginToggle} onChange={handlePainter} />

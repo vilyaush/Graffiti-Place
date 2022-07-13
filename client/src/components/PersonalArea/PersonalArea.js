@@ -11,6 +11,9 @@ import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { deletePainterCardThunk } from '../../redux/action/painterCard';
 
+const avatar = '../../../public//icon__user_account.png';
+console.log('AVATAR', avatar);
+
 function PersonalArea() {
   // useEffect(() => {
   //   dispatch(authUserThunk())
@@ -73,39 +76,41 @@ function PersonalArea() {
   );
 
   return (
-
     <div className="area">
       <div className="areaDiv1">
         <h1>Личный кабинет</h1>
         <div className="obj">
           <div className="areaPhoto">
-            <img className="card-img" style={{ width: '200px', height: '300px' }} src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`} alt="avatar" />
+
+            <img
+              className="card-img"
+              src={`${process.env.REACT_APP_serverApi}/img/${user?.img} || onError="../../../public/icon__user_account.png" `}
+              alt=""
+            />
           </div>
           <div className="areaDiv">
+            <h2>Мои данные:</h2>
             <ul>
-              <h3>Мои данные:</h3>
               <li>
-                Мое айди:
-                {user?.id}
+                Моя роль:
+                {rolesCheck[0]?.roles}
               </li>
               <li>
                 Имя:
                 {user?.name}
               </li>
               <li>
-                Почта:
-                {user?.email}
+                Мое айди:
+                {user?.id}
               </li>
               <li>
-                Моя роль:
-                {rolesCheck[0]?.roles}
+                Почта:
+                {user?.email}
               </li>
               <li>
                 Аккаунт создан:
                 {user?.createdAt.slice(0, 10)}
               </li>
-              <h3>Мои заказы</h3>
-              <li>типа заказы</li>
             </ul>
             <Message />
           </div>
@@ -114,7 +119,8 @@ function PersonalArea() {
         {renderPainterUser(userResponse, userCard)}
 
       </div>
-
+      {/* <h3>Мои заказы</h3>
+      <li>типа заказы</li> */}
     </div>
   );
 }
