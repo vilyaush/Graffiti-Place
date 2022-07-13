@@ -25,21 +25,45 @@ const PersonalArea = () => {
 
 
   return (
-    <div className='area'>
-      <ul>
-        <h2>Личный кабинет</h2>
-        <li><img className='card-img' style={{ width: '200px', height: '300px' }} src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`} alt='avatar' /> </li>
-        <h3>Мои данные:</h3>
-        <li>Мое айди: {user?.id}</li>
-        <li>Имя: {user?.name}</li>
-        <li>Почта: {user?.email}</li>
-        <li>Моя роль: {rolesCheck[0]?.roles}</li>
-        <li>Город: {user?.title}</li>
-        <li>О себе: {user?.discription}</li>
-        <li>Аккаунт создан: {user?.createdAt.slice(0, 10)}</li>
-        <h3>Мои заказы</h3>
-        <li>типа заказы</li>
-      </ul>
+
+    <div className="area">
+      <div className="areaDiv1">
+        <h1>Личный кабинет</h1>
+        <div className="obj">
+          <div className="areaPhoto">
+            <img className="card-img" style={{ width: '200px', height: '300px' }} src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`} alt="avatar" />
+
+          </div>
+          <div className="areaDiv">
+            <ul>
+              <h3>Мои данные:</h3>
+              <li>
+                Мое айди:
+                {user?.id}
+              </li>
+              <li>
+                Имя:
+                {user?.name}
+              </li>
+              <li>
+                Почта:
+                {user?.email}
+              </li>
+              <li>
+                Моя роль:
+                {rolesCheck[0]?.roles}
+              </li>
+              <li>
+                Аккаунт создан:
+                {user?.createdAt.slice(0, 10)}
+              </li>
+              <h3>Мои заказы</h3>
+              <li>типа заказы</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 }

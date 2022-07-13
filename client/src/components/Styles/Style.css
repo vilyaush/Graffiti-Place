@@ -223,3 +223,49 @@ body {
   background: black;
   background-color: black;
 }
+
+
+.area {
+  width: 100%;
+  height: 1024px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.areaDiv1{
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  flex-direction: column;
+}
+.areaDiv1>h1 {
+  width: 1267px;
+  height: 60px;
+  
+  display: flex;
+  justify-content: center;
+  text-align: start;
+  font-size: 40px;
+  color: rgba(179, 179, 179, 1);
+}
+
+.obj{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.areaDiv {
+  height: 300px;
+  width: 300px;;
+  font-family: 'Montserrat';
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.areaPhoto{
+  height: 300px;
+  width: 300px;;
+}
+
