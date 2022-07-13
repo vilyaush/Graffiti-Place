@@ -1,12 +1,9 @@
-import { combineReducers } from 'redux'
-import userReducer from './userReducer'
-import painterCardReduser from './painterCardReduser'
-import orderCardReduser from './orderCardReduser'
-import oneUserReducer from './oneUserReducer'
-import rolesReduser from './rolesReduser'
-
-
-
+import { combineReducers } from 'redux';
+import userReducer from './userReducer';
+import painterCardReduser from './painterCardReduser';
+import orderCardReduser from './orderCardReduser';
+import oneUserReducer from './oneUserReducer';
+import rolesReduser from './rolesReduser';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,6 +12,6 @@ const rootReducer = combineReducers({
   oneUser: oneUserReducer,
   roles: rolesReduser,
 
-})
+});
 
-export default rootReducer
+export default rootReducer;
