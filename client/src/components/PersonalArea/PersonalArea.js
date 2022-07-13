@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
-import { authUserThunk } from '../../redux/action/user';
+// import { authUserThunk } from '../../redux/action/user';
+import Message from '../Message/Message';
 
 const avatar = '../../../public//icon__user_account.png';
 console.log('AVATAR', avatar);
 
 function PersonalArea() {
-  const user = useSelector((s) => s.user);
-  // при повторном обновлении страницы личного кабинета, получаем null и страница крашится,
-  // надо пофиксить
-  // console.log(user, 'PERSONAL_AREA')
-  const roles = useSelector((s) => s.roles);
-
-  const dispatch = useDispatch();
-
   // useEffect(() => {
   //   dispatch(authUserThunk())
   // }, [])
+
+  const dispatch = useDispatch();
+  const user = useSelector((s) => s.user);
+  const roles = useSelector((s) => s.roles);
+
+  console.log('PersonalAreaUSER', user);
 
   useEffect(() => {
     dispatch(getRolesThunk());
@@ -27,6 +27,7 @@ function PersonalArea() {
   // console.log(rolesCheck);
 
   return (
+
     <div className="area">
       <div className="areaDiv1">
         <h1>Личный кабинет</h1>
@@ -34,7 +35,7 @@ function PersonalArea() {
           <div className="areaPhoto">
             <img
               className="card-img"
-              src={`${process.env.REACT_APP_serverApi}/img/${user?.img} || onError="../../../public/icon__user_account.png" `}
+              src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`}
               alt=""
             />
           </div>
@@ -62,11 +63,14 @@ function PersonalArea() {
                 {user?.createdAt.slice(0, 10)}
               </li>
             </ul>
+            <Message />
           </div>
         </div>
       </div>
+
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
+
     </div>
   );
 }

@@ -1,18 +1,17 @@
 const router = require('express').Router();
 const Bcrypt = require('../utils/bcrypt');
-const { Users, CardsPaintes, Orders} = require('../db/models');
+const { Users, CardsPaintes, Orders } = require('../db/models');
 const mailer = require('../utils/mail');
 const upload = require('../middleWare/uploadMiddle');
 
 router.route('/register')
   .post(upload.single('file'), async (req, res) => {
-    console.log('registerpen',req.body);
+    conso2le.log('registerpen', req.body);
     try {
       const {
         email, password, name, discription, title, roles_id,
       } = req.body;
-      console.log(email, title, name, discription, roles_id)
-
+      console.log(email, title, name, discription, roles_id);
 
       const message = {
         to: req.body.email, // это адрес, который клиент указал в инпуте email
@@ -29,8 +28,7 @@ router.route('/register')
         `,
       };
 
-      //const roles_id = req.body.role;
-
+      // const roles_id = req.body.role;
 
       const pass = await Bcrypt.hash(password);
 
@@ -40,8 +38,8 @@ router.route('/register')
       console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
       if (result.id) {
-        req.session.userName = result.name;
         req.session.userId = result.id;
+        req.session.userName = result.name;
         req.session.roles_id = result.roles_id;
         req.session.email = result.email;
         mailer(message);
@@ -86,12 +84,13 @@ router.route('/signin')
         return res.json({ text: 'UserDoesntExistFailure' });
       }
       const result = await Bcrypt.compare(password, user.password);
+
       if (result) {
-        req.session.user = {
-          userId: user.id,
-          userName: user.name,
-          email: user.email,
-        };
+        req.session.userId = user.id;
+        req.session.userName = user.name;
+        req.session.roles_id = user.roles_id;
+        req.session.email = user.email;
+        
         return res.json(user);
       }
       return res.json({ text: 'PasswordsDoNotMatch' });
@@ -102,9 +101,9 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
-      console.log('AUTH------------------------------------------------------------------------------');
-      console.log(req.session);
+      console.log('REQEST AUTH-----------------------------------------------------------',req.session);
       const result = await Users.findByPk(req.session.userId);
+      console.log(result, 'RESPONSE AUTH');
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -115,13 +114,20 @@ router.route('/auth')
 router.route('/:id')
 .get(async(req, res) => {
   const id = req.params.id
-  // console.log(id,'req yf gjkextybz gthcjys')
   try{
+  const user = await Users.findOne({where:{id}})
+  // console.log(user.dataValues.roles_id,'Ручка /user/id-----------------------------------')
+  if(user.dataValues.roles_id === 2){
     const result = await Users.findOne({ where: {id}, 
-      // include: CardsPaintes,
       include: Orders})
-       console.log(JSON.parse(JSON.stringify(result)))
        res.json(result)
+  } else {
+    const result = await Users.findOne({ where: {id}, 
+    include: CardsPaintes})
+    res.json(result)
+  
+    console.log(JSON.parse(JSON.stringify(result)))
+  }
   }catch(e){
     console.log(e)}
 

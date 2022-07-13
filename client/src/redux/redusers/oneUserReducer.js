@@ -1,13 +1,13 @@
-const oneUserReducer = (state = [], action) => {
-  const {type, payload} = action;
+// eslint-disable-next-line default-param-last
+const oneUserReducer = (state = {}, action) => {
+  const { type, payload } = action;
 
-
-  switch(type){
+  switch (type) {
     case 'GET_ONE_USER':
       return payload;
     default:
-      return state  
+      return state;
   }
-}
+};
 
 export default oneUserReducer;

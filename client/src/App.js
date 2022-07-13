@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import MyNavbar from './components/Navbar/MyNavbar';
 import MainPage from './components/MainPage/MainPage';
 import AuthForm from './components/AuthForm/AuthForm';
-import PainterCardList from './components/PaiterCardList/PainterCardList';
+import PainterCardList from './components/PainterCardList/PainterCardList';
 import OrderCardList from './components/OrderCardList/OrderCardList';
 import { authUserThunk } from './redux/action/user';
 import PersonalArea from './components/PersonalArea/PersonalArea';
@@ -17,8 +17,7 @@ function App() {
     dispatch(authUserThunk());
   }, []);
   const location = useLocation();
-  console.log('44444444444444444444444444444', location);
-
+  // console.log('44444444444444444444444444444', location);
   const color = location.pathname === '/' ? '#7F00FF' : '#222222';
 
   return (

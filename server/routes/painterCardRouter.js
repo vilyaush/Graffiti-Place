@@ -3,8 +3,6 @@ const upload = require('../middleWare/uploadMiddle');
 const { CardsPaintes } = require('../db/models');
 const { checkUser } = require('../middleWare/userMiddle');
 
-
-
 router.route('/')
 
   .get(async (req, res) => {
@@ -14,19 +12,22 @@ router.route('/')
   })
 
   .post(upload.single('file'), async (req, res) => {
+
+    console.log(req.body, 'CREATE_PAINTES_CARD')
+
     const newCard = await CardsPaintes.create(
       {
         city: req.body.city,
         img: req.file?.filename,
-        discription: req.body.description,
+        description: req.body.description,
         user_id: req.body.user_id,
       },
     );
     res.json({ newCard });
   });
 
-  router.route('/:id')
-  .delete( checkUser, async (req, res) => {
+router.route('/:id')
+  .delete(checkUser, async (req, res) => {
     await CardsPaintes.destroy({ where: { id: req.params.id } });
     res.sendStatus(200);
   });
