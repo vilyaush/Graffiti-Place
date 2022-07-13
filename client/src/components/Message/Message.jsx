@@ -9,8 +9,7 @@ function Message() {
   const [val, setVal] = useState('');
   const [mess, setMess] = useState([]);
   const { user } = useSelector((state) => state);
-  
-
+   
   useEffect(() => {
     socket.onopen = (e) => {
       console.log('connection');
