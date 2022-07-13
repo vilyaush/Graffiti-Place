@@ -12,11 +12,14 @@ router.route('/')
   })
 
   .post(upload.single('file'), async (req, res) => {
+
+    console.log(req.body, 'CREATE_PAINTES_CARD')
+
     const newCard = await CardsPaintes.create(
       {
         city: req.body.city,
         img: req.file?.filename,
-        discription: req.body.description,
+        description: req.body.description,
         user_id: req.body.user_id,
       },
     );

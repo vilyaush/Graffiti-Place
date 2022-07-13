@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 import React, { useEffect, useCallback, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
@@ -5,6 +9,10 @@ import './PainterCardList.css';
 import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import CreatePainterCardForm from '../CreatePainterCardForm/CreatePainterCardForm';
+<<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 
 function PainterCardList() {
   const dispatch = useDispatch();
@@ -12,7 +20,12 @@ function PainterCardList() {
 
   const user = useSelector((state) => state.user);
 
+<<<<<<< HEAD
   console.log(user, '000000000000000000000000000000000000000000000000');
+=======
+  // console.log(user, '000000000');
+
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 
   useEffect(() => {
     dispatch(getPainterCardThunk());
@@ -29,13 +42,19 @@ function PainterCardList() {
       {user?.roles_id === 1 && <CreatePainterCardForm /> }
       {painterCards.map((el) => (
         <Card key={nanoid()} style={{ width: '18rem' }}>
+<<<<<<< HEAD
           <Card.Img variant="top" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+=======
+
+          <img alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
           <Card.Body>
             <Card.Title>{el.city}</Card.Title>
             <Card.Text>
               {el.discription}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Link to={`/user/${el.user_id}`}>Подробнее о художнике</Link>
             <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
           </Card.Body>
         </Card>

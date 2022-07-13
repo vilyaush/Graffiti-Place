@@ -89,6 +89,7 @@ router.route('/signin')
           userId: user.id,
           userName: user.name,
           email: user.email,
+          roles_id: user.roles_id
         };
         return res.json(user);
       }
@@ -100,10 +101,17 @@ router.route('/signin')
 router.route('/auth')
   .get(async (req, res) => {
     try {
+<<<<<<< HEAD
       console.log('AUTH------------------------------------------------------------------------------');
       console.log(req.session);
       const result = await Users.findByPk(req.session.userId);
       console.log({ result });
+=======
+      // console.log('AUTH------------------------------------------------------------------------------');
+      // console.log(req.session);
+      const result = await Users.findByPk(req.session.user.userId);
+      // console.log(result, 'RESPONSE AUTH');
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
       res.json(result);
     } catch (error) {
       console.log(error);
@@ -112,6 +120,7 @@ router.route('/auth')
   });
 
 router.route('/:id')
+<<<<<<< HEAD
   .get(async (req, res) => {
     const { id } = req.params;
     // console.log(id,'req yf gjkextybz gthcjys')
@@ -127,5 +136,27 @@ router.route('/:id')
       console.log(e);
     }
   });
+=======
+.get(async(req, res) => {
+  const id = req.params.id
+  try{
+  const user = await Users.findOne({where:{id}})
+  // console.log(user.dataValues.roles_id,'Ручка /user/id-----------------------------------')
+  if(user.dataValues.roles_id === 2){
+    const result = await Users.findOne({ where: {id}, 
+      include: Orders})
+       res.json(result)
+  } else {
+    const result = await Users.findOne({ where: {id}, 
+    include: CardsPaintes})
+    res.json(result)
+  
+    console.log(JSON.parse(JSON.stringify(result)))
+  }
+  }catch(e){
+    console.log(e)}
+
+})
+>>>>>>> c7b33585148f08303d6c9b2f3af0dd65cfe8477f
 
 module.exports = router;
