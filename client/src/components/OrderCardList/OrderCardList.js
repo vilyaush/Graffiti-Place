@@ -21,14 +21,22 @@ function OrderCardList() {
   }, []);
 
   const handleDelete = useCallback((id) => {
-    dispatch(deleteOrderCardThunk(id))
-      .catch(console.log);
+    dispatch(deleteOrderCardThunk(id));
+  }, []);
+
+  const handleResponse = useCallback((orderId, userId) => {
+    console.log(orderId, userId);
+    fetch(`${process.env.REACT_APP_serverApi}/response`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ orderId, userId }),
+    });
   }, []);
 
   return (
     <div>
       {user?.roles_id === 2 && <CreateOrderCardForm /> }
-
 
       {orderCards.map((el) => (
         <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
@@ -41,6 +49,7 @@ function OrderCardList() {
             </Card.Text>
             <Link to={`/user/${el.customer_id}`}>Подробнее о заказчике</Link>
             <button type="button" onClick={() => handleDelete(el.id)}>DEL</button>
+            <button type="button" onClick={() => handleResponse(el.id, user.id)}>response</button>
           </Card.Body>
         </Card>
       ))}
