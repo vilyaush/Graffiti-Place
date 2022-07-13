@@ -1,44 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { useChatContext } from '../Context/Context';
 
 // import { useCallback } from 'react'
-
-const socket = new WebSocket('ws://localhost:3003');
 
 function Message() {
   const [val, setVal] = useState('');
   const [mess, setMess] = useState([]);
   const { user } = useSelector((state) => state);
-  
 
-  useEffect(() => {
-    socket.onopen = (e) => {
-      console.log('connection');
-    };
+  const socket = useContext(useChatContext);
+  //   useEffect(() => {
 
-    socket.onmessage = (event) => {
-      console.log(event.data, '====');
-      const comment = JSON.parse(event.data);
-      console.log(comment);
-      setMess((prev) => [...prev, [comment]]);
-    };
-
-    socket.onclose = function (event) {
-      console.log('closed');
-    };
-  // return () => {} close connection
-  }, []);
+  //   // return () => {} close connection
+  //   }, []);
 
   console.log(socket);
 
-  console.log(mess);
+//   console.log(mess);
 
   return (
     <div className="chat">
       <form onSubmit={(e) => {
         e.preventDefault();
         socket.send(JSON.stringify({ type: 'formData', payload: [val, user.name] }));
-        console.log(socket.send);
+        // console.log(socket.send);
         setVal('');
       }}
       >

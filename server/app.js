@@ -13,6 +13,8 @@ const { WebSocketServer } = require('ws');
 
 const map = new Map();
 
+const arr = []
+
 const sessionParser = session({
   name: 'sid',
   store: new FileStore(),
@@ -85,7 +87,27 @@ wss.on('connection', (ws, request) => {
   map.set(userId, ws);
 
   ws.on('message', (message) => {
-    console.log(`Received message ${message} from user ${userId}`);
+    // console.log(`Received message ${message} from user ${userId}`);
+    const wbs = JSON.parse(message);
+    const { type } = wbs;
+
+    switch (type) {
+      case getOne:{
+        async function postMess(){
+          const mess = await arr.create()
+          res.json(mess)
+        }
+      }
+        break;
+      case postAll :{
+        async function postAll(){
+          const messAll = await arr.findAll()
+          res.json(messAll)
+        }
+      }
+        
+        break;
+      }
   });
 
   ws.on('close', () => {
