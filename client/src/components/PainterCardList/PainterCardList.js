@@ -31,7 +31,7 @@ function PainterCardList() {
       {painterCards.map((el) => (
         <Card key={nanoid()} style={{ width: '18rem' }}>
 
-          <img alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+          <img alt="Здесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
           <Card.Body>
             <Card.Title>{el.city}</Card.Title>
