@@ -6,7 +6,6 @@ const userCardsReducer = (state = [], action) => {
   switch (type) {
     case 'GET_USER_CARDS':
       return payload;
-    
 
     default:
       return state;

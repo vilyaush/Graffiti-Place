@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 
 const ChatContext = createContext();
+// eslint-disable-next-line react/prop-types
 export default function ChatContextProvider({ children }) {
   const [socket, setSocket] = useState(new WebSocket('ws://localhost:3003'));
 
@@ -14,6 +15,7 @@ export default function ChatContextProvider({ children }) {
     console.log(event.data, '====');
     const comment = JSON.parse(event.data);
     // console.log(comment);
+    // eslint-disable-next-line no-undef
     setMess((prev) => [...prev, [comment]]);
   };
 
@@ -22,7 +24,7 @@ export default function ChatContextProvider({ children }) {
   };
   return (
 
-    <ChatContext.Provider value={ socket }>
+    <ChatContext.Provider value={socket}>
       {children}
     </ChatContext.Provider>
   );
