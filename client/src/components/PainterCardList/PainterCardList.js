@@ -15,7 +15,7 @@ function PainterCardList() {
 
   const user = useSelector((state) => state.user);
   const [count, setCount] = useState(0);
-  // console.log(user, '000000000');
+  console.log(painterCards, '00000000000000000000000000000');
 
   useEffect(() => {
     dispatch(getPainterCardThunk());
@@ -45,7 +45,7 @@ function PainterCardList() {
                 <Link to={`/user/${el.user_id}`}>О художнике</Link>
                 {' '}
               </button>
-              <button className="cardButton" onClick={() => handleDelete(el.id)} type="submit">Удалить</button>
+              {/* <button className="cardButton" onClick={() => handleDelete(el.id)} type="submit">Удалить</button> */}
               {/* <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button> */}
             </div>
           </div>

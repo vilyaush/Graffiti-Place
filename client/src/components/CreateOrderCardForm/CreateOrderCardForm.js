@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createOrderCardThunk } from '../../redux/action/orderCard';
+import { createOrderCardThunk, getOrderCardThunk } from '../../redux/action/orderCard';
 
 function CreateOrderCardForm() {
   const [form, setForm] = useState({});
@@ -20,7 +20,7 @@ function CreateOrderCardForm() {
     formData.append('file', form.file);
     formData.append('status', false);
 
-    console.log(Object.fromEntries(formData));
+    // console.log(Object.fromEntries(formData));
 
     dispatch(createOrderCardThunk(formData));
     setForm({});

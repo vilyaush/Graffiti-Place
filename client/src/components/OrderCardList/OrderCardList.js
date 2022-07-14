@@ -18,10 +18,6 @@ function OrderCardList() {
     dispatch(getOrderCardThunk());
   }, []);
 
-  const handleDelete = useCallback((id) => {
-    dispatch(deleteOrderCardThunk(id));
-  }, []);
-
   const handleResponse = useCallback((orderId, userId) => {
     console.log(orderId, userId);
     fetch(`${process.env.REACT_APP_serverApi}/response`, {
@@ -31,6 +27,8 @@ function OrderCardList() {
       body: JSON.stringify({ orderId, userId }),
     });
   }, []);
+
+  if (!user) return null;
 
   return (
     <div className="card">
@@ -45,11 +43,11 @@ function OrderCardList() {
               <p>{el.description}</p>
               <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
               <button className="cardButton">
+                {user.roles_id === 1 ? <button type="button" onClick={() => handleResponse(el.id, user.id)}>Откликнуться</button> : null}
                 <Link to={`/user/${el.customer_id}`}> О заказчике</Link>
               </button>
-              <button className="cardButton" type="submit" onClick={() => handleDelete(el.id)}>Удалить</button>
-              <button className="cardButton" type="submit" onClick={() => handleResponse(el.id, user.id)}>Редактировать</button>
-
+              {/* <button className="cardButton" type="submit" onClick={() => handleDelete(el.id)}>Удалить</button> */}
+              {/* <button className="cardButton" type="submit" onClick={() => handleResponse(el.id, user.id)}>Редактировать</button> */}
             </div>
           </div>
         ))}
