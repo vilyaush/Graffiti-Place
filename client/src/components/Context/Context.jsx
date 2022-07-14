@@ -9,7 +9,7 @@ const ChatContext = createContext();
 export default function ChatContextProvider({ children }) {
   const [socket, setSocket] = useState(new WebSocket('ws://localhost:3003'));
   const [mess, setMess] = useState([]);
-  const { id } = useSelector((state) => state.user);
+  // const { id } = useSelector((state) => state.user);
   socket.onopen = (e) => {
     console.log('connection');
     // useEffect(() => {
@@ -38,9 +38,9 @@ export default function ChatContextProvider({ children }) {
     console.log('closed');
   };
 
-  useEffect(() => {
-    setSocket(new WebSocket('ws://localhost:3003'));
-  }, [id]);
+  // useEffect(() => {
+  //   setSocket(new WebSocket('ws://localhost:3003'));
+  // }, [id]);
 
   console.log('context', mess);
   return (
