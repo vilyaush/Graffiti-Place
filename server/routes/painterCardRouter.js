@@ -7,13 +7,13 @@ router.route('/')
 
   .get(async (req, res) => {
     const cards = await CardsPaintes.findAll({ order: [['createdAt', 'DESC']], raw: true });
-    console.log(cards);
+    // console.log(cards);
     res.json(cards);
   })
 
   .post(upload.single('file'), async (req, res) => {
 
-    console.log(req.body, 'CREATE_PAINTES_CARD')
+    // console.log(req.body, 'CREATE_PAINTES_CARD')
 
     const newCard = await CardsPaintes.create(
       {
