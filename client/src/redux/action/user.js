@@ -52,8 +52,8 @@ export const authUserThunk = (body) => async (dispatch) => {
         credentials: 'include',
       },
     );
+    // console.log('RESPONSE FROM AUTH', response);
     const result = await response.json();
-    // console.log('RESPONSE FROM AUTH', result);
     dispatch(authUser(result));
   } catch (error) {
     console.log(error);

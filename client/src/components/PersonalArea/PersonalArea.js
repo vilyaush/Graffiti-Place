@@ -14,7 +14,7 @@ import { deleteOrderCardThunk } from '../../redux/action/orderCard';
 import { render } from 'react-dom';
 
 const avatar = '../../../public//icon__user_account.png';
-console.log('AVATAR', avatar);
+// console.log('AVATAR', avatar);
 
 function PersonalArea() {
   // useEffect(() => {
@@ -27,7 +27,7 @@ function PersonalArea() {
   const userResponse = useSelector((state) => state.painterResponse);
   const userCard = useSelector((state) => state.userCards);
 
-  console.log(userCard, 'USERCARDSPERSONALAREA===========================================');
+  // console.log(userCard, 'USERCARDSPERSONALAREA===========================================');
   // console.log('PersonalAreaRESPONSES', userResponse);
 
   useEffect(() => {
