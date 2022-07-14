@@ -173,7 +173,7 @@ function PersonalArea() {
           {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
         </div>
       </div>
-      {/* <Message /> */}
+      <Message />
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
     </div>
