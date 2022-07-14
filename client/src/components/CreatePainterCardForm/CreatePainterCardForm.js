@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './CreatePainterCardForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPainterCardThunk } from '../../redux/action/painterCard';
 
@@ -38,12 +37,12 @@ function CreatePainterCardForm() {
   };
 
   return (
-    <div>
+    <div className="registerCard">
       <form className="create-form" onSubmit={handleSubmit}>
-        <input type="text" value={form.city || ''} name="city" onChange={handleChange} placeholder="Город в котором был выполнен проект" />
-        <textarea value={form.desc || ''} name="desc" onChange={handleChange} placeholder="Описапие проекта" />
-        <input type="file" value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото проекта" />
-        <button type="submit">Submit</button>
+        <input className="registration-card-input" type="text" value={form.city || ''} name="city" onChange={handleChange} placeholder="Город в котором был выполнен проект" />
+        <textarea className="registration-card-input" value={form.desc || ''} name="desc" onChange={handleChange} placeholder="Описапие проекта" />
+        <input className="registration-card-input" type="file" value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото проекта" />
+        <button className="regButton" type="submit">Submit</button>
       </form>
 
     </div>

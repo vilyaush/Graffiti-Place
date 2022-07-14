@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable max-len */
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
@@ -10,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { deletePainterCardThunk } from '../../redux/action/painterCard';
+import { render } from 'react-dom';
 
 const avatar = '../../../public//icon__user_account.png';
 console.log('AVATAR', avatar);
@@ -25,7 +27,7 @@ function PersonalArea() {
   const userResponse = useSelector((state) => state.painterResponse);
   const userCard = useSelector((state) => state.userCards);
 
-  console.log(userCard, '===========================================');
+  console.log(userCard, 'USERCARDSPERSONALAREA===========================================');
   // console.log('PersonalAreaRESPONSES', userResponse);
 
   useEffect(() => {
@@ -33,9 +35,18 @@ function PersonalArea() {
     dispatch(getPainterResponseThunk(user.id));
     dispatch(getUserCardsThunk(user.id));
   }, []);
-  const handleDelete = (id) => {
+  const handlePainterDelete = (id) => {
     dispatch(deletePainterCardThunk(id));
+    dispatch(getRolesThunk());
+    dispatch(getPainterResponseThunk(user.id));
+    dispatch(getUserCardsThunk(user.id));
   };
+  const handleOrderDelete = useCallback((id) => {
+    dispatch(deleteOrderCardThunk(id));
+    dispatch(getRolesThunk());
+    dispatch(getPainterResponseThunk(user.id));
+    dispatch(getUserCardsThunk(user.id));
+  }, []);
 
   const rolesCheck = roles.filter((el) => el.id === user?.roles_id);
   // console.log(userResponse, 'PERSONAL_AREA_USERRESPONSE');
@@ -67,11 +78,32 @@ function PersonalArea() {
             <Card.Text>
               {el.description}
             </Card.Text>
-            <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
+            <Button type="button" onClick={() => handlePainterDelete(el.id)}>DEL</Button>
           </Card.Body>
         </Card>
       ))}
 
+    </>
+  );
+
+  const renderOrdersUser = (userOrderCard) => (
+    <>
+      {userOrderCard.map((el) => (
+        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
+          <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+
+          <div>
+            <div>{el.title}</div>
+            <div>
+              {el.description}
+            </div>
+            <Link to={`/user/${el.customer_id}`}>Подробнее о откликах</Link>
+            <button type="button" onClick={() => handleOrderDelete(el.id)}>DEL</button>
+
+          </div>
+        </div>
+
+      ))}
     </>
   );
 
@@ -116,7 +148,7 @@ function PersonalArea() {
           </div>
         </div>
 
-        {renderPainterUser(userResponse, userCard)}
+        {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
 
       </div>
       {/* <h3>Мои заказы</h3>

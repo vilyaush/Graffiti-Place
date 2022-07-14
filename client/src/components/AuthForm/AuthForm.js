@@ -138,7 +138,7 @@ function AuthForm() {
           />
 
           <label className="container">
-            Уже зарегистрированы?
+            Уже зарегестрированы?
             <input className="check" type="checkbox" onChange={handleForm} />
           </label>
           <label className="container">

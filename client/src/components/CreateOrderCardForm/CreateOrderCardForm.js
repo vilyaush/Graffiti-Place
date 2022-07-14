@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './CreateOrderCardForm.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { createOrderCardThunk } from '../../redux/action/orderCard';
+import { createOrderCardThunk, getOrderCardThunk } from '../../redux/action/orderCard';
 
 function CreateOrderCardForm() {
   const [form, setForm] = useState({});
@@ -26,6 +26,7 @@ function CreateOrderCardForm() {
     dispatch(createOrderCardThunk(formData));
     setForm({});
     e.target.reset();
+    dispatch(getOrderCardThunk());
   };
   const handleChange = (e) => {
     if (e.target.type === 'file') {
