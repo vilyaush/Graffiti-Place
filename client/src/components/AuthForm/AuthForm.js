@@ -13,6 +13,7 @@ function AuthForm() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
+  // console.log(user);
 
   const handleForm = () => {
     setLoginToggle(!loginToggle);
@@ -147,7 +148,7 @@ function AuthForm() {
           </label>
 
           <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
-          <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>
+          {/* <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button> */}
         </form>
       </div>
     </div>

@@ -42,7 +42,7 @@ function CreatePainterCardForm() {
         <input className="registration-card-input" type="text" value={form.city || ''} name="city" onChange={handleChange} placeholder="Город в котором был выполнен проект" />
         <textarea className="registration-card-input" value={form.desc || ''} name="desc" onChange={handleChange} placeholder="Описапие проекта" />
         <input className="registration-card-input" type="file" value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото проекта" />
-        <button className="regButton" type="submit">Submit</button>
+        <button className="regButton" type="submit">Отправить</button>
       </form>
 
     </div>

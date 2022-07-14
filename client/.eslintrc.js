@@ -34,5 +34,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-undef': 'off',
     'react/prop-types': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
+    'max-len': 'off',
   },
 };

@@ -15,58 +15,100 @@ function OneUser() {
   }, []);
 
   const renderOrders = (orders) => (
-    <>
-      {orders.map((el) => (
-        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
-          <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
-          <div>
-            <div>{el.title}</div>
-            <div>
-              {el.description}
+    <div className="ternar-cabinet-area">
+      <h2>Другие заказы:</h2>
+      <div className="trics2">
+        {orders.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
+              <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
+              <p>{el.title}</p>
+              <p>
+                {el.description}
+              </p>
             </div>
-
           </div>
-        </div>
-      ))}
-
-      <Link to="/ihavewall">Назад</Link>
-
-    </>
+        ))}
+        <button className="regButton">
+          <Link to="/ihavewall">Назад</Link>
+        </button>
+      </div>
+    </div>
   );
 
   const renderPainterCard = (painters) => (
-    <>
-      {painters.map((el) => (
-        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
-          <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
-          <div>
-            <div>{el.city}</div>
-            <div>
-              {el.description}
+    <div className="ternar-cabinet-area">
+      <h2>Выполненые работы:</h2>
+      <div className="trics2">
+        {painters.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
+              <img className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} alt="orders" />
+
+              <p>{el.city}</p>
+              <p>
+                {el.description}
+              </p>
             </div>
           </div>
-        </div>
-      ))}
-      <Link to="/ihavepaint">Назад</Link>
-    </>
+        ))}
+        <button className="regButton">
+          <Link to="/ihavepaint">Назад</Link>
+        </button>
+      </div>
+    </div>
   );
 
   // console.log(person, 'oneOrderUserCOMPONENTS');
   // {person.roles_id === 1 && }
   // if (person.roles_id === 2)
   return (
-    <div>
+    <div className="area">
+      <div className="areaDiv1">
+        <h1>Подробная Информация</h1>
+        <div className="obj">
+          <div className="areaPhoto">
+            <img
+              className="card-img-cabinet"
+              src={`${process.env.REACT_APP_serverApi}/img/${person?.img}`}
+              alt=""
+            />
+          </div>
+          <div className="areaDiv">
+            <h2>Информация о художнике</h2>
+            <ul>
+              <li>
+                {' '}
+                Имя:
+                {' '}
+                {person?.name}
+              </li>
+              <li>
+                Город:
+                {' '}
+                {person?.title}
+              </li>
+              <li>
+                О художнике:
+                {' '}
+                {person?.discription}
+              </li>
+              <li>
+                Email:
+                {' '}
+                {person?.email}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="ternar-cabinet-area">
+          {person.Orders && renderOrders(person.Orders)}
 
-      <h2>{person?.name}</h2>
-      <p>{person?.title}</p>
-      <p>{person?.discription}</p>
-      <p>{person?.email}</p>
-
-      {person.Orders && renderOrders(person.Orders)}
-
-      {person.CardsPaintes && renderPainterCard(person.CardsPaintes)}
-
+          {person.CardsPaintes && renderPainterCard(person.CardsPaintes)}
+        </div>
+      </div>
     </div>
+
   );
 }
 
