@@ -29,9 +29,9 @@ export default function ChatContextProvider({ children }) {
         break;
     }
   };
-//   socket.onclose = function (event) {
-//     console.log('closed');
-//   };
+  //   socket.onclose = function (event) {
+  //     console.log('closed');
+  //   };
 
   console.log('context', mess);
   return (

@@ -30,6 +30,8 @@ const userRouter = require('./routes/userRouter');
 const painterCardRouter = require('./routes/painterCardRouter');
 const orderCardRouter = require('./routes/orderRouter');
 const personalareaRouter = require('./routes/personalareaRouter');
+const responseRouter = require('./routes/responseRouter');
+const cardRouter = require('./routes/cardRouter');
 
 const app = express();
 app.use(cors({
@@ -55,6 +57,8 @@ app.use('/user', userRouter);
 app.use('/paintercard', painterCardRouter);
 app.use('/ordercard', orderCardRouter);
 app.use('/roles', personalareaRouter);
+app.use('/response', responseRouter);
+app.use('/card', cardRouter);
 
 app.use((req, res) => {
   res.status(404).send('ooops');
@@ -89,8 +93,9 @@ function generalInformation(){
 
  function postMess(payload){
   arr.push(payload)
-  console.log(arr);
+  console.log('iiiiiiiiiiiiiiiiiiiiiiii', arr);
   generalInformation()
+ 
 }
 
 function postAll(){

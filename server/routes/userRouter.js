@@ -6,7 +6,7 @@ const upload = require('../middleWare/uploadMiddle');
 
 router.route('/register')
   .post(upload.single('file'), async (req, res) => {
-    console.log('registerpen', req.body);
+    // console.log('registerpen', req.body);
     try {
       const {
         email, password, name, discription, title, roles_id,
@@ -55,7 +55,7 @@ router.route('/register')
 
 router.route('/logout')
   .get(async (req, res) => {
-    console.log('999999999999999999');
+    // console.log('999999999999999999');
     try {
       req.session.destroy();
       res.clearCookie('sid');
