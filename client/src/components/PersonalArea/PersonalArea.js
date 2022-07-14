@@ -144,10 +144,10 @@ function PersonalArea() {
                 Почта:
                 {user?.email}
               </li>
-              <li>
+              {/* <li>
                 Аккаунт создан:
                 {user?.createdAt.slice(0, 10)}
-              </li>
+              </li> */}
             </ul>
 
           </div>

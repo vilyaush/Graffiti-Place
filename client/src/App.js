@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import MyNavbar from './components/Navbar/MyNavbar';
-import MainPage from './components/Context/MainPage/MainPage';
+import MainPage from './components/MainPage/MainPage';
 import AuthForm from './components/AuthForm/AuthForm';
 import PainterCardList from './components/PainterCardList/PainterCardList';
 import OrderCardList from './components/OrderCardList/OrderCardList';
