@@ -20,12 +20,11 @@ router
   .route('/:id')
   .get(async (req,res) => {
     // console.log(req.params,'********************************************')
-    const result = await Responses.findAll({where: {user_id: req.params.id},
-      include: Orders}) 
+    try{
+      const result = await Responses.findAll({where: {user_id: req.params.id},
+        include: Orders}) 
+        res.json(result)  
+    }catch(err){console.error('Error response router', err)}
       // console.log(result);
-    res.json(result)  
-
-  
-  
   })
 module.exports = router;
