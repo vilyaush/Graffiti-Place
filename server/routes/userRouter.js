@@ -103,7 +103,7 @@ router.route('/auth')
     try {
       // console.log('REQEST AUTH-----------------------------------------------------------',req.session);
       const result = await Users.findByPk(req.session.userId);
-      // console.log(result, 'RESPONSE AUTH');
+      // console.log( 'RESPONSE AUTH', result);
       res.json(result);
     } catch (error) {
       console.log(error);

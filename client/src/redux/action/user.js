@@ -45,15 +45,15 @@ export const logInUserThunk = (body) => async (dispatch) => {
 
 export const authUserThunk = (body) => async (dispatch) => {
   try {
-    // console.log('THUNK_AUTH_________________________________________________________');
+    console.log('THUNK_AUTH_________________________________________________________');
     const response = await fetch(
       `${process.env.REACT_APP_serverApi}/user/auth`,
       {
         credentials: 'include',
       },
     );
+    console.log('RESPONSE FROM AUTH', response);
     const result = await response.json();
-    // console.log('RESPONSE FROM AUTH', result);
     dispatch(authUser(result));
   } catch (error) {
     console.log(error);
