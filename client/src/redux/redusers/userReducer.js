@@ -1,7 +1,7 @@
 // eslint-disable-next-line default-param-last
 const userReducer = (state = {}, action) => {
   const { type, payload } = action;
-  console.log(payload, 'FRONT_USER_REDUSER_PAYLOAD');
+  // console.log(payload, 'FRONT_USER_REDUSER_PAYLOAD');
   switch (type) {
     case 'LOGIN_USER':
       return payload;

@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const path = require('path');
 const cors = require('cors');
 const http = require('http');
-const uuid = require('uuid');
+// const uuid = require('uuid');
+const uuid = require('uuid4');
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -105,9 +106,11 @@ function postAll(){
 
 let count = 0;
 wss.on('connection', (ws, request) => {
-  const  userId  = request.session.userId;
+  // const  userId  = request.session.userId;
+  const userId  = uuid();
 
   map.set(userId, ws);
+  console.log('map in conection --------->', map)
   console.log(userId);
   count += 1;
   console.log('count --------->', count);
@@ -135,7 +138,9 @@ wss.on('connection', (ws, request) => {
   });
 
   ws.on('close', () => {
+    console.log('close start------->', map)
     map.delete(userId);
+    console.log('close ------->', map)
   });
 });
 
