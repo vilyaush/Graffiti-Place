@@ -27,10 +27,10 @@ function Message() {
         setVal('');
       }}
       >
-        <input type="text" value={val} onChange={((e) => setVal(e.target.value))} />
-        <button type="submit">send</button>
+        <input className="chat-input" type="text" value={val} onChange={((e) => setVal(e.target.value))} />
+        <button className="chat-butn" type="submit">Отправить</button>
       </form>
-      <div style={{ background: 'white' }}>
+      <div className="chat-tbl">
         {mess && mess.map((el) => (
           <p key={el.id}>
             {el.text}

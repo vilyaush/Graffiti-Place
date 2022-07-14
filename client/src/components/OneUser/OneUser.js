@@ -75,7 +75,6 @@ function OneUser() {
             />
           </div>
           <div className="areaDiv">
-            <h2>Информация о художнике</h2>
             <ul>
               <li>
                 {' '}
