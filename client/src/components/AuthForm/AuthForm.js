@@ -13,7 +13,7 @@ function AuthForm() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
-  console.log(user);
+  // console.log(user);
 
   const handleForm = () => {
     setLoginToggle(!loginToggle);

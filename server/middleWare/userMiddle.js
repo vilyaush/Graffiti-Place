@@ -1,6 +1,6 @@
 const checkUser = (req, res, next) => {
-  if (req.session.user) {
-    res.locals.user = req.session.user;
+  if (req.session.userId) {
+    res.locals.userId = req.session.userId;
     next();
   } else {
     res.sendStatus(401);

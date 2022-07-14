@@ -1,4 +1,6 @@
-import React, { useEffect, useCallback, memo, useState } from 'react';
+import React, {
+  useEffect, useCallback, memo, useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPainterCardThunk, deletePainterCardThunk } from '../../redux/action/painterCard';
 import { Card, Button } from 'react-bootstrap';
@@ -13,7 +15,7 @@ function PainterCardList() {
 
   const user = useSelector((state) => state.user);
   const [count, setCount] = useState(0);
-  // console.log(user, '000000000');
+  console.log(painterCards, '00000000000000000000000000000');
 
   useEffect(() => {
     dispatch(getPainterCardThunk());
@@ -34,7 +36,7 @@ function PainterCardList() {
           <div className="table-card">
             <div className="solo-card" key={nanoid()}>
               <p>{el.city}</p>
-              <p>{el.discription}</p>
+              <p>{el.description}</p>
 
               <img className="card-img" alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 

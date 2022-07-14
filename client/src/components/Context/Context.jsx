@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 import React, {
   createContext, useState, useEffect, useCallback, useMemo, useContext,
 } from 'react';
 
 const ChatContext = createContext();
+// eslint-disable-next-line react/prop-types
 export default function ChatContextProvider({ children }) {
   const [socket, setSocket] = useState(new WebSocket('ws://localhost:3003'));
   const [mess, setMess] = useState([]);
