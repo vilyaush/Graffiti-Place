@@ -20,11 +20,12 @@ router
   .route('/:id')
   .get(async (req,res) => {
     // console.log(req.params,'********************************************')
+    try{
     const result = await Responses.findAll({where: {user_id: req.params.id},
       include: Orders}) 
-      // console.log(result);
-    res.json(result)  
-
+      res.json(result)  
+    } catch(err){console.error('Error response router', err)}
+    // console.log(result);
   
   
   })
