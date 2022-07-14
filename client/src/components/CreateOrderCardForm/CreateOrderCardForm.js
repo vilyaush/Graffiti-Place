@@ -21,12 +21,11 @@ function CreateOrderCardForm() {
     formData.append('file', form.file);
     formData.append('status', false);
 
-    console.log(Object.fromEntries(formData));
+    // console.log(Object.fromEntries(formData));
 
     dispatch(createOrderCardThunk(formData));
     setForm({});
     e.target.reset();
-    dispatch(getOrderCardThunk());
   };
   const handleChange = (e) => {
     if (e.target.type === 'file') {

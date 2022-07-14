@@ -18,10 +18,6 @@ function OrderCardList() {
     dispatch(getOrderCardThunk());
   }, []);
 
-  const handleDelete = useCallback((id) => {
-    dispatch(deleteOrderCardThunk(id));
-  }, []);
-
   const handleResponse = useCallback((orderId, userId) => {
     console.log(orderId, userId);
     fetch(`${process.env.REACT_APP_serverApi}/response`, {
@@ -31,6 +27,8 @@ function OrderCardList() {
       body: JSON.stringify({ orderId, userId }),
     });
   }, []);
+
+  if (!user) return null;
 
   return (
     <div className="card">
@@ -46,8 +44,8 @@ function OrderCardList() {
               {el.description}
             </div>
             <Link to={`/user/${el.customer_id}`}>Подробнее о заказчике</Link>
-            <button type="button" onClick={() => handleDelete(el.id)}>DEL</button>
-            <button type="button" onClick={() => handleResponse(el.id, user.id)}>response</button>
+
+            {user.roles_id === 1 ? <button type="button" onClick={() => handleResponse(el.id, user.id)}>response</button> : null}
 
           </div>
         </div>

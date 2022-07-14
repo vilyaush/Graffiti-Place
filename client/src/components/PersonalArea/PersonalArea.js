@@ -3,7 +3,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
-// import { authUserThunk } from '../../redux/action/user';
+import { authUserThunk } from '../../redux/action/user';
 import Message from '../Message/Message';
 import getPainterResponseThunk from '../../redux/action/painterResponse';
 import getUserCardsThunk from '../../redux/action/userCards';
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import { nanoid } from 'nanoid';
 import { deletePainterCardThunk } from '../../redux/action/painterCard';
+import { deleteOrderCardThunk } from '../../redux/action/orderCard';
 import { render } from 'react-dom';
 
 const avatar = '../../../public//icon__user_account.png';
@@ -18,8 +19,8 @@ console.log('AVATAR', avatar);
 
 function PersonalArea() {
   // useEffect(() => {
-  //   dispatch(authUserThunk())
-  // }, [])
+  //   dispatch(authUserThunk());
+  // }, []);
 
   const dispatch = useDispatch();
   const user = useSelector((s) => s.user);
@@ -31,15 +32,19 @@ function PersonalArea() {
   // console.log('PersonalAreaRESPONSES', userResponse);
 
   useEffect(() => {
+    dispatch(authUserThunk());
     dispatch(getRolesThunk());
-    dispatch(getPainterResponseThunk(user.id));
-    dispatch(getUserCardsThunk(user.id));
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getPainterResponseThunk(user.id));
+      dispatch(getUserCardsThunk(user.id));
+    }
+  }, [user]);
+
   const handlePainterDelete = (id) => {
     dispatch(deletePainterCardThunk(id));
-    dispatch(getRolesThunk());
-    dispatch(getPainterResponseThunk(user.id));
-    dispatch(getUserCardsThunk(user.id));
   };
   const handleOrderDelete = useCallback((id) => {
     dispatch(deleteOrderCardThunk(id));
@@ -106,7 +111,7 @@ function PersonalArea() {
       ))}
     </>
   );
-
+  if (!user) return null;
   return (
     <div className="area">
       <div className="areaDiv1">
@@ -144,13 +149,14 @@ function PersonalArea() {
                 {user?.createdAt.slice(0, 10)}
               </li>
             </ul>
-            <Message />
+
           </div>
         </div>
 
         {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
 
       </div>
+      <Message />
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
     </div>

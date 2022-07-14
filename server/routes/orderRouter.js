@@ -11,7 +11,7 @@ router
   })
 
   .post(upload.single('file'), async (req, res) => {
-    console.log('4444', req.body);
+    // console.log('4444', req.body);
     const newOrder = await Orders.create(
       {
         painter_id: req.body.painter_id,
