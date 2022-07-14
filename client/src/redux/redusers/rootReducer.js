@@ -6,6 +6,7 @@ import oneUserReducer from './oneUserReducer';
 import rolesReduser from './rolesReduser';
 import painterResponseReducer from './paintesResponseReducer';
 import userCardsReducer from './userCardsReducer';
+import responsesListReducer from './responsesListReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   roles: rolesReduser,
   painterResponse: painterResponseReducer,
   userCards: userCardsReducer,
+  responsesList: responsesListReducer,
 
 });
 
