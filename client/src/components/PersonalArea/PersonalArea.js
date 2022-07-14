@@ -83,7 +83,7 @@ function PersonalArea() {
           <div className="areaPhoto">
 
             <img
-              className="card-img"
+              className="card-img-cabinet"
               src={`${process.env.REACT_APP_serverApi}/img/${user?.img}`}
               alt=""
             />

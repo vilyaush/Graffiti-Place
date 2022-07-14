@@ -36,12 +36,17 @@ function PainterCardList() {
           <div className="table-card">
             <div className="solo-card" key={nanoid()}>
               <p>{el.city}</p>
-              <p>{el.discription}</p>
+              <p>{el.description}</p>
 
               <img className="card-img" alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
-              <Link to={`/user/${el.user_id}`}>Подробнее о художнике</Link>
-              <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button>
+              <button className="cardButton">
+                {' '}
+                <Link to={`/user/${el.user_id}`}>О художнике</Link>
+                {' '}
+              </button>
+              <button className="cardButton" onClick={() => handleDelete(el.id)} type="submit">Удалить</button>
+              {/* <Button type="button" onClick={() => handleDelete(el.id)}>DEL</Button> */}
             </div>
           </div>
 
