@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './CreateOrderCardForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { createOrderCardThunk, getOrderCardThunk } from '../../redux/action/orderCard';
 
@@ -40,12 +39,12 @@ function CreateOrderCardForm() {
   };
 
   return (
-    <div>
+    <div className="registerCard">
       <form className="create-form" onSubmit={handleSubmit}>
-        <input type="text" value={form.city || ''} name="city" onChange={handleChange} placeholder="В каком городе хотели бы нарисовать" />
-        <textarea value={form.description || ''} name="description" onChange={handleChange} placeholder="Описапие проекта" />
-        <input type="file" value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото пустой стены" />
-        <button type="submit">Submit</button>
+        <input className="registration-card-input" type="text" value={form.city || ''} name="city" onChange={handleChange} placeholder="В каком городе хотели бы нарисовать" />
+        <textarea className="registration-card-input" value={form.description || ''} name="description" onChange={handleChange} placeholder="Описапие проекта" />
+        <input className="registration-card-input" type="file" value={form.img || ''} name="img" onChange={handleChange} placeholder="Фото пустой стены" />
+        <button className="regButton" type="submit">Создать</button>
       </form>
 
     </div>

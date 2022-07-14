@@ -34,6 +34,8 @@ function Message() {
         {mess && mess.map((el) => (
           <p key={el.id}>
             {el.text}
+            -
+            {user.name}
           </p>
         ))}
       </div>
