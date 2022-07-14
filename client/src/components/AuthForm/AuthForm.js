@@ -144,7 +144,7 @@ function AuthForm() {
           </label>
 
           <button className="regButton" type="submit">{loginToggle ? 'Войти' : 'Зарегистрироваться'}</button>
-          <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button>
+          {/* <button className="regButton" type="submit" onClick={handleLogout}> Выйти</button> */}
         </form>
       </div>
     </div>

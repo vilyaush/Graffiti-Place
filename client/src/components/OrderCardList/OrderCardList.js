@@ -45,9 +45,11 @@ function OrderCardList() {
               <button className="cardButton">
                 <Link to={`/user/${el.customer_id}`}> О заказчике</Link>
               </button>
-              <button className="cardButton">
-                {user.roles_id === 1 ? <button type="button" onClick={() => handleResponse(el.id, user.id)}>Откликнуться</button> : null}
-              </button>
+              {user.roles_id === 1 ? (
+                <button className="cardButton" type="button" onClick={() => handleResponse(el.id, user.id)}>
+                  Откликнуться
+                </button>
+              ) : null}
               {/* <button className="cardButton" type="submit" onClick={() => handleDelete(el.id)}>Удалить</button> */}
               {/* <button className="cardButton" type="submit" onClick={() => handleResponse(el.id, user.id)}>Редактировать</button> */}
             </div>
