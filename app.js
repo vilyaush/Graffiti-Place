@@ -85,21 +85,21 @@ server.on('upgrade', (request, socket, head) => {
     });
   });
 });
-function generalInformation(){
+function generalInformation() {
   console.log('general');
-  const messages = arr.map((el, i) => ({...el, id:i}))
-  map.forEach(el => el.send(JSON.stringify({type:'postAll', payload:messages})))
+  const messages = arr.map((el, i) => ({ ...el, id: i }))
+  map.forEach(el => el.send(JSON.stringify({ type: 'postAll', payload: messages })))
   console.log('oooooooooffffffffffffffff');
 }
 
- function postMess(payload){
+function postMess(payload) {
   arr.push(payload)
   console.log('iiiiiiiiiiiiiiiiiiiiiiii', arr);
   generalInformation()
- 
+
 }
 
-function postAll(){
+function postAll() {
   generalInformation()
   console.log('iiiiiiiiiiiiiiiiiiiiiiii');
 }
@@ -107,7 +107,7 @@ function postAll(){
 let count = 0;
 wss.on('connection', (ws, request) => {
   // const  userId  = request.session.userId;
-  const userId  = uuid();
+  const userId = uuid();
 
   map.set(userId, ws);
   console.log('map in conection --------->', map)
@@ -116,7 +116,7 @@ wss.on('connection', (ws, request) => {
   console.log('count --------->', count);
 
 
- 
+
 
 
   ws.on('message', (message) => {
@@ -125,16 +125,16 @@ wss.on('connection', (ws, request) => {
     const { type, payload } = wbs;
 
     switch (type) {
-      case "getOne" :
+      case "getOne":
         postMess(payload)
-       
+
         break;
-      case "postAll" :
-       postAll()
-      
-        
+      case "postAll":
+        postAll()
+
+
         break;
-      }
+    }
   });
 
   ws.on('close', () => {
@@ -143,6 +143,10 @@ wss.on('connection', (ws, request) => {
     console.log('close ------->', map)
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
+}
 
 server.listen(PORT, () => {
   console.log('server start on', PORT);
