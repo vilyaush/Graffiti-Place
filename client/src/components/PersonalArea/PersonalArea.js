@@ -113,13 +113,11 @@ function PersonalArea() {
               </p>
               <div className="btn-flex">
                 <button className="cardButton">
-                  <Link to={`/user/${el.customer_id}`}>Отклики</Link>
+                  <Link to={`/responselist/${el.id}`}>Отклики</Link>
                 </button>
                 <button className="cardButton" type="button" onClick={() => handleOrderDelete(el.id)}>Удалить</button>
               </div>
             </div>
-            <Link to={`/responselist/${el.id}`}>Подробнее о откликах</Link>
-            <button type="button" onClick={() => handleOrderDelete(el.id)}>DEL</button>
 
           </div>
 
