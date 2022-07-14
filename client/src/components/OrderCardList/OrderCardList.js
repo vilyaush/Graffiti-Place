@@ -43,9 +43,13 @@ function OrderCardList() {
               <p>{el.description}</p>
               <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
               <button className="cardButton">
-                {user.roles_id === 1 ? <button type="button" onClick={() => handleResponse(el.id, user.id)}>Откликнуться</button> : null}
                 <Link to={`/user/${el.customer_id}`}> О заказчике</Link>
               </button>
+              {user.roles_id === 1 ? (
+                <button className="cardButton" type="button" onClick={() => handleResponse(el.id, user.id)}>
+                  Откликнуться
+                </button>
+              ) : null}
               {/* <button className="cardButton" type="submit" onClick={() => handleDelete(el.id)}>Удалить</button> */}
               {/* <button className="cardButton" type="submit" onClick={() => handleResponse(el.id, user.id)}>Редактировать</button> */}
             </div>

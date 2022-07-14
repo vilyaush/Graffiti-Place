@@ -106,16 +106,19 @@ body {
 }
 
 .ballon {
-  position: absolute;
-  width: 735px;
+  /* position: absolute; */
+  width: 50%;
   height: 658px;
-  margin-left: 950px;
+  margin-left: 500px;
   margin-top: 280px;
   background: no-repeat url('../../../public/PIC\ hand.png');
 }
 
 .box {
-  margin-right: 750px;
+  /* margin-right: 750px; */
+  display: flex;
+  width: 50%;
+  margin-left: 100px;
 }
 
 .button-home {
@@ -234,7 +237,7 @@ body {
 
 .area {
   width: 100%;
-  height: 1024px;
+  height: 100%;
   justify-content: center;
   display: flex;
   flex-direction: row;
@@ -242,7 +245,7 @@ body {
 
 .areaDiv1 {
   width: 100%;
-  height: 1024px;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -405,18 +408,19 @@ body {
   text-align: center;
   font-family: 'Montserrat';
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   word-break: break-all;
-  /* margin-top: 30px; */
+  margin: 10px;
   color: rgba(179, 179, 179, 1);
 }
+
 
 .card-img {
   width: 350px;
   height: 235px;
   float: inline-start;
   margin: 0 0 0 3.5%;
-  border-radius: 7%;
+  border-radius: 5%;
 }
 
 .trics {
@@ -433,4 +437,27 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
+}
+
+.ternar-cabinet-area {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+  flex-direction: column;
+  display: flex;
+  background: no-repeat rgba(34, 34, 34, 1);
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.ternar-cabinet-area>h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat';
+  font-size: 30px;
+  color: rgba(179, 179, 179, 1);
 }

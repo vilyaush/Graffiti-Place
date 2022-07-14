@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './PersonalArea.css';
 import { getRolesThunk } from '../../redux/action/roles';
 import { authUserThunk } from '../../redux/action/user';
 import Message from '../Message/Message';
@@ -57,61 +56,73 @@ function PersonalArea() {
   // console.log(userResponse, 'PERSONAL_AREA_USERRESPONSE');
 
   const renderPainterUser = (response, uCard) => (
-    <>
-      <h2>Заказы на которые я откликнулся</h2>
-      {response.map((el) => (
-        <Card className="card" key={nanoid()} style={{ width: '18rem' }}>
-          <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.Order.img}`} />
-          <Card.Body>
-            <Card.Title>{el.Order.title}</Card.Title>
-            <Card.Text>
-              {el.Order.description}
-            </Card.Text>
-            <Link to={`/user/${el.Order.customer_id}`}>Подробнее о заказчике</Link>
+    <div className="ternar-cabinet-area">
+      <h2>Заказы на которые я откликнулся:</h2>
+      <div className="trics2">
+        {response.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
+              <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.Order.img}`} />
+              <p>{el.Order.title}</p>
+              <p>{el.Order.description}</p>
+              <button className="cardButton">
+                <Link to={`/user/${el.Order.customer_id}`}> О заказчике</Link>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
 
-          </Card.Body>
-        </Card>
-      ))}
-      <h2>Мои работы</h2>
-      {uCard.map((el) => (
-        <Card key={nanoid()} style={{ width: '18rem' }}>
+      <h2>Мои работы:</h2>
+      <div className="trics2">
+        {uCard.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
 
-          <img alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
-
-          <Card.Body>
-            <Card.Title>{el.city}</Card.Title>
-            <Card.Text>
-              {el.description}
-            </Card.Text>
-            <Button type="button" onClick={() => handlePainterDelete(el.id)}>DEL</Button>
-          </Card.Body>
-        </Card>
-      ))}
-
-    </>
+              <img className="card-img" alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+              <p>{el.city}</p>
+              <p>
+                {' '}
+                {el.description}
+              </p>
+              <button className="cardButton" type="button" onClick={() => handlePainterDelete(el.id)}>Удалить</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 
   const renderOrdersUser = (userOrderCard) => (
-    <>
-      {userOrderCard.map((el) => (
-        <div className="card" key={nanoid()} style={{ width: '18rem' }}>
-          <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
+    <div className="ternar-cabinet-area">
+      <h2>Мои заказы:</h2>
+      <div className="trics2">
+        {userOrderCard.map((el) => (
+          <div className="table-card">
+            <div className="solo-card" key={nanoid()}>
+              <img alt="Сдесь должна быть фотография" className="card-img" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
-          <div>
-            <div>{el.title}</div>
-            <div>
-              {el.description}
+              <p>{el.title}</p>
+
+              <p>
+                {' '}
+                {el.description}
+              </p>
+              <div className="btn-flex">
+                <button className="cardButton">
+                  <Link to={`/user/${el.customer_id}`}>Отклики</Link>
+                </button>
+                <button className="cardButton" type="button" onClick={() => handleOrderDelete(el.id)}>Удалить</button>
+              </div>
             </div>
-            <Link to={`/user/${el.customer_id}`}>Подробнее о откликах</Link>
-            <button type="button" onClick={() => handleOrderDelete(el.id)}>DEL</button>
-
           </div>
-        </div>
 
-      ))}
-    </>
+        ))}
+      </div>
+    </div>
   );
   if (!user) return null;
+
   return (
     <div className="area">
       <div className="areaDiv1">
@@ -152,11 +163,11 @@ function PersonalArea() {
 
           </div>
         </div>
-
-        {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
-
+        <div className="ternar-cabinet-area">
+          {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
+        </div>
       </div>
-      <Message />
+      {/* <Message /> */}
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
     </div>
