@@ -49,6 +49,7 @@ function PersonalArea() {
     dispatch(getUserCardsThunk(user.id));
   };
   const handleOrderDelete = useCallback((id) => {
+    console.log(id);
     dispatch(deleteOrderCardThunk(id));
     dispatch(getRolesThunk());
     dispatch(getPainterResponseThunk(user.id));
@@ -113,13 +114,11 @@ function PersonalArea() {
               </p>
               <div className="btn-flex">
                 <button className="cardButton">
-                  <Link to={`/user/${el.customer_id}`}>Отклики</Link>
+                  <Link to={`/responselist/${el.id}`}>Отклики</Link>
                 </button>
                 <button className="cardButton" type="button" onClick={() => handleOrderDelete(el.id)}>Удалить</button>
               </div>
             </div>
-            <Link to={`/responselist/${el.id}`}>Подробнее о откликах</Link>
-            <button type="button" onClick={() => handleOrderDelete(el.id)}>DEL</button>
 
           </div>
 
@@ -173,7 +172,7 @@ function PersonalArea() {
           {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
         </div>
       </div>
-      <Message />
+      {/* <Message /> */}
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
     </div>
