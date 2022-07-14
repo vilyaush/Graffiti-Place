@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOutUserThunk } from '../../redux/action/user';
 
+import logo from '../../assets/Union.png';
+
 export default function MyNavbar() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ export default function MyNavbar() {
   // console.log(user, 'NAVBAR_USER');
   return (
     <div className="navBar">
-      <a href="/" />
+      <Link to="/"><img src={logo} alt="logo" /></Link>
 
       <div className="headNav">
         <li>

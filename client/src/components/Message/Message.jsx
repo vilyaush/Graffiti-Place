@@ -9,10 +9,10 @@ function Message() {
   const { user } = useSelector((state) => state);
 
   const { socket, mess } = useChatContext();
-    useEffect(() => {
+  useEffect(() => {
 
     // return () => {} close connection
-    }, [mess]);
+  }, [mess]);
 
   console.log(mess);
 

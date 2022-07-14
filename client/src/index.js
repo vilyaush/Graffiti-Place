@@ -13,12 +13,12 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <ChatContextProvider>
+  <Provider store={store}>
+    <ChatContextProvider>
+      <BrowserRouter>
         <App />
-      </ChatContextProvider>
-    </Provider>
-  </BrowserRouter>,
+      </BrowserRouter>
+    </ChatContextProvider>
+  </Provider>,
 
 );

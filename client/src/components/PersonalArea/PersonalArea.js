@@ -112,14 +112,14 @@ function PersonalArea() {
                 {user?.createdAt.slice(0, 10)}
               </li>
             </ul>
-            <Message />
+
           </div>
         </div>
 
         {renderPainterUser(userResponse, userCard)}
 
       </div>
-
+      <Message />
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
 

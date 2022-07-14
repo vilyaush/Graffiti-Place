@@ -35,7 +35,7 @@ router.route('/register')
       const result = await Users.create({
         email, password: pass, name, roles_id, title, discription, img: req.file?.filename,
       });
-      console.log(result, 'nnnnnnnnnnnnnnnn');
+      // console.log(result, 'nnnnnnnnnnnnnnnn');
       console.log('-----------------------------');
       if (result.id) {
         req.session.userId = result.id;

@@ -84,31 +84,51 @@ server.on('upgrade', (request, socket, head) => {
     });
   });
 });
+function generalInformation(){
+  console.log('general');
+  const messages = arr.map((el, i) => ({...el, id:i}))
+  map.forEach(el => el.send(JSON.stringify({type:'postAll', payload:messages})))
+  console.log('oooooooooffffffffffffffff');
+}
 
+ function postMess(payload){
+  arr.push(payload)
+  console.log('iiiiiiiiiiiiiiiiiiiiiiii', arr);
+  generalInformation()
+ 
+}
+
+function postAll(){
+  generalInformation()
+  console.log('iiiiiiiiiiiiiiiiiiiiiiii');
+}
+
+let count = 0;
 wss.on('connection', (ws, request) => {
-  const { userId } = request.session.userId;
+  const  userId  = request.session.userId;
 
   map.set(userId, ws);
+  console.log(userId);
+  count += 1;
+  console.log('count --------->', count);
+
+
+ 
+
 
   ws.on('message', (message) => {
-    // console.log(`Received message ${message} from user ${userId}`);
+    console.log(`Received message ${message} from user ${userId}`);
     const wbs = JSON.parse(message);
-    const { type } = wbs;
+    const { type, payload } = wbs;
 
     switch (type) {
-      case getOne:{
-        async function postMess(){
-          const mess = await arr.create()
-          res.json(mess)
-        }
-      }
+      case "getOne" :
+        postMess(payload)
+       
         break;
-      case postAll :{
-        async function postAll(){
-          const messAll = await arr.findAll()
-          res.json(messAll)
-        }
-      }
+      case "postAll" :
+       postAll()
+      
         
         break;
       }
