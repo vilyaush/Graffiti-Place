@@ -21,7 +21,6 @@ body {
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to right, rgba(255, 184, 0, 1), rgba(208, 116, 94, 1), rgba(191, 92, 128, 1), rgba(127, 0, 255, 1));
-  border-radius: 0px 0px 20px 20px;
 }
 
 .mainLabel {
@@ -372,6 +371,10 @@ body {
 }
 
 .solo-card>p {
+  hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   text-align: center;
   font-family: 'Montserrat';
   font-weight: 500;
@@ -380,13 +383,14 @@ body {
   color: rgba(179, 179, 179, 1);
 }
 
+
 .card-img {
   width: 350px;
   height: 350px;
   /* Ширина */
   float: inline-start;
   margin: 0 0 0 3.5%;
-  border-radius: 20%;
+  border-radius: 5%;
 }
 
 .trics {

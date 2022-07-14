@@ -36,7 +36,7 @@ function PainterCardList() {
           <div className="table-card">
             <div className="solo-card" key={nanoid()}>
               <p>{el.city}</p>
-              <p>{el.discription}</p>
+              <p>{el.description}</p>
 
               <img className="card-img" alt="Сдесь должна быть фотография" src={`${process.env.REACT_APP_serverApi}/img/${el.img}`} />
 
