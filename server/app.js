@@ -32,6 +32,7 @@ const orderCardRouter = require('./routes/orderRouter');
 const personalareaRouter = require('./routes/personalareaRouter');
 const responseRouter = require('./routes/responseRouter');
 const cardRouter = require('./routes/cardRouter');
+const responsesListRouter = require('./routes/responsesListRouter');
 
 const app = express();
 app.use(cors({
@@ -59,6 +60,7 @@ app.use('/ordercard', orderCardRouter);
 app.use('/roles', personalareaRouter);
 app.use('/response', responseRouter);
 app.use('/card', cardRouter);
+app.use('/responselist', responsesListRouter);
 
 app.use((req, res) => {
   res.status(404).send('ooops');

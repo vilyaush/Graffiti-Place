@@ -2,7 +2,7 @@
 const orderCardReducer = (state = [], action) => {
   const { type, payload } = action;
 
-  console.log('order', payload);
+  console.log('order6666666666666666666666666', payload);
   switch (type) {
     case 'GET_ORDER_CARD':
       return payload;

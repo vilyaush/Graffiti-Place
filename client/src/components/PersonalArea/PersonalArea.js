@@ -102,7 +102,7 @@ function PersonalArea() {
             <div>
               {el.description}
             </div>
-            <Link to={`/user/${el.customer_id}`}>Подробнее о откликах</Link>
+            <Link to={`/responselist/${el.id}`}>Подробнее о откликах</Link>
             <button type="button" onClick={() => handleOrderDelete(el.id)}>DEL</button>
 
           </div>
