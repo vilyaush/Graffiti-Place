@@ -27,11 +27,7 @@ function AuthForm() {
 
       setForm({});
       event.target.reset();
-      if (painterToggle) {
-        navigate('/ihavewall');
-      } else {
-        navigate('/ihavepaint');
-      }
+      navigate('/');
     } else if (form.name && form.email && form.password) {
       const formData = new FormData();
       formData.append('title', form.title);

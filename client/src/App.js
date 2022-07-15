@@ -9,6 +9,7 @@ import OrderCardList from './components/OrderCardList/OrderCardList';
 import { authUserThunk } from './redux/action/user';
 import PersonalArea from './components/PersonalArea/PersonalArea';
 import OneUser from './components/OneUser/OneUser';
+import ResponsesList from './components/ResponsesList/ResponsesList';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/ihavepaint" element={<PainterCardList />} />
         <Route path="/ihavewall" element={<OrderCardList />} />
         <Route path="/personalarea" element={<PersonalArea />} />
+        <Route path="/responselist/:id" element={<ResponsesList />} />
       </Routes>
       <div className="footer">
         <div className="logofooter" />
