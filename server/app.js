@@ -6,6 +6,7 @@ const cors = require('cors');
 const http = require('http');
 // const uuid = require('uuid');
 const uuid = require('uuid4');
+// const nodemailer = require("nodemailer");
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -67,6 +68,37 @@ app.use((req, res) => {
   res.status(404).send('ooops');
 });
 
+// app.post('/response', cors(), async (req, res) => {
+//   let { text } = req.body
+//   const transport = nodemailer.createTransport({
+//     host: process.env.MAIL_HOST,
+//     port: process.env.MAIL_POST,
+//     auth: {
+//       user: process.env.MAIL_USER,
+//       pass: process.env.MAIL_PASS,
+//     }
+//   })
+
+//   await transport.sendMail({
+//     from: process.env.MAIL_FROM,
+//     to: 'aldar.ondar.17@mail.ru',
+//     subject: 'Ваш заказ принят!',
+//     html: `<div className="email" style="
+//     border: 1px solid black;
+//     padding: 20px;
+//     font-family: sans-serif;
+//     line-height: 2;
+//     font-size: 20px; 
+//     ">
+//     <h2>Here is your email!</h2>
+//     <p>Ваш заказ был принят, зайдите в личный кабинет!</p>
+
+//     <p>All the best, Darwin</p>
+//      </div>
+// `
+//   })
+// })
+
 const server = http.createServer(app);
 const wss = new WebSocketServer({ clientTracking: false, noServer: true });
 
@@ -87,21 +119,21 @@ server.on('upgrade', (request, socket, head) => {
     });
   });
 });
-function generalInformation(){
+function generalInformation() {
   console.log('general');
-  const messages = arr.map((el, i) => ({...el, id:i}))
-  map.forEach(el => el.send(JSON.stringify({type:'postAll', payload:messages})))
+  const messages = arr.map((el, i) => ({ ...el, id: i }))
+  map.forEach(el => el.send(JSON.stringify({ type: 'postAll', payload: messages })))
   console.log('oooooooooffffffffffffffff');
 }
 
- function postMess(payload){
+function postMess(payload) {
   arr.push(payload)
   console.log('iiiiiiiiiiiiiiiiiiiiiiii', arr);
   generalInformation()
- 
+
 }
 
-function postAll(){
+function postAll() {
   generalInformation()
   console.log('iiiiiiiiiiiiiiiiiiiiiiii');
 }
@@ -109,7 +141,7 @@ function postAll(){
 let count = 0;
 wss.on('connection', (ws, request) => {
   // const  userId  = request.session.userId;
-  const userId  = uuid();
+  const userId = uuid();
 
   map.set(userId, ws);
   console.log('map in conection --------->', map)
@@ -118,7 +150,7 @@ wss.on('connection', (ws, request) => {
   console.log('count --------->', count);
 
 
- 
+
 
 
   ws.on('message', (message) => {
@@ -127,16 +159,16 @@ wss.on('connection', (ws, request) => {
     const { type, payload } = wbs;
 
     switch (type) {
-      case "getOne" :
+      case "getOne":
         postMess(payload)
-       
+
         break;
-      case "postAll" :
-       postAll()
-      
-        
+      case "postAll":
+        postAll()
+
+
         break;
-      }
+    }
   });
 
   ws.on('close', () => {

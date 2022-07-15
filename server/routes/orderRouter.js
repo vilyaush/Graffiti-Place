@@ -1,13 +1,20 @@
 const router = require('express').Router();
 const upload = require('../middleWare/uploadMiddle');
-const { Orders } = require('../db/models');
+const { Orders, Users } = require('../db/models');
 const { checkUser } = require('../middleWare/userMiddle');
 
 router
   .route('/')
   .get(async (req, res) => {
     const cards = await Orders.findAll({ order: [['createdAt', 'DESC']], raw: true });
-    res.json(cards);
+    const users = await Users.findAll({ order: [['createdAt', 'DESC']], raw: true });
+    const cardsWithEmails = cards.map(card => {
+      const res = users.find(user => user.id === card.customer_id )
+      if (res) {
+        return {...card, customer_email: res.email}
+      }
+    })
+    res.json(cardsWithEmails);
   })
 
   .post(upload.single('file'), async (req, res) => {
