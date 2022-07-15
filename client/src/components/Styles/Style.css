@@ -225,6 +225,16 @@ body {
   background: #7F00FF;
 }
 
+.regButton>a {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+  margin-top: 10px;
+}
+
 .check {
   margin-left: 15px;
   flex-direction: row;
@@ -497,11 +507,19 @@ body {
   color: black;
   font-family: 'Montserrat';
   background: linear-gradient(to right, rgba(255, 184, 0, 1), rgba(208, 116, 94, 1), rgba(191, 92, 128, 1), rgba(127, 0, 255, 1));
-  ;
+  border-radius: 1%;
 }
 
 .chat-tbl>p {
   margin: 10px 0px 10px 10px;
   font-family: 'Montserrat';
   font-size: 20px;
+}
+
+.response-painter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
 }
