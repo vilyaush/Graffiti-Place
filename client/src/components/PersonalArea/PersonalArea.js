@@ -167,12 +167,12 @@ function PersonalArea() {
             </ul>
 
           </div>
+          <Message />
         </div>
         <div className="ternar-cabinet-area">
           {user.roles_id === 1 ? renderPainterUser(userResponse, userCard) : renderOrdersUser(userCard)}
         </div>
       </div>
-      {/* <Message /> */}
       {/* <h3>Мои заказы</h3>
       <li>типа заказы</li> */}
     </div>

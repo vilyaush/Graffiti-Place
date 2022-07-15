@@ -33,9 +33,9 @@ function Message() {
       <div className="chat-tbl">
         {mess && mess.map((el) => (
           <p key={el.id}>
-            {el.text}
-            -
             {user.name}
+            :
+            {el.text}
           </p>
         ))}
       </div>
